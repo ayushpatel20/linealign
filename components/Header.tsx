@@ -47,9 +47,9 @@ export default function Header() {
               <Image
                 src="/logo.png"
                 alt="LINEALIGN"
-                width={160}
-                height={53}
-                className="h-10 w-auto object-contain"
+                width={240}
+                height={80}
+                className="h-[60px] w-auto object-contain"
                 priority
               />
             </Link>

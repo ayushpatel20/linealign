@@ -265,9 +265,9 @@ export default function PaymentPage({ params }: PageProps) {
             <Image
               src="/logo.png"
               alt="Logo"
-              width={100}
-              height={30}
-              className="h-6 w-auto brightness-0 invert object-contain opacity-50"
+              width={150}
+              height={45}
+              className="h-9 w-auto brightness-0 invert object-contain opacity-50"
             />
           </div>
 

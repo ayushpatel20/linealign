@@ -29,9 +29,9 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="LINEALIGN"
-                width={150}
-                height={50}
-                className="h-8 w-auto object-contain"
+                width={225}
+                height={75}
+                className="h-12 w-auto object-contain"
               />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
