@@ -100,11 +100,11 @@ export default function Home() {
             {/* Centered Vertically Large Logo */}
             <div className="flex justify-start">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="LINEALIGN Logo"
-                width={384}
-                height={128}
-                className="h-[64px] w-auto object-contain flex-shrink-0 select-none"
+                width={450}
+                height={288}
+                className="h-[96px] w-auto object-contain flex-shrink-0 select-none"
                 priority
               />
             </div>

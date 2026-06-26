@@ -27,10 +27,10 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="inline-flex bg-white p-2.5 rounded-xl border border-white shadow-xs">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="LINEALIGN"
                 width={225}
-                height={75}
+                height={144}
                 className="h-12 w-auto object-contain"
               />
             </Link>

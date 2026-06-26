@@ -263,10 +263,10 @@ export default function PaymentPage({ params }: PageProps) {
           <div className="pt-12 border-t border-slate-800/80 mt-12 flex justify-between items-center text-xs text-slate-500">
             <span>Powered by LINEALIGN Secure API</span>
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt="Logo"
               width={150}
-              height={45}
+              height={96}
               className="h-9 w-auto brightness-0 invert object-contain opacity-50"
             />
           </div>

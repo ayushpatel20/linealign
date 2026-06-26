@@ -45,10 +45,10 @@ export default function Header() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/logo.png"
+                src="/logo.svg"
                 alt="LINEALIGN"
                 width={240}
-                height={80}
+                height={154}
                 className="h-[60px] w-auto object-contain"
                 priority
               />
