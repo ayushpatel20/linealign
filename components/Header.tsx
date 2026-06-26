@@ -48,7 +48,7 @@ export default function Header() {
                 src="/logo.svg"
                 alt="LINEALIGN"
                 width={240}
-                height={154}
+                height={122}
                 className="h-[60px] w-auto object-contain"
                 priority
               />

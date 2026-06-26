@@ -103,7 +103,7 @@ export default function Home() {
                 src="/logo.svg"
                 alt="LINEALIGN Logo"
                 width={450}
-                height={288}
+                height={230}
                 className="h-[96px] w-auto object-contain flex-shrink-0 select-none"
                 priority
               />

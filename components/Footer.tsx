@@ -25,12 +25,12 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="space-y-6">
-            <Link href="/" className="inline-flex bg-white p-2.5 rounded-xl border border-white shadow-xs">
+            <Link href="/" className="inline-flex bg-white p-1.5 rounded-xl border border-white shadow-xs">
               <Image
                 src="/logo.svg"
                 alt="LINEALIGN"
                 width={225}
-                height={144}
+                height={115}
                 className="h-12 w-auto object-contain"
               />
             </Link>
