@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -20,7 +22,6 @@ import {
   Layers,
   Sparkle
 } from "lucide-react";
-import { useState } from "react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
@@ -76,79 +77,126 @@ export default function Home() {
 
   return (
     <div className="relative w-full overflow-hidden bg-white">
-      {/* Background Glow Blobs */}
-      <div className="absolute top-[10%] left-[-10%] glow-spot-blue" />
-      <div className="absolute top-[40%] right-[-10%] glow-spot-teal" />
-      <div className="absolute bottom-[20%] left-[20%] glow-spot-blue" />
+      {/* Background Glow Blobs / Radial glow */}
+      <div className="absolute top-[5%] left-[-10%] glow-spot-blue opacity-70" />
+      <div className="absolute top-[30%] right-[-10%] glow-spot-teal opacity-60" />
+      <div className="absolute bottom-[20%] left-[20%] glow-spot-blue opacity-50" />
+      
+      {/* Abstract floating blur circles */}
+      <div className="absolute top-24 left-[15%] w-8 h-8 bg-primary/20 rounded-full filter blur-md animate-pulse pointer-events-none" />
+      <div className="absolute top-96 right-[20%] w-12 h-12 bg-secondary/20 rounded-full filter blur-lg animate-pulse pointer-events-none" />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-6 max-w-4xl"
-        >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20">
-            <Sparkles className="w-3.5 h-3.5" />
-            CLEAR COMFORT CONFIDENT
-          </div>
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
+          
+          {/* LEFT SIDE (45%) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-5 space-y-8 z-10 flex flex-col justify-center"
+          >
+            {/* Centered Vertically Large Logo */}
+            <div className="flex justify-start">
+              <Image
+                src="/logo.png"
+                alt="LINEALIGN Logo"
+                width={384}
+                height={128}
+                className="h-[64px] w-auto object-contain flex-shrink-0 select-none"
+                priority
+              />
+            </div>
 
-          {/* Heading */}
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-dark leading-tight md:leading-[1.1] font-poppins">
-            Full Ecosystem for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-              Aligner Practice
-            </span>
-          </h1>
+            {/* Badge & Headline */}
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 w-fit select-none">
+                <Sparkles className="w-3.5 h-3.5" />
+                CLEAR COMFORT CONFIDENT
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-dark leading-tight font-poppins">
+                Orthodontic Aligner{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                  Practice
+                </span>
+              </h1>
+            </div>
 
-          {/* Subtitle */}
-          <p className="text-base sm:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners. We provide comprehensive treatment planning, marketing support, and tracking apps.
-          </p>
+            {/* Supporting Description */}
+            <p className="text-sm sm:text-base text-slate-500 leading-relaxed max-w-lg">
+              Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners. We provide comprehensive treatment planning, marketing support, and tracking apps.
+            </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Link
-              href="/faq"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-base font-semibold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-lg shadow-primary/20 transition-all"
-            >
-              Get Free Estimate
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-base font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 transition-all"
-            >
-              Explore Pricing
-            </Link>
-          </div>
-        </motion.div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Link
+                href="/faq"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-[#2b7fff] hover:brightness-105 shadow-md hover:shadow-lg hover:shadow-primary/20 transition-all hover:-translate-y-0.5 cursor-pointer"
+              >
+                Book Consultation
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/solutions"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-slate-700 bg-white/10 backdrop-blur-md border border-slate-200 hover:bg-slate-50/50 shadow-xs hover:shadow-sm transition-all hover:-translate-y-0.5"
+              >
+                Learn More
+              </Link>
+            </div>
 
-        {/* Hero Interactive teeth render / card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8 }}
-          className="w-full max-w-4xl mt-16 p-4 rounded-[2rem] glass soft-shadow-lg"
-        >
-          <div className="relative aspect-[16/9] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-slate-50 to-teal-50/20 border border-slate-100 flex items-center justify-center">
-            {/* Visual illustration representer */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.08)_0%,transparent_60%)]" />
-            <div className="text-center p-8 space-y-4 max-w-md">
-              <Sparkle className="w-12 h-12 text-secondary mx-auto animate-spin duration-3000" />
-              <h3 className="text-xl font-bold text-dark font-poppins">Premium Aligner Design</h3>
-              <p className="text-sm text-slate-500">
-                Custom simulated movement layers crafted by expert orthodontists for maximum aligner efficacy and user comfort.
-              </p>
-              <div className="flex gap-2 justify-center">
-                <span className="px-3 py-1 bg-white border border-slate-100 rounded-full text-xs text-slate-600 font-semibold shadow-xs">0.75mm Comfort Shell</span>
-                <span className="px-3 py-1 bg-white border border-slate-100 rounded-full text-xs text-slate-600 font-semibold shadow-xs">High Retention Cutouts</span>
+            {/* Trust Badges */}
+            <div className="pt-8 border-t border-slate-100 flex flex-wrap gap-6 items-center">
+              <div className="flex items-center gap-2 select-none">
+                <ShieldCheck className="w-5 h-5 text-secondary" />
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">FDA Cleared Materials</span>
+              </div>
+              <div className="flex items-center gap-2 select-none">
+                <Users className="w-5 h-5 text-secondary" />
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">4000+ Partners</span>
               </div>
             </div>
+          </motion.div>
+
+          {/* RIGHT SIDE (55%) */}
+          <div className="lg:col-span-7 relative flex flex-col items-center justify-center min-h-[450px]">
+            {/* Gradient glow spot backer */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(45,212,191,0.08)_0%,transparent_60%)] pointer-events-none" />
+            
+            {/* Aligner Floating Animation Wrapper */}
+            <motion.div
+              animate={{ y: [0, -15, 0] }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative w-[80%] aspect-square flex items-center justify-center z-10 select-none pointer-events-none hover:scale-[1.02] transition-transform duration-500"
+            >
+              <Image
+                src="/aligner_hero.png"
+                alt="Premium Invisible Aligner Render"
+                fill
+                sizes="(max-w-lg) 100vw, 600px"
+                className="object-contain"
+                priority
+              />
+            </motion.div>
+
+            {/* Soft Shadow Beneath Aligner */}
+            <motion.div
+              animate={{ scale: [1, 0.85, 1], opacity: [0.25, 0.12, 0.25] }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute bottom-[2%] w-[55%] h-5 bg-slate-400/25 rounded-full filter blur-md pointer-events-none"
+            />
           </div>
-        </motion.div>
+
+        </div>
       </section>
 
       {/* Statistics Section */}
