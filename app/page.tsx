@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -77,6 +77,50 @@ const faqs = [
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [certSrc, setCertSrc] = useState<string | null>(null);
+  const [alignerSrc, setAlignerSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Dynamic ISO Certificate Image Detection
+    const extensions = ["png", "jpg", "jpeg", "svg"];
+    let certFound = false;
+    
+    const checkImages = async () => {
+      for (const ext of extensions) {
+        try {
+          const res = await fetch(`/images/certificate.${ext}`, { method: 'HEAD' });
+          if (res.ok) {
+            setCertSrc(`/images/certificate.${ext}`);
+            certFound = true;
+            break;
+          }
+        } catch (e) {
+          // Ignore
+        }
+      }
+      if (!certFound) {
+        setCertSrc(null);
+      }
+    };
+
+    // Dynamic Aligner Image Detection
+    const checkAligner = async () => {
+      try {
+        const res = await fetch('/aligner.png', { method: 'HEAD' });
+        if (res.ok) {
+          setAlignerSrc('/aligner.png');
+        } else {
+          setAlignerSrc(null);
+        }
+      } catch (e) {
+        setAlignerSrc(null);
+      }
+    };
+
+    checkImages();
+    checkAligner();
+  }, []);
 
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
@@ -186,7 +230,7 @@ export default function Home() {
                 {[
                   "24/7 Working Lab",
                   "Full-Time Orthodontists",
-                  "Certified Dental Laboratory",
+                  "ISO Certified Dental Laboratory",
                   "FDA Grade Aligners",
                   "Premium Clear Aligners"
                 ].map((feature) => (
@@ -212,16 +256,85 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 2: Meet Our Specialists (Very Light Blue background, White Cards) */}
+      {/* Section 1.5: Clear Aligner Decorative Section */}
+      <section className="py-24 bg-white relative overflow-hidden flex items-center justify-center border-b border-blue-50/50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,199,214,0.04)_0%,transparent_70%)]" />
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative max-w-xl mx-auto flex flex-col items-center justify-center text-center px-4"
+        >
+          {/* Subtle blue glow behind aligner */}
+          <div className="absolute w-[260px] h-[260px] bg-gradient-to-r from-primary/15 to-secondary/15 rounded-full blur-3xl -z-10 animate-pulse" />
+          
+          <div className="relative animate-float-aligner hover:scale-[1.03] transition-transform duration-500 cursor-default select-none">
+            {alignerSrc ? (
+              <Image 
+                src={alignerSrc}
+                alt="LINEALIGN Clear Aligner Model"
+                width={420}
+                height={315}
+                className="w-[280px] md:w-[420px] object-contain drop-shadow-[0_20px_50px_rgba(42,132,255,0.28)]"
+                priority
+              />
+            ) : (
+              /* High-fidelity custom inline SVG representation of a clear aligner */
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" className="w-[280px] md:w-[420px] drop-shadow-[0_20px_50px_rgba(42,132,255,0.25)]">
+                <defs>
+                  <linearGradient id="plastic" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9"/>
+                    <stop offset="25%" stopColor="#e3f2fd" stopOpacity="0.45"/>
+                    <stop offset="50%" stopColor="#2a84ff" stopOpacity="0.18"/>
+                    <stop offset="75%" stopColor="#2ec7d6" stopOpacity="0.32"/>
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8"/>
+                  </linearGradient>
+                  <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0"/>
+                    <stop offset="50%" stopColor="#ffffff" stopOpacity="0.7"/>
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0"/>
+                  </linearGradient>
+                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="4" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                </defs>
+                {/* Horseshoe main channel */}
+                <path d="M 120,100 C 100,280 200,380 300,380 C 400,380 500,280 480,100 C 460,240 380,340 300,340 C 220,340 140,240 120,100 Z" fill="url(#plastic)" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.7" filter="url(#glow)"/>
+                
+                {/* Teeth ridges - segmented lines to give dental teeth shell impression */}
+                <path d="M 125,120 C 135,160 145,190 160,220 C 180,260 210,300 250,320 C 280,330 320,330 350,320 C 390,300 420,260 440,220 C 455,190 465,160 475,120" fill="none" stroke="#2ec7d6" strokeWidth="6" strokeOpacity="0.28" strokeDasharray="15 8" strokeLinecap="round"/>
+                <path d="M 120,100 Q 115,115 125,130 Q 120,150 135,165 Q 130,185 148,200 Q 145,220 168,235 Q 165,255 195,270 Q 195,290 230,305 Q 235,320 270,325 Q 285,330 300,330 Q 315,330 330,325 Q 365,320 370,305 Q 405,290 405,270 Q 435,255 432,235 Q 455,220 452,200 Q 470,185 465,165 Q 480,150 475,130 Q 485,115 480,100" fill="none" stroke="#ffffff" strokeWidth="4.5" strokeOpacity="0.85" strokeLinecap="round"/>
+                
+                {/* Shimmer light reflect reflection */}
+                <path d="M 130,105 C 112,270 205,370 300,370 C 395,370 488,270 470,105" fill="none" stroke="url(#shimmer)" strokeWidth="12" strokeOpacity="0.45" strokeLinecap="round"/>
+                
+                {/* Aligner retention attachments */}
+                <rect x="180" y="220" width="12" height="9" rx="3" fill="#ffffff" fillOpacity="0.75" transform="rotate(-25 180 220)"/>
+                <rect x="410" y="220" width="12" height="9" rx="3" fill="#ffffff" fillOpacity="0.75" transform="rotate(25 410 220)"/>
+                <circle cx="270" cy="305" r="4.5" fill="#ffffff" fillOpacity="0.85"/>
+                <circle cx="330" cy="305" r="4.5" fill="#ffffff" fillOpacity="0.85"/>
+              </svg>
+            )}
+          </div>
+          
+          <p className="text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mt-8 select-none font-poppins">
+            Linealign® Premium Invisible Biomechanics
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Section 2: Meet Our Founder & Co-Founder (Very Light Blue background, White Cards) */}
       <section className="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-y border-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
-              Meet Our Specialists
+              Leadership Team
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
-              Meet Our Specialists
+              Meet Our Founder & Co-Founder
             </h2>
             <p className="text-slate-500 text-sm sm:text-base">
               Our full-time orthodontic and aligner specialists providing simulation reviews and expert planning approvals.
@@ -244,13 +357,16 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between">
-                <div>
+              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between items-center">
+                <div className="flex flex-col items-center">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-black text-white bg-gradient-to-r from-primary to-secondary mb-3 shadow-xs uppercase tracking-wider">
+                    Founder
+                  </span>
                   <h3 className="text-xl font-bold text-dark font-poppins">Dr. TILVIN V TOM</h3>
                   <p className="text-primary font-bold text-xs uppercase tracking-wider">BDS, MDS</p>
-                  <p className="text-slate-500 text-xs sm:text-sm mt-1 uppercase font-semibold">Founder cum Director | ORTHODONTIST & ALIGNER SPECIALIST</p>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1.5 uppercase font-bold tracking-tight">Orthodontist & Aligner Specialist</p>
                 </div>
-                <div className="pt-6">
+                <div className="pt-6 w-full">
                   <Link
                     href="/faq"
                     className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all"
@@ -276,13 +392,16 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between">
-                <div>
+              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between items-center">
+                <div className="flex flex-col items-center">
+                  <span className="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-black text-white bg-gradient-to-r from-primary to-secondary mb-3 shadow-xs uppercase tracking-wider">
+                    Co-Founder
+                  </span>
                   <h3 className="text-xl font-bold text-dark font-poppins">Dr. SHOUKATHALI P H</h3>
                   <p className="text-primary font-bold text-xs uppercase tracking-wider">BDS, MDS</p>
-                  <p className="text-slate-500 text-xs sm:text-sm mt-1 uppercase font-semibold">Founder cum Director | ORTHODONTIST & ALIGNER SPECIALIST</p>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1.5 uppercase font-bold tracking-tight">Orthodontist & Aligner Specialist</p>
                 </div>
-                <div className="pt-6">
+                <div className="pt-6 w-full">
                   <Link
                     href="/faq"
                     className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all"
@@ -390,119 +509,174 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* Card 1 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <Clock className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">24/7 Working Lab</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Full round-the-clock operations to guarantee minimal wait times and emergency support.
-              </p>
-            </motion.div>
+            {/* Left side grid of 8 cards */}
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              {/* Card 1 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">24/7 Working Lab</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Full round-the-clock operations to guarantee minimal wait times and emergency support.
+                </p>
+              </motion.div>
 
-            {/* Card 2 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                <Users className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Full-Time Orthodontists</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Licensed in-house orthodontic specialists review and approve every treatment plan.
-              </p>
-            </motion.div>
+              {/* Card 2 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Full-Time Orthodontists</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Licensed in-house orthodontic specialists review and approve every treatment plan.
+                </p>
+              </motion.div>
 
-            {/* Card 3 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Premium Clear Aligners</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Manufactured using high-elasticity medical polymer sheets for maximum tooth control.
-              </p>
-            </motion.div>
+              {/* Card 3 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Premium Clear Aligners</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Manufactured using high-elasticity medical polymer sheets for maximum tooth control.
+                </p>
+              </motion.div>
 
-            {/* Card 4 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                <Zap className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Digital Workflow</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Fully digital case uploads, online simulation approvals, and real-time tracking systems.
-              </p>
-            </motion.div>
+              {/* Card 4 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                  <Zap className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Digital Workflow</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Fully digital case uploads, online simulation approvals, and real-time tracking systems.
+                </p>
+              </motion.div>
 
-            {/* Card 5 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <Layers className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Advanced CAD/CAM</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Sub-micron 3D scanning and state-of-the-art aligner laser printing machines.
-              </p>
-            </motion.div>
+              {/* Card 5 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <Layers className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Advanced CAD/CAM</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Sub-micron 3D scanning and state-of-the-art aligner laser printing machines.
+                </p>
+              </motion.div>
 
-            {/* Card 6 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                <Award className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Certified Materials</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Constructed solely using FDA-cleared, biocompatible medical-grade thermoplastic materials.
-              </p>
-            </motion.div>
+              {/* Card 6 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                  <Award className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Certified Materials</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Constructed solely using FDA-cleared, biocompatible medical-grade thermoplastic materials.
+                </p>
+              </motion.div>
 
-            {/* Card 7 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">Fast Delivery</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Fast national shipping networks delivering manufactured kits directly to your clinic.
-              </p>
-            </motion.div>
+              {/* Card 7 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                  <TrendingUp className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">Fast Delivery</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Fast national shipping networks delivering manufactured kits directly to your clinic.
+                </p>
+              </motion.div>
 
-            {/* Card 8 */}
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
-            >
-              <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                <Activity className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">High Precision</h3>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                Micron-level tolerances for orthodontic attachments, ensuring precise treatment forces.
-              </p>
-            </motion.div>
+              {/* Card 8 */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-dark font-poppins">High Precision</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Micron-level tolerances for orthodontic attachments, ensuring precise treatment forces.
+                </p>
+              </motion.div>
+
+            </div>
+
+            {/* Right side ISO Certificate Card */}
+            <div className="lg:col-span-4 flex">
+              <motion.div
+                whileHover={{ y: -6 }}
+                onClick={() => setIsModalOpen(true)}
+                className="w-full p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-[2rem] border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between items-center text-center cursor-pointer group"
+              >
+                <div className="w-full space-y-4 flex-grow flex flex-col items-center justify-center">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-dark font-poppins">Quality Certificate</h3>
+                  
+                  {/* Certificate Preview Box */}
+                  <div className="relative w-full aspect-[3/4] max-w-[200px] bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs group-hover:border-primary/40 transition-colors">
+                    {certSrc ? (
+                      <Image 
+                        src={certSrc}
+                        alt="ISO Certificate Preview"
+                        fill
+                        sizes="200px"
+                        className="object-contain p-2"
+                      />
+                    ) : (
+                      <div className="p-4 flex flex-col items-center justify-center text-slate-400 select-none">
+                        <Award className="w-10 h-10 mb-2 opacity-50" />
+                        <span className="text-[10px] font-black tracking-wider uppercase opacity-70">ISO 13485:2016</span>
+                        <span className="text-[9px] mt-1 opacity-50">Image Placeholder</span>
+                      </div>
+                    )}
+                    {/* Hover zoom overlay */}
+                    <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px]">
+                      <span className="px-3 py-1.5 rounded-full bg-white/90 text-[10px] font-bold text-primary shadow-xs border border-primary/20">
+                        🔍 Click to Zoom
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-slate-700 text-sm font-extrabold font-poppins">
+                    ISO Certified Dental Laboratory
+                  </p>
+                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mt-1">
+                    Medical Devices Standard
+                  </p>
+                </div>
+              </motion.div>
+            </div>
 
           </div>
         </div>
@@ -923,6 +1097,62 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal for Certificate */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsModalOpen(false)}
+            className="fixed inset-0 z-50 bg-dark/80 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl max-h-[85vh] w-full bg-white rounded-[2.5rem] overflow-hidden p-6 shadow-2xl flex flex-col items-center justify-between"
+            >
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg transition-colors cursor-pointer"
+              >
+                ✕
+              </button>
+              <div className="flex-grow flex items-center justify-center p-4 min-h-[300px]">
+                {certSrc ? (
+                  <img 
+                    src={certSrc} 
+                    alt="ISO Certified Dental Laboratory Certificate" 
+                    className="max-w-full max-h-[60vh] object-contain rounded-lg shadow-sm"
+                  />
+                ) : (
+                  <div className="text-center p-12 space-y-4 max-w-md border-4 border-double border-primary/20 rounded-[2rem] bg-slate-50">
+                    <Award className="w-16 h-16 mx-auto text-primary animate-pulse" />
+                    <h3 className="text-2xl font-extrabold text-dark font-poppins">ISO Certified Dental Lab</h3>
+                    <p className="text-slate-500 text-sm">
+                      Standard Quality Certificate is registered and fully compliant.
+                    </p>
+                    <div className="inline-block px-4 py-1.5 bg-primary/10 rounded-full text-xs text-primary font-bold">
+                      ISO 13485:2016 Compliant
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-slate-700 text-sm font-extrabold font-poppins">
+                  ISO Certified Dental Laboratory
+                </p>
+                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mt-1">
+                  Medical Devices Standard
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
