@@ -1,31 +1,8 @@
 "use client";
 
-import { Sparkles, Calendar, TrendingUp, Users, Award, ShieldCheck, Heart, ChevronRight, ArrowRight } from "lucide-react";
+import { Sparkles, TrendingUp, Users, Award, ShieldCheck, Heart, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-const timelineEvents = [
-  {
-    year: "2013",
-    title: "We Were Founded",
-    description: "LINEALIGN was established in Kasaragod, Kerala by a team of visionary orthodontists and software engineers who set out to make clear aligner treatments more accessible and precise."
-  },
-  {
-    year: "2014",
-    title: "First Seed Investment",
-    description: "Secured our initial funding round from leading healthcare venture capitalists, allowing us to build our advanced 3D scanning and simulation rendering pipeline."
-  },
-  {
-    year: "2015",
-    title: "Launched First Version",
-    description: "Released the LINEALIGN clear aligner manufacturing lines and practitioner portal, enabling regional doctors to manage treatments digitally."
-  },
-  {
-    year: "2020",
-    title: "Won Best Enterprise Product",
-    description: "Recognized internationally for our orthodontic workflow software, providing full aligner practice tracking, marketing modules, and clinical support."
-  }
-];
 
 export default function OurStory() {
   return (
@@ -72,38 +49,8 @@ export default function OurStory() {
               Unlike generic aligner providers, LINEALIGN partners directly with practices to provide full-cycle marketing kits, immediate 10-minute cost estimations, and 24-hour treatment planning simulation setups. We stand by our doctors with free refinements and re-submissions.
             </p>
             <p className="text-slate-605 text-sm leading-relaxed">
-              We believe aligner care should be clear, comfortable, and confident. That is our promise to clinical practitioners and patient smiles alike.
+              We believe aligner care should be Clear, Comfort and Confident. That is our promise to clinical practitioners and patient smiles alike.
             </p>
-          </div>
-        </div>
-
-        {/* Interactive Timeline */}
-        <div className="mb-24">
-          <h2 className="text-3xl font-extrabold text-dark font-poppins text-center mb-16">
-            This Is How We Started
-          </h2>
-          
-          <div className="relative border-l-2 border-slate-200 max-w-3xl mx-auto pl-8 sm:pl-12 space-y-12">
-            {timelineEvents.map((evt, index) => (
-              <div key={evt.year} className="relative">
-                {/* Year Marker Bullet */}
-                <div className="absolute -left-[41px] sm:-left-[57px] top-1.5 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white border-2 border-primary flex items-center justify-center shadow-xs">
-                  <div className="w-2.5 h-2.5 rounded-full bg-primary" />
-                </div>
-                
-                {/* Timeline Content */}
-                <motion.div
-                  whileHover={{ x: 4 }}
-                  className="bg-white rounded-[2rem] p-6 sm:p-8 border border-slate-150/50 shadow-xs hover:border-primary/20 transition-all space-y-3"
-                >
-                  <span className="text-xs font-extrabold text-primary bg-primary/10 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
-                    {evt.year}
-                  </span>
-                  <h3 className="text-lg font-bold text-dark font-poppins mt-2">{evt.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{evt.description}</p>
-                </motion.div>
-              </div>
-            ))}
           </div>
         </div>
 

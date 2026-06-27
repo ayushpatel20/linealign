@@ -38,7 +38,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
-              <strong>Your Smile, Our Precision.</strong> Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners. Delivering precision and comfort from Kerala.
+              <strong>Your Smile, Our Precision.</strong> Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners. Clear, Comfort and Confident from Kerala.
             </p>
             <div className="flex space-x-3.5 pt-2">
               <a href="#" className="p-2 rounded-xl bg-slate-800/80 border border-slate-700/50 hover:bg-primary transition-all duration-300 hover:text-white hover:-translate-y-0.5" aria-label="Facebook">

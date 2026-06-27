@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://linealign.com"),
   openGraph: {
     title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
-    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions with precision, comfort, and confidence.",
+    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
     url: "https://linealign.com",
     siteName: "Linealign Dental Lab",
     images: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
-    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions with precision, comfort, and confidence.",
+    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
     images: ["/logo.jpeg"],
   },
 };

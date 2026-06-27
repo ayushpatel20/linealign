@@ -202,7 +202,7 @@ export default function Home() {
                 className="text-base sm:text-lg text-slate-800 leading-relaxed max-w-xl font-semibold font-sans"
                 style={{ textShadow: "0 2px 10px rgba(0,0,0,0.15)" }}
               >
-                Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions with precision, comfort and confidence.
+                Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.
               </p>
 
               {/* CTA Buttons */}
@@ -320,7 +320,7 @@ export default function Home() {
           </div>
           
           <p className="text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mt-8 select-none font-poppins">
-            Linealign® Premium Invisible Biomechanics
+            Linealign™ Premium Invisible Biomechanics
           </p>
         </motion.div>
       </section>
@@ -431,7 +431,7 @@ export default function Home() {
                 Welcome to Linealign Dental Lab
               </h2>
               <p className="text-slate-600 leading-relaxed text-base">
-                Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver precise, comfortable and confident smiles through innovation and quality craftsmanship.
+                Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.
               </p>
               <div className="pt-2">
                 <Link
@@ -502,17 +502,14 @@ export default function Home() {
               Our Advantages
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
-              Why Choose Linealign
+              Why Choose Us
             </h2>
             <p className="text-slate-500 text-sm sm:text-base">
               A premium laboratory workflow engineered for speed, accuracy, and excellent clinical results.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            {/* Left side grid of 9 cards */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               
               {/* Card 1 */}
               <motion.div
@@ -670,51 +667,7 @@ export default function Home() {
                   </p>
                 </div>
               </motion.div>
-
-            </div>
-
-            {/* Right side Aligner Video Card */}
-            <div className="lg:col-span-4 flex">
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="w-full p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-[2.5rem] border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden relative group"
-              >
-                {/* Glow effect */}
-                <div className="absolute w-[200px] h-[200px] bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-full blur-3xl -top-12 -right-12 -z-10 pointer-events-none" />
-                
-                <div className="space-y-4 flex-grow flex flex-col justify-center items-center">
-                  <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
-                    <Activity className="w-6 h-6 animate-pulse" />
-                  </div>
-                  <h3 className="text-lg font-bold text-dark font-poppins text-center">3D Aligner Simulation</h3>
-                  
-                  {/* Video Player */}
-                  <div className="relative w-full aspect-[4/5] bg-slate-50 border border-slate-200/80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-xs">
-                    <video
-                      src="/images/aligner.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Shadow overlay */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_80%,rgba(0,0,0,0.1)_100%)] pointer-events-none" />
-                  </div>
-                </div>
-
-                <div className="mt-6 text-center">
-                  <p className="text-slate-700 text-sm font-extrabold font-poppins">
-                    CAD/CAM Aligner Biomechanics
-                  </p>
-                  <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mt-1">
-                    Direct Practice Delivery
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-          </div>
+        </div>
         </div>
       </section>
 
