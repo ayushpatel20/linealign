@@ -269,54 +269,15 @@ export default function Home() {
           {/* Subtle blue glow behind aligner */}
           <div className="absolute w-[260px] h-[260px] bg-gradient-to-r from-primary/15 to-secondary/15 rounded-full blur-3xl -z-10 animate-pulse" />
           
-          <div className="relative animate-float-aligner hover:scale-[1.03] transition-transform duration-500 cursor-default select-none">
-            {alignerSrc ? (
-              <Image 
-                src={alignerSrc}
-                alt="LINEALIGN Clear Aligner Model"
-                width={420}
-                height={315}
-                className="w-[280px] md:w-[420px] object-contain drop-shadow-[0_20px_50px_rgba(42,132,255,0.28)]"
-                priority
-              />
-            ) : (
-              /* High-fidelity custom inline SVG representation of a clear aligner */
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" className="w-[280px] md:w-[420px] drop-shadow-[0_20px_50px_rgba(42,132,255,0.25)]">
-                <defs>
-                  <linearGradient id="plastic" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9"/>
-                    <stop offset="25%" stopColor="#e3f2fd" stopOpacity="0.45"/>
-                    <stop offset="50%" stopColor="#2a84ff" stopOpacity="0.18"/>
-                    <stop offset="75%" stopColor="#2ec7d6" stopOpacity="0.32"/>
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8"/>
-                  </linearGradient>
-                  <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0"/>
-                    <stop offset="50%" stopColor="#ffffff" stopOpacity="0.7"/>
-                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0"/>
-                  </linearGradient>
-                  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feGaussianBlur stdDeviation="4" result="blur" />
-                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                  </filter>
-                </defs>
-                {/* Horseshoe main channel */}
-                <path d="M 120,100 C 100,280 200,380 300,380 C 400,380 500,280 480,100 C 460,240 380,340 300,340 C 220,340 140,240 120,100 Z" fill="url(#plastic)" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.7" filter="url(#glow)"/>
-                
-                {/* Teeth ridges - segmented lines to give dental teeth shell impression */}
-                <path d="M 125,120 C 135,160 145,190 160,220 C 180,260 210,300 250,320 C 280,330 320,330 350,320 C 390,300 420,260 440,220 C 455,190 465,160 475,120" fill="none" stroke="#2ec7d6" strokeWidth="6" strokeOpacity="0.28" strokeDasharray="15 8" strokeLinecap="round"/>
-                <path d="M 120,100 Q 115,115 125,130 Q 120,150 135,165 Q 130,185 148,200 Q 145,220 168,235 Q 165,255 195,270 Q 195,290 230,305 Q 235,320 270,325 Q 285,330 300,330 Q 315,330 330,325 Q 365,320 370,305 Q 405,290 405,270 Q 435,255 432,235 Q 455,220 452,200 Q 470,185 465,165 Q 480,150 475,130 Q 485,115 480,100" fill="none" stroke="#ffffff" strokeWidth="4.5" strokeOpacity="0.85" strokeLinecap="round"/>
-                
-                {/* Shimmer light reflect reflection */}
-                <path d="M 130,105 C 112,270 205,370 300,370 C 395,370 488,270 470,105" fill="none" stroke="url(#shimmer)" strokeWidth="12" strokeOpacity="0.45" strokeLinecap="round"/>
-                
-                {/* Aligner retention attachments */}
-                <rect x="180" y="220" width="12" height="9" rx="3" fill="#ffffff" fillOpacity="0.75" transform="rotate(-25 180 220)"/>
-                <rect x="410" y="220" width="12" height="9" rx="3" fill="#ffffff" fillOpacity="0.75" transform="rotate(25 410 220)"/>
-                <circle cx="270" cy="305" r="4.5" fill="#ffffff" fillOpacity="0.85"/>
-                <circle cx="330" cy="305" r="4.5" fill="#ffffff" fillOpacity="0.85"/>
-              </svg>
-            )}
+          <div className="relative w-[280px] sm:w-[380px] md:w-[480px] aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-50/50 border border-slate-100 shadow-sm flex items-center justify-center animate-float-aligner hover:scale-[1.02] transition-transform duration-500 cursor-default select-none">
+            <video
+              src="/images/aligner.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
           </div>
           
           <p className="text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mt-8 select-none font-poppins">
@@ -626,24 +587,27 @@ export default function Home() {
               {/* Card 9 (ISO Quality Certificate Card) */}
               <motion.div
                 whileHover={{ y: -6 }}
-                onClick={() => setIsModalOpen(true)}
-                className="p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-3xl border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between items-center text-center cursor-pointer group"
+                className="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md transition-all space-y-4 flex flex-col justify-between"
               >
-                <div className="w-full space-y-4 flex-grow flex flex-col items-center justify-center">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Award className="w-5 h-5" />
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                    <Award className="w-6 h-6" />
                   </div>
-                  <h3 className="text-base font-bold text-dark font-poppins">Quality Certificate</h3>
+                  <h3 className="text-lg font-bold text-dark font-poppins">Quality Certificate</h3>
                   
                   {/* Certificate Preview Box */}
-                  <div className="relative w-full aspect-[4/3] max-w-[160px] bg-slate-50 border border-slate-250 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs group-hover:border-primary/40 transition-colors">
+                  <div 
+                    onClick={() => setIsModalOpen(true)}
+                    className="relative w-full h-44 bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs cursor-pointer group hover:border-primary/40 transition-colors"
+                  >
                     {certSrc ? (
                       <Image 
                         src={certSrc}
                         alt="ISO Certificate Preview"
                         fill
-                        sizes="160px"
-                        className="object-contain p-1.5"
+                        sizes="(max-w-md) 100vw, 300px"
+                        className="object-contain p-2 hover:scale-[1.02] transition-transform duration-300"
+                        priority
                       />
                     ) : (
                       <div className="p-4 flex flex-col items-center justify-center text-slate-400 select-none">
@@ -654,18 +618,16 @@ export default function Home() {
                     )}
                     {/* Hover zoom overlay */}
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px]">
-                      <span className="px-2.5 py-1 rounded-full bg-white/95 text-[9px] font-bold text-primary shadow-xs border border-primary/25">
+                      <span className="px-3 py-1.5 rounded-full bg-white/95 text-[10px] font-bold text-primary shadow-xs border border-primary/25">
                         🔍 Zoom
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-4">
-                  <p className="text-slate-700 text-xs font-black font-poppins">
-                    ISO Certified Dental Laboratory
-                  </p>
-                </div>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  ISO Certified Dental Laboratory
+                </p>
               </motion.div>
         </div>
         </div>
