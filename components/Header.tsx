@@ -72,16 +72,16 @@ export default function Header() {
               : "bg-white/20 backdrop-blur-sm border border-white/10 py-4 px-6 sm:px-8 shadow-sm"
           }`}
         >
-          <div className="flex items-center justify-between h-14 sm:h-16">
+          <div className="flex items-center justify-between py-2">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center gap-2">
                 <Image
                   src="/logo.jpeg"
                   alt="LINEALIGN DENTAL LAB"
-                  width={240}
-                  height={122}
-                  className="h-[48px] sm:h-[58px] w-auto object-contain rounded-lg hover:scale-[1.02] transition-transform duration-300"
+                  width={360}
+                  height={180}
+                  className="h-[70px] md:h-[84px] w-auto object-contain rounded-lg hover:scale-[1.02] transition-transform duration-300"
                   priority
                 />
               </Link>

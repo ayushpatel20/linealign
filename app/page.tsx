@@ -183,34 +183,25 @@ export default function Home() {
 
               {/* Feature Checkmarks Grid */}
               <div className="pt-6 border-t border-slate-300/50 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div 
-                  className="flex items-center gap-2.5 text-slate-850 text-sm font-bold select-none"
-                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
-                  <span>24/7 Working Lab</span>
-                </div>
-                <div 
-                  className="flex items-center gap-2.5 text-slate-850 text-sm font-bold select-none"
-                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
-                  <span>Full-Time Orthodontists</span>
-                </div>
-                <div 
-                  className="flex items-center gap-2.5 text-slate-850 text-sm font-bold select-none"
-                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
-                  <span>Certified Dental Laboratory</span>
-                </div>
-                <div 
-                  className="flex items-center gap-2.5 text-slate-850 text-sm font-bold select-none"
-                  style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
-                >
-                  <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
-                  <span>Premium Clear Aligners</span>
-                </div>
+                {[
+                  "24/7 Working Lab",
+                  "Full-Time Orthodontists",
+                  "Certified Dental Laboratory",
+                  "FDA Grade Aligners",
+                  "Premium Clear Aligners"
+                ].map((feature) => (
+                  <motion.div 
+                    key={feature}
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/40 backdrop-blur-sm border border-white/20 shadow-xs text-slate-850 text-sm font-bold select-none cursor-default transition-all"
+                    style={{ textShadow: "0 1px 4px rgba(0,0,0,0.05)" }}
+                  >
+                    <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">
+                      {feature === "FDA Grade Aligners" ? "🛡" : "✔"}
+                    </div>
+                    <span>{feature}</span>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
