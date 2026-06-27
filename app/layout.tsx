@@ -19,21 +19,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LINEALIGN | Clear. Comfort. Confident.",
-  description: "LINEALIGN offers orthodontic invisible clear aligners. Redesigning comfort, aesthetics, and precision orthodontic movement. We support aligner practice globally with online marketing, treatment simulations, and tracking.",
-  keywords: "orthodontic aligners, clear aligners, invisible braces, teeth alignment, Vadodara, dental solutions, Linealign",
+  title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
+  description: "LINEALIGN DENTAL LAB is a premium clear aligner laboratory in Kasaragod, Kerala. We provide advanced orthodontic invisible aligners, CAD/CAM 3D simulations, and clinician support.",
+  keywords: "orthodontic aligners, clear aligners, invisible braces, teeth alignment, Kasaragod, Kerala, dental solutions, Linealign Dental Lab, dental laboratory",
   metadataBase: new URL("https://linealign.com"),
   openGraph: {
-    title: "LINEALIGN | Clear. Comfort. Confident.",
-    description: "Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners.",
+    title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
+    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions with precision, comfort, and confidence.",
     url: "https://linealign.com",
-    siteName: "LINEALIGN",
+    siteName: "Linealign Dental Lab",
     images: [
       {
-        url: "/logo.png",
+        url: "/logo.jpeg",
         width: 800,
         height: 600,
-        alt: "LINEALIGN logo",
+        alt: "LINEALIGN Dental Lab logo",
       },
     ],
     locale: "en_US",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LINEALIGN | Clear. Comfort. Confident.",
-    description: "Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners.",
-    images: ["/logo.png"],
+    title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
+    description: "Premium clear aligner laboratory delivering world-class orthodontic solutions with precision, comfort, and confidence.",
+    images: ["/logo.jpeg"],
   },
 };
 

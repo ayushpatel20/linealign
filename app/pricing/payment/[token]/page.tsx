@@ -2,7 +2,7 @@
 
 import { useState, use } from "react";
 import Link from "next/link";
-import { ArrowLeft, CreditCard, ShieldCheck, Mail, Phone, Lock, User, AlertCircle, Sparkle } from "lucide-react";
+import { ArrowLeft, CreditCard, ShieldCheck, Mail, Phone, Lock, User, AlertCircle, Sparkle, MessageSquare } from "lucide-react";
 import Image from "next/image";
 
 interface PageProps {
@@ -80,7 +80,7 @@ export default function PaymentPage({ params }: PageProps) {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 pt-28 pb-16 flex items-center justify-center">
+    <div className="relative min-h-screen bg-slate-50 pt-36 pb-16 flex items-center justify-center">
       {/* Background glow spots */}
       <div className="absolute top-[15%] left-[-15%] glow-spot-blue" />
       <div className="absolute bottom-[10%] right-[-15%] glow-spot-teal" />
@@ -88,16 +88,16 @@ export default function PaymentPage({ params }: PageProps) {
       <div className="relative max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
         
         {/* Left Column: Form (7 cols) */}
-        <div className="md:col-span-7 bg-white rounded-3xl border border-slate-100 p-8 shadow-sm">
+        <div className="md:col-span-7 bg-white rounded-[2.5rem] border border-slate-150/50 p-8 shadow-sm">
           
           {/* Back button */}
-          <Link href="/pricing" className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 transition-colors mb-6 font-semibold">
+          <Link href="/pricing" className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 transition-colors mb-6 font-bold">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to Pricing
           </Link>
 
           {/* Title */}
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-dark font-poppins">
+            <h2 className="text-2.5xl font-extrabold text-dark font-poppins">
               {isLogin ? "Welcome Back" : "Create Aligner Account"}
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm mt-1">
@@ -108,10 +108,10 @@ export default function PaymentPage({ params }: PageProps) {
           </div>
 
           {/* Form Tabs */}
-          <div className="flex border-b border-slate-100 mb-8">
+          <div className="flex border-b border-slate-100 mb-8 select-none">
             <button
               onClick={() => { setIsLogin(false); setErrors({}); }}
-              className={`pb-3 font-semibold text-sm transition-all border-b-2 px-4 ${
+              className={`pb-3 font-bold text-sm transition-all border-b-2 px-4 cursor-pointer ${
                 !isLogin
                   ? "border-primary text-primary"
                   : "border-transparent text-slate-400 hover:text-slate-600"
@@ -121,7 +121,7 @@ export default function PaymentPage({ params }: PageProps) {
             </button>
             <button
               onClick={() => { setIsLogin(true); setErrors({}); }}
-              className={`pb-3 font-semibold text-sm transition-all border-b-2 px-4 ${
+              className={`pb-3 font-bold text-sm transition-all border-b-2 px-4 cursor-pointer ${
                 isLogin
                   ? "border-primary text-primary"
                   : "border-transparent text-slate-400 hover:text-slate-600"
@@ -137,7 +137,7 @@ export default function PaymentPage({ params }: PageProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* First Name */}
                 <div className="relative">
-                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+                  <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-450 pointer-events-none">
                     <User className="w-4 h-4" />
                   </span>
                   <input
@@ -146,7 +146,7 @@ export default function PaymentPage({ params }: PageProps) {
                     placeholder="First Name"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                    className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                       errors.firstName ? "border-red-400" : "border-slate-200"
                     }`}
                   />
@@ -161,7 +161,7 @@ export default function PaymentPage({ params }: PageProps) {
                     placeholder="Last Name"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all"
                   />
                 </div>
               </div>
@@ -169,7 +169,7 @@ export default function PaymentPage({ params }: PageProps) {
 
             {/* Email */}
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-455 pointer-events-none">
                 <Mail className="w-4 h-4" />
               </span>
               <input
@@ -178,16 +178,16 @@ export default function PaymentPage({ params }: PageProps) {
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                   errors.email ? "border-red-400" : "border-slate-200"
-                    }`}
+                }`}
               />
               {errors.email && <span className="text-red-500 text-xs mt-1 block">{errors.email}</span>}
             </div>
 
             {/* Password */}
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-455 pointer-events-none">
                 <Lock className="w-4 h-4" />
               </span>
               <input
@@ -196,15 +196,15 @@ export default function PaymentPage({ params }: PageProps) {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                   errors.password ? "border-red-400" : "border-slate-200"
-                    }`}
+                }`}
               />
               {errors.password && <span className="text-red-500 text-xs mt-1 block">{errors.password}</span>}
             </div>
 
             {/* Wix Template Disclaimer Warning Message (Static/In-form) */}
-            <div className="flex gap-3 p-4 bg-amber-50/50 border border-amber-200/50 rounded-2xl text-amber-800 text-xs leading-relaxed">
+            <div className="flex gap-3 p-4 bg-amber-50 border border-amber-200/60 rounded-2xl text-amber-800 text-xs leading-relaxed">
               <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
               <span>
                 <strong>Ordering Notice:</strong> Sorry, you can&apos;t order this plan online at the moment. Please contact us to complete your purchase.
@@ -230,7 +230,7 @@ export default function PaymentPage({ params }: PageProps) {
         </div>
 
         {/* Right Column: Order Summary (5 cols) */}
-        <div className="md:col-span-5 bg-dark text-slate-300 rounded-3xl p-8 shadow-md relative overflow-hidden flex flex-col justify-between self-stretch">
+        <div className="md:col-span-5 bg-gradient-to-br from-[#1F2937] to-[#111827] text-slate-300 rounded-[2.5rem] p-8 shadow-lg relative overflow-hidden flex flex-col justify-between self-stretch min-h-[400px]">
           
           <div className="space-y-6">
             <h3 className="text-white text-lg font-bold font-poppins border-b border-slate-800 pb-4">
@@ -240,34 +240,34 @@ export default function PaymentPage({ params }: PageProps) {
             <div className="space-y-4">
               <div className="flex justify-between items-start">
                 <div>
-                  <h4 className="text-white font-semibold text-sm sm:text-base">{plan.name}</h4>
+                  <h4 className="text-white font-bold text-sm sm:text-base">{plan.name}</h4>
                   <p className="text-slate-400 text-xs mt-1">{plan.description}</p>
                 </div>
-                <span className="text-white font-bold text-lg font-poppins">{plan.price}</span>
+                <span className="text-white font-black text-lg font-poppins text-primary">{plan.price}</span>
               </div>
             </div>
 
             {/* Aligner benefits badges */}
-            <div className="border-t border-slate-800 pt-6 space-y-3.5">
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-secondary flex-shrink-0" />
+            <div className="border-t border-slate-800/80 pt-6 space-y-4">
+              <div className="flex items-center gap-2.5 text-xs text-slate-400">
+                <ShieldCheck className="w-4.5 h-4.5 text-secondary flex-shrink-0" />
                 <span>FDA Cleared Material Science</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <CreditCard className="w-4 h-4 text-secondary flex-shrink-0" />
+              <div className="flex items-center gap-2.5 text-xs text-slate-400">
+                <CreditCard className="w-4.5 h-4.5 text-secondary flex-shrink-0" />
                 <span>100% Secure Transaction Vault</span>
               </div>
             </div>
           </div>
 
-          <div className="pt-12 border-t border-slate-800/80 mt-12 flex justify-between items-center text-xs text-slate-500">
+          <div className="pt-12 border-t border-slate-800/60 mt-12 flex justify-between items-center text-xs text-slate-500">
             <span>Powered by LINEALIGN Secure API</span>
             <Image
-              src="/logo.svg"
+              src="/logo.jpeg"
               alt="Logo"
               width={150}
               height={96}
-              className="h-9 w-auto brightness-0 invert object-contain opacity-50"
+              className="h-7 w-auto brightness-0 invert object-contain opacity-40 rounded"
             />
           </div>
 
@@ -277,10 +277,10 @@ export default function PaymentPage({ params }: PageProps) {
 
       {/* Offline ordering Pop-Up Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4">
-          <div className="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl border border-slate-100 text-center animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 select-none">
+          <div className="bg-white rounded-[2rem] max-w-md w-full p-8 shadow-2xl border border-slate-100 text-center animate-in zoom-in-95 duration-200">
             <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mx-auto mb-4">
-              <Sparkle className="w-6 h-6" />
+              <Sparkle className="w-6 h-6 text-secondary animate-pulse" />
             </div>
             
             <h3 className="text-xl font-bold text-dark font-poppins mb-2">Registration Complete!</h3>
@@ -288,23 +288,25 @@ export default function PaymentPage({ params }: PageProps) {
             <p className="text-slate-500 text-sm leading-relaxed mb-6">
               Your account has been configured. However, online checkout is currently offline on our platform:
               <br />
-              <strong className="text-amber-800 mt-2 block bg-amber-50 py-2.5 px-4 rounded-xl text-xs border border-amber-100">
+              <strong className="text-amber-800 mt-3 block bg-amber-50/50 py-3 px-4 rounded-2xl text-xs border border-amber-200/50">
                 &ldquo;Sorry, you can&apos;t order this plan online at the moment. Please contact us to complete your purchase.&rdquo;
               </strong>
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
               <a
                 href="tel:8281778202"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs font-semibold text-white bg-primary hover:bg-primary-hover shadow-sm"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-hover shadow-sm"
               >
                 <Phone className="w-4 h-4" /> Call 82817 78202
               </a>
               <a
-                href="mailto:linealign23@gmail.com"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200"
+                href="https://wa.me/918281778202"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 hover:bg-slate-100"
               >
-                <Mail className="w-4 h-4" /> Email Us
+                <MessageSquare className="w-4 h-4 text-emerald-500 fill-emerald-500" /> WhatsApp
               </a>
             </div>
 

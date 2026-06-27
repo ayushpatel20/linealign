@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Briefcase, Calendar, Link as LinkIcon, Send, CheckCircle, Video, Play, Info } from "lucide-react";
+import { Briefcase, Calendar, Link as LinkIcon, Send, CheckCircle, Video, Play, Info, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const positions = [
@@ -9,28 +9,28 @@ const positions = [
     id: "pm",
     title: "Product Manager",
     department: "Product & Strategy",
-    location: "Vadodara / Hybrid",
+    location: "Kasaragod / Hybrid",
     description: "Lead product development for orthodontic simulation platforms, coordinating aligner engineering specifications with web interfaces to ensure highly seamless practitioner and customer operations."
   },
   {
     id: "fsd",
     title: "Full Stack Developer",
     department: "Engineering",
-    location: "Vadodara / Remote",
+    location: "Kasaragod / Remote",
     description: "Architect secure clinical database storage, physician portals, payment gateways, and custom aligner tracking web/mobile applications in React, Next.js, Node.js, and TypeScript."
   },
   {
     id: "vp",
     title: "VP R&D",
     department: "Research & Development",
-    location: "Vadodara / On-Site",
+    location: "Kasaragod / On-Site",
     description: "Direct advanced biomechanical material science, precision alignment vectors, arch expansion integration, and manufacturing automation teams to refine product lines."
   },
   {
     id: "hr",
     title: "HR Partner",
     department: "People Operations",
-    location: "Vadodara / On-Site",
+    location: "Kasaragod / On-Site",
     description: "Coordinate clinical talent search, engineering recruiting, and build a collaborative culture grounded on trust, transparency, and personal/professional growth."
   }
 ];
@@ -98,7 +98,7 @@ export default function Careers() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white pt-32 pb-20 overflow-hidden">
+    <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
       {/* Background glow spots */}
       <div className="absolute top-[10%] left-[-15%] glow-spot-blue" />
       <div className="absolute bottom-[20%] right-[-15%] glow-spot-teal" />
@@ -107,13 +107,14 @@ export default function Careers() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" />
             Careers at LINEALIGN
           </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-dark font-poppins">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark font-poppins">
             Join Our Excellent Team
           </h1>
-          <p className="text-slate-500 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             We are creating a better way to work together, built on trust & respect that will reflect a positive change in the world.
           </p>
         </div>
@@ -122,27 +123,27 @@ export default function Careers() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-24">
           
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-dark font-poppins">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-dark font-poppins tracking-tight">
               Life at LINEALIGN
             </h2>
-            <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
               We empower team members to take full ownership, innovate on cutting-edge dental tech solutions, and grow alongside dental networks spanning 12 countries. Explore our fast-paced culture and flat organizational hierarchy.
             </p>
           </div>
 
           <div className="lg:col-span-7">
             {/* Custom interactive video player mockup */}
-            <div className="relative w-full aspect-[16/9] bg-dark rounded-3xl overflow-hidden shadow-lg border border-slate-800 flex items-center justify-center group cursor-pointer">
+            <div className="relative w-full aspect-[16/9] bg-slate-900 rounded-[2rem] overflow-hidden shadow-lg border border-slate-800 flex items-center justify-center group cursor-pointer">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/15 opacity-40 group-hover:scale-105 transition-transform duration-500" />
               
               {/* Play symbol button */}
-              <div className="relative z-10 w-16 h-16 rounded-full bg-white text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+              <div className="relative z-10 w-16 h-16 rounded-full bg-white text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Play className="w-6 h-6 fill-current text-primary translate-x-0.5" />
               </div>
 
               {/* Title Overlay */}
               <div className="absolute bottom-4 left-6 text-white text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
-                <Video className="w-4 h-4 text-secondary" />
+                <Video className="w-4 h-4 text-secondary animate-pulse" />
                 Working at LINEALIGN: Culture Video
               </div>
             </div>
@@ -159,17 +160,17 @@ export default function Careers() {
             {positions.map((pos) => (
               <div
                 key={pos.id}
-                className="p-8 bg-slate-50 border border-slate-100 rounded-3xl flex flex-col justify-between hover:shadow-xs transition-all"
+                className="p-8 bg-white border border-slate-150/50 rounded-3xl flex flex-col justify-between hover:shadow-md transition-all duration-300 group"
               >
                 <div className="space-y-4">
                   <div className="flex justify-between items-start gap-4">
-                    <h3 className="text-lg font-bold text-dark font-poppins">{pos.title}</h3>
-                    <span className="text-[10px] font-bold text-slate-400 bg-white border border-slate-200/50 px-2.5 py-1 rounded-full uppercase tracking-wider">
+                    <h3 className="text-lg font-bold text-dark font-poppins group-hover:text-primary transition-colors">{pos.title}</h3>
+                    <span className="text-[10px] font-bold text-slate-400 bg-slate-50 border border-slate-200/50 px-2.5 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">
                       {pos.location}
                     </span>
                   </div>
-                  <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">{pos.department}</p>
-                  <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">{pos.description}</p>
+                  <p className="text-primary text-xs font-bold uppercase tracking-wider">{pos.department}</p>
+                  <p className="text-slate-550 text-xs sm:text-sm leading-relaxed">{pos.description}</p>
                 </div>
                 <div className="pt-6">
                   <a
@@ -185,7 +186,7 @@ export default function Careers() {
         </div>
 
         {/* Apply Here Form */}
-        <div id="apply" className="bg-slate-50 border border-slate-100 rounded-[2rem] p-8 sm:p-12 shadow-xs max-w-4xl mx-auto">
+        <div id="apply" className="bg-white border border-slate-150/50 rounded-[2rem] p-8 sm:p-12 shadow-sm max-w-3xl mx-auto">
           <h3 className="text-2xl font-bold text-dark font-poppins mb-2 text-center">
             Apply Here
           </h3>
@@ -204,7 +205,7 @@ export default function Careers() {
                   placeholder="First Name*"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className={`w-full bg-white border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary ${
+                  className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                     errors.firstName ? "border-red-400" : "border-slate-200"
                   }`}
                 />
@@ -218,7 +219,7 @@ export default function Careers() {
                   placeholder="Last Name"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full bg-white border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all"
                 />
               </div>
             </div>
@@ -232,7 +233,7 @@ export default function Careers() {
                   placeholder="Email Address*"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full bg-white border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary ${
+                  className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                     errors.email ? "border-red-400" : "border-slate-200"
                   }`}
                 />
@@ -246,7 +247,7 @@ export default function Careers() {
                   placeholder="Phone Number*"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className={`w-full bg-white border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary ${
+                  className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                     errors.phone ? "border-red-400" : "border-slate-200"
                   }`}
                 />
@@ -264,7 +265,7 @@ export default function Careers() {
                   name="position"
                   value={formData.position}
                   onChange={handleInputChange}
-                  className="w-full bg-white border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary cursor-pointer transition-all"
                 >
                   <option value="pm">Product Manager</option>
                   <option value="fsd">Full Stack Developer</option>
@@ -283,7 +284,7 @@ export default function Careers() {
                     name="startDate"
                     value={formData.startDate}
                     onChange={handleInputChange}
-                    className={`w-full bg-white border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary ${
+                    className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                       errors.startDate ? "border-red-400" : "border-slate-200"
                     }`}
                   />
@@ -307,7 +308,7 @@ export default function Careers() {
                   placeholder="https://drive.google.com/..."
                   value={formData.resume}
                   onChange={handleInputChange}
-                  className={`w-full bg-white border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:ring-1 focus:ring-primary ${
+                  className={`w-full bg-slate-50 border rounded-2xl py-3.5 pl-10 pr-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                     errors.resume ? "border-red-400" : "border-slate-200"
                   }`}
                 />

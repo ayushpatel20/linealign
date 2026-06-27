@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Phone, Clock, MapPin, CheckCircle, Send, Globe, ChevronRight } from "lucide-react";
+import { Mail, Phone, Clock, MapPin, CheckCircle, Send, Globe, ChevronRight, Sparkles, MessageSquare } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function FAQContact() {
@@ -61,7 +61,7 @@ export default function FAQContact() {
   };
 
   return (
-    <div className="relative min-h-screen bg-slate-50 pt-32 pb-20 overflow-hidden">
+    <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
       {/* Background glow blobs */}
       <div className="absolute top-[10%] left-[-15%] glow-spot-blue" />
       <div className="absolute bottom-[20%] right-[-15%] glow-spot-teal" />
@@ -70,13 +70,14 @@ export default function FAQContact() {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" />
             Get In Touch
           </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-dark font-poppins">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark font-poppins">
             Contact Us & Practice Support
           </h1>
-          <p className="text-slate-500 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Reach our doctor support desk, submit impression scans, or subscribe to updates.
           </p>
         </div>
@@ -87,64 +88,92 @@ export default function FAQContact() {
           <div className="lg:col-span-5 flex flex-col justify-between gap-8">
             
             {/* Info Card */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xs space-y-6">
-              <h3 className="text-lg font-bold text-dark font-poppins border-b border-slate-100 pb-4">
-                Practice Headquarters
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-150/50 shadow-sm space-y-6">
+              <h3 className="text-xl font-bold text-dark font-poppins border-b border-slate-100 pb-4">
+                Laboratory Headquarters
               </h3>
 
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {/* Address */}
-                <div className="flex items-start gap-3.5">
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Address</h4>
-                    <p className="text-dark text-sm sm:text-base leading-relaxed mt-1">
-                      103 Janki Avenue, Near Maharani School, Sursagar Lake, Raopura, Vadodara, Gujarat, India 390001
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-1 font-semibold">
+                      83, Pookkayam, Malakallu,<br />
+                      Near Indian Oil Petrol Pump, Malakallu PO,<br />
+                      PIN 671532, Kasaragod District, Kerala, India
                     </p>
                   </div>
                 </div>
 
                 {/* Timings */}
-                <div className="flex items-start gap-3.5">
-                  <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Clock className="w-5 h-5" />
+                  </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Hours</h4>
-                    <p className="text-dark text-sm sm:text-base leading-relaxed mt-1">
-                      11:00 AM to 6:00 PM<br />Monday to Saturday
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-1 font-semibold">
+                      24 Hours Working Laboratory
                     </p>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex items-start gap-3.5">
-                  <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Mail className="w-5 h-5" />
+                  </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Email</h4>
-                    <a href="mailto:linealign23@gmail.com" className="text-primary hover:underline text-sm sm:text-base block mt-1">
+                    <a href="mailto:linealign23@gmail.com" className="text-primary hover:underline text-sm sm:text-base block mt-1 font-semibold">
                       linealign23@gmail.com
                     </a>
                   </div>
                 </div>
 
                 {/* Phone */}
-                <div className="flex items-start gap-3.5">
-                  <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Phone className="w-5 h-5" />
+                  </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Support Phone</h4>
-                    <a href="tel:8281778202" className="text-primary hover:underline text-sm sm:text-base block mt-1">
+                    <a href="tel:8281778202" className="text-primary hover:underline text-sm sm:text-base block mt-1 font-semibold">
                       82817 78202
                     </a>
                   </div>
                 </div>
               </div>
+
+              {/* Instant Call / WhatsApp Row */}
+              <div className="grid grid-cols-2 gap-4 pt-2">
+                <a
+                  href="tel:8281778202"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-full text-xs font-bold text-white bg-primary hover:bg-primary-hover shadow-xs transition-all"
+                >
+                  <Phone className="w-3.5 h-3.5" /> Call Now
+                </a>
+                <a
+                  href="https://wa.me/918281778202"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-all"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-500 fill-emerald-500" /> WhatsApp
+                </a>
+              </div>
             </div>
 
-            {/* Premium map placeholder */}
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xs border border-slate-100 bg-slate-200">
+            {/* Premium Google Map */}
+            <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-sm border border-slate-150/50 bg-slate-200 self-stretch min-h-[350px]">
               <iframe
-                title="Office Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.0772210403337!2d73.200555!3d22.301111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDE4JzA0LjAiTiA3M8KwMTInMDIuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
-                className="absolute inset-0 w-full h-full border-0 grayscale brightness-95 opacity-80"
+                title="Linealign Dental Lab Location Map"
+                src="https://maps.google.com/maps?q=Kasaragod,%20Kerala,%20India&z=13&output=embed"
+                className="absolute inset-0 w-full h-full border-0 grayscale brightness-95 opacity-90"
                 allowFullScreen
                 loading="lazy"
               />
@@ -153,13 +182,13 @@ export default function FAQContact() {
           </div>
 
           {/* Right Column: Mailing List Form (7 cols) */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-100 p-8 sm:p-12 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-7 bg-white rounded-[2rem] border border-slate-150/50 p-8 sm:p-12 shadow-sm flex flex-col justify-between self-stretch">
             <div>
-              <h3 className="text-xl font-bold text-dark font-poppins mb-2">
+              <h3 className="text-2xl font-bold text-dark font-poppins mb-2">
                 Join our mailing list
               </h3>
-              <p className="text-slate-500 text-xs sm:text-sm mb-8 leading-relaxed">
-                By completing and submitting this form, you agree to receive marketing notifications via WhatsApp, Email, SMS, and RCS.
+              <p className="text-slate-500 text-sm mb-8 leading-relaxed">
+                By completing and submitting this form, you agree to receive laboratory notifications, case simulations, and clinical updates via WhatsApp, Email, SMS, and RCS.
               </p>
 
               <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -173,7 +202,7 @@ export default function FAQContact() {
                       placeholder="First Name*"
                       value={formData.firstName}
                       onChange={handleInputChange}
-                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                         errors.firstName ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -187,7 +216,7 @@ export default function FAQContact() {
                       placeholder="Last Name"
                       value={formData.lastName}
                       onChange={handleInputChange}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary"
+                      className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all"
                     />
                   </div>
                 </div>
@@ -201,7 +230,7 @@ export default function FAQContact() {
                       placeholder="Email* (Required)"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                         errors.email ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -215,7 +244,7 @@ export default function FAQContact() {
                       placeholder="Phone Number*"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary ${
+                      className={`w-full bg-slate-50 border rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary transition-all ${
                         errors.phone ? "border-red-400" : "border-slate-200"
                       }`}
                     />
@@ -231,7 +260,7 @@ export default function FAQContact() {
                     placeholder="Your requirements or specific clinical query..."
                     value={formData.requirement}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary resize-none"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3.5 px-4 text-sm text-dark focus:outline-none focus:bg-white focus:ring-1 focus:ring-primary resize-none transition-all"
                   />
                 </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, HelpCircle, ArrowRight } from "lucide-react";
+import { Check, HelpCircle, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const plans = [
@@ -62,7 +62,7 @@ export default function Pricing() {
   const [currency, setCurrency] = useState<"usd" | "inr">("usd");
 
   return (
-    <div className="relative min-h-screen bg-slate-50 pt-32 pb-20 overflow-hidden">
+    <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
       {/* Background glow spots */}
       <div className="absolute top-[10%] left-[-10%] glow-spot-blue" />
       <div className="absolute top-[50%] right-[-10%] glow-spot-teal" />
@@ -71,21 +71,22 @@ export default function Pricing() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
-          <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20">
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-secondary animate-pulse" />
             Fair & Transparent
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-dark font-poppins">
+          </span>
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-dark font-poppins">
             Flexible Aligner Pricing Plans
           </h1>
-          <p className="text-slate-500 text-sm sm:text-base">
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             Choose the plan that suits your patient case complexity. Simple pricing with no hidden refinement fees.
           </p>
 
           {/* Currency Toggle */}
-          <div className="inline-flex items-center gap-1.5 p-1.5 bg-white border border-slate-200 rounded-full shadow-sm">
+          <div className="inline-flex items-center gap-1.5 p-1.5 bg-white border border-slate-200 rounded-full shadow-sm select-none">
             <button
               onClick={() => setCurrency("usd")}
-              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 currency === "usd"
                   ? "bg-primary text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
@@ -95,7 +96,7 @@ export default function Pricing() {
             </button>
             <button
               onClick={() => setCurrency("inr")}
-              className={`px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${
+              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 currency === "inr"
                   ? "bg-secondary text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
@@ -112,14 +113,14 @@ export default function Pricing() {
             <motion.div
               key={plan.id}
               whileHover={{ y: -8 }}
-              className={`relative flex flex-col justify-between p-8 rounded-3xl bg-white border transition-all ${
+              className={`relative flex flex-col justify-between p-8 rounded-[2.5rem] bg-white border transition-all duration-300 ${
                 plan.popular
-                  ? "border-primary shadow-lg ring-1 ring-primary/20"
-                  : "border-slate-200 shadow-sm"
+                  ? "border-primary shadow-lg ring-1 ring-primary/25"
+                  : "border-slate-200/60 shadow-sm"
               }`}
             >
               {plan.popular && (
-                <span className="absolute top-0 right-8 -translate-y-1/2 bg-gradient-to-r from-primary to-secondary text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="absolute top-0 right-8 -translate-y-1/2 bg-gradient-to-r from-primary to-secondary text-white text-[10px] font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider">
                   Popular Choice
                 </span>
               )}
@@ -130,27 +131,27 @@ export default function Pricing() {
                   <p className="text-slate-500 text-xs mt-2 leading-relaxed">{plan.description}</p>
                 </div>
 
-                <div className="flex items-baseline text-dark">
-                  <span className="text-2xl font-bold font-poppins">
+                <div className="flex items-baseline text-dark border-b border-slate-100 pb-6">
+                  <span className="text-2xl font-black font-poppins text-primary">
                     {currency === "usd" ? "$" : "₹"}
                   </span>
-                  <span className="text-5xl font-extrabold tracking-tight font-poppins ml-1">
+                  <span className="text-5xl font-black tracking-tight font-poppins ml-1">
                     {currency === "usd" ? plan.priceUsd : plan.priceInr}
                   </span>
-                  <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider ml-2">
+                  <span className="text-slate-400 text-[10px] font-bold uppercase tracking-wider ml-2.5">
                     per plan
                   </span>
                 </div>
 
-                <div className="border-t border-slate-100 pt-6">
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                <div className="pt-2">
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-4">
                     Key Specifications
                   </p>
                   <ul className="space-y-3.5">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
-                        <span className="text-xs sm:text-sm text-slate-600 leading-tight">{feature}</span>
+                        <span className="text-xs sm:text-sm text-slate-650 leading-tight">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -160,7 +161,7 @@ export default function Pricing() {
               <div className="pt-8">
                 <Link
                   href={`/pricing/payment/${plan.id}`}
-                  className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs sm:text-sm font-semibold transition-all ${
+                  className={`w-full inline-flex items-center justify-center gap-1.5 px-6 py-4 rounded-2xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                     plan.popular
                       ? "bg-gradient-to-r from-primary to-secondary text-white shadow-md hover:brightness-105"
                       : "bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200"
@@ -175,10 +176,10 @@ export default function Pricing() {
         </div>
 
         {/* FAQs info link */}
-        <div className="text-center mt-12 text-slate-500 text-xs flex justify-center items-center gap-1.5">
-          <HelpCircle className="w-4 h-4" />
+        <div className="text-center mt-12 text-slate-500 text-xs font-semibold flex justify-center items-center gap-1.5">
+          <HelpCircle className="w-4.5 h-4.5 text-primary" />
           <span>Need customized plans for large clinical networks?</span>
-          <Link href="/faq" className="text-primary hover:underline font-semibold">Contact sales support</Link>
+          <Link href="/faq" className="text-primary hover:underline font-bold">Contact sales support</Link>
         </div>
 
       </div>
