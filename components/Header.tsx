@@ -40,7 +40,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex flex-wrap justify-center items-center gap-4">
             <span className="flex items-center gap-1.5">
-              <span>🦷</span> 24 Hours Working Lab
+              <span>🦷</span> 24/7 Working Lab
             </span>
             <span className="hidden sm:inline text-white/30">•</span>
             <span className="flex items-center gap-1.5">

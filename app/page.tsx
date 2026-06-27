@@ -188,7 +188,7 @@ export default function Home() {
                   style={{ textShadow: "0 2px 10px rgba(0,0,0,0.1)" }}
                 >
                   <div className="w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
-                  <span>24 Hours Working Lab</span>
+                  <span>24/7 Working Lab</span>
                 </div>
                 <div 
                   className="flex items-center gap-2.5 text-slate-850 text-sm font-bold select-none"
@@ -409,7 +409,7 @@ export default function Home() {
               <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
                 <Clock className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold text-dark font-poppins">24 Hours Working Lab</h3>
+              <h3 className="text-lg font-bold text-dark font-poppins">24/7 Working Lab</h3>
               <p className="text-slate-500 text-sm leading-relaxed">
                 Full round-the-clock operations to guarantee minimal wait times and emergency support.
               </p>
@@ -856,7 +856,7 @@ export default function Home() {
                     <div>
                       <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Working Hours</h4>
                       <p className="text-slate-600 text-sm font-semibold mt-1">
-                        24 Hours Working Laboratory
+                        24/7 Working Laboratory
                       </p>
                     </div>
                   </div>

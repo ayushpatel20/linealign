@@ -117,7 +117,7 @@ export default function FAQContact() {
                   <div>
                     <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Hours</h4>
                     <p className="text-slate-600 text-sm sm:text-base leading-relaxed mt-1 font-semibold">
-                      24 Hours Working Laboratory
+                      24/7 Working Laboratory
                     </p>
                   </div>
                 </div>

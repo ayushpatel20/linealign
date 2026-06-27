@@ -9,12 +9,23 @@ interface CounterProps {
 
 export default function AnimatedCounter({ value, duration = 1500 }: CounterProps) {
   const [count, setCount] = useState(0);
+  const [count2, setCount2] = useState(0);
   const elementRef = useRef<HTMLSpanElement>(null);
   
-  // Extract number and suffix (e.g. "4000+" -> number: 4000, suffix: "+")
-  const numericString = value.replace(/[^0-9]/g, "");
-  const target = parseInt(numericString) || 0;
-  const suffix = value.replace(/[0-9]/g, "");
+  const isSlash = value.includes("/");
+  let target = 0;
+  let target2 = 0;
+  let suffix = "";
+
+  if (isSlash) {
+    const parts = value.split("/");
+    target = parseInt(parts[0].replace(/[^0-9]/g, "")) || 0;
+    target2 = parseInt(parts[1].replace(/[^0-9]/g, "")) || 0;
+  } else {
+    const numericString = value.replace(/[^0-9]/g, "");
+    target = parseInt(numericString) || 0;
+    suffix = value.replace(/[0-9]/g, "");
+  }
 
   useEffect(() => {
     let isMounted = true;
@@ -31,6 +42,9 @@ export default function AnimatedCounter({ value, duration = 1500 }: CounterProps
             const easeProgress = progress * (2 - progress);
             
             setCount(Math.floor(easeProgress * target));
+            if (isSlash) {
+              setCount2(Math.floor(easeProgress * target2));
+            }
             
             if (progress < 1) {
               window.requestAnimationFrame(step);
@@ -52,11 +66,15 @@ export default function AnimatedCounter({ value, duration = 1500 }: CounterProps
       isMounted = false;
       observer.disconnect();
     };
-  }, [target, duration]);
+  }, [target, target2, isSlash, duration]);
 
   return (
     <span ref={elementRef} className="tabular-nums">
-      {count.toLocaleString()}{suffix}
+      {isSlash ? (
+        <>{count}/{count2}</>
+      ) : (
+        <>{count.toLocaleString()}{suffix}</>
+      )}
     </span>
   );
 }
