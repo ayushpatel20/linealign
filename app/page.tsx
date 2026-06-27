@@ -511,7 +511,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             
-            {/* Left side grid of 8 cards */}
+            {/* Left side grid of 9 cards */}
             <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
               
               {/* Card 1 */}
@@ -626,53 +626,89 @@ export default function Home() {
                 </p>
               </motion.div>
 
-            </div>
-
-            {/* Right side ISO Certificate Card */}
-            <div className="lg:col-span-4 flex">
+              {/* Card 9 (ISO Quality Certificate Card) */}
               <motion.div
                 whileHover={{ y: -6 }}
                 onClick={() => setIsModalOpen(true)}
-                className="w-full p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-[2rem] border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between items-center text-center cursor-pointer group"
+                className="p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-3xl border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between items-center text-center cursor-pointer group"
               >
                 <div className="w-full space-y-4 flex-grow flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    <Award className="w-6 h-6" />
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Award className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-dark font-poppins">Quality Certificate</h3>
+                  <h3 className="text-base font-bold text-dark font-poppins">Quality Certificate</h3>
                   
                   {/* Certificate Preview Box */}
-                  <div className="relative w-full aspect-[3/4] max-w-[200px] bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs group-hover:border-primary/40 transition-colors">
+                  <div className="relative w-full aspect-[4/3] max-w-[160px] bg-slate-50 border border-slate-250 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs group-hover:border-primary/40 transition-colors">
                     {certSrc ? (
                       <Image 
                         src={certSrc}
                         alt="ISO Certificate Preview"
                         fill
-                        sizes="200px"
-                        className="object-contain p-2"
+                        sizes="160px"
+                        className="object-contain p-1.5"
                       />
                     ) : (
                       <div className="p-4 flex flex-col items-center justify-center text-slate-400 select-none">
-                        <Award className="w-10 h-10 mb-2 opacity-50" />
-                        <span className="text-[10px] font-black tracking-wider uppercase opacity-70">ISO 13485:2016</span>
-                        <span className="text-[9px] mt-1 opacity-50">Image Placeholder</span>
+                        <Award className="w-8 h-8 mb-1 opacity-50" />
+                        <span className="text-[9px] font-black tracking-wider uppercase opacity-70">ISO 13485</span>
+                        <span className="text-[8px] mt-0.5 opacity-50">Placeholder</span>
                       </div>
                     )}
                     {/* Hover zoom overlay */}
                     <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px]">
-                      <span className="px-3 py-1.5 rounded-full bg-white/90 text-[10px] font-bold text-primary shadow-xs border border-primary/20">
-                        🔍 Click to Zoom
+                      <span className="px-2.5 py-1 rounded-full bg-white/95 text-[9px] font-bold text-primary shadow-xs border border-primary/25">
+                        🔍 Zoom
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6">
-                  <p className="text-slate-700 text-sm font-extrabold font-poppins">
+                <div className="mt-4">
+                  <p className="text-slate-700 text-xs font-black font-poppins">
                     ISO Certified Dental Laboratory
                   </p>
+                </div>
+              </motion.div>
+
+            </div>
+
+            {/* Right side Aligner Video Card */}
+            <div className="lg:col-span-4 flex">
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="w-full p-8 bg-gradient-to-br from-white to-[#EEF8FF] rounded-[2.5rem] border border-blue-100/60 shadow-xs hover:shadow-md transition-all flex flex-col justify-between overflow-hidden relative group"
+              >
+                {/* Glow effect */}
+                <div className="absolute w-[200px] h-[200px] bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-full blur-3xl -top-12 -right-12 -z-10 pointer-events-none" />
+                
+                <div className="space-y-4 flex-grow flex flex-col justify-center items-center">
+                  <div className="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                    <Activity className="w-6 h-6 animate-pulse" />
+                  </div>
+                  <h3 className="text-lg font-bold text-dark font-poppins text-center">3D Aligner Simulation</h3>
+                  
+                  {/* Video Player */}
+                  <div className="relative w-full aspect-[4/5] bg-slate-50 border border-slate-200/80 rounded-[2rem] overflow-hidden flex items-center justify-center shadow-xs">
+                    <video
+                      src="/images/aligner.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Shadow overlay */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_80%,rgba(0,0,0,0.1)_100%)] pointer-events-none" />
+                  </div>
+                </div>
+
+                <div className="mt-6 text-center">
+                  <p className="text-slate-700 text-sm font-extrabold font-poppins">
+                    CAD/CAM Aligner Biomechanics
+                  </p>
                   <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mt-1">
-                    Medical Devices Standard
+                    Direct Practice Delivery
                   </p>
                 </div>
               </motion.div>
