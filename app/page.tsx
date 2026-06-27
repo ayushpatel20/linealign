@@ -239,39 +239,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto justify-center">
             
-            {/* Specialist Card 1 */}
-            <motion.div
-              whileHover={{ y: -8 }}
-              className="bg-white border border-blue-100/60 rounded-[2.5rem] overflow-hidden p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(42,132,255,0.12)] transition-all duration-300 flex flex-col"
-            >
-              <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-200 border border-white">
-                <Image
-                  src="/shoukath.jpg"
-                  alt="Dr. SHOUKATHALI P H"
-                  fill
-                  sizes="(max-w-md) 100vw, 400px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-dark font-poppins">Dr. SHOUKATHALI P H</h3>
-                  <p className="text-primary font-bold text-xs uppercase tracking-wider">BDS, MDS</p>
-                  <p className="text-slate-500 text-xs sm:text-sm mt-1 uppercase font-semibold">Founder cum Director | ORTHODONTIST & ALIGNER SPECIALIST</p>
-                </div>
-                <div className="pt-6">
-                  <Link
-                    href="/faq"
-                    className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all"
-                  >
-                    Book Appointment
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Specialist Card 2 */}
+            {/* Specialist Card 1 (Dr. Tilvin V Tom) */}
             <motion.div
               whileHover={{ y: -8 }}
               className="bg-white border border-blue-100/60 rounded-[2.5rem] overflow-hidden p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(42,132,255,0.12)] transition-all duration-300 flex flex-col"
@@ -288,6 +256,38 @@ export default function Home() {
               <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between">
                 <div>
                   <h3 className="text-xl font-bold text-dark font-poppins">Dr. TILVIN V TOM</h3>
+                  <p className="text-primary font-bold text-xs uppercase tracking-wider">BDS, MDS</p>
+                  <p className="text-slate-500 text-xs sm:text-sm mt-1 uppercase font-semibold">Founder cum Director | ORTHODONTIST & ALIGNER SPECIALIST</p>
+                </div>
+                <div className="pt-6">
+                  <Link
+                    href="/faq"
+                    className="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all"
+                  >
+                    Book Appointment
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Specialist Card 2 (Dr. Shoukathali P H) */}
+            <motion.div
+              whileHover={{ y: -8 }}
+              className="bg-white border border-blue-100/60 rounded-[2.5rem] overflow-hidden p-4 shadow-sm hover:shadow-[0_8px_30px_rgba(42,132,255,0.12)] transition-all duration-300 flex flex-col"
+            >
+              <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-200 border border-white">
+                <Image
+                  src="/shoukath.jpg"
+                  alt="Dr. SHOUKATHALI P H"
+                  fill
+                  sizes="(max-w-md) 100vw, 400px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6 text-center space-y-2 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl font-bold text-dark font-poppins">Dr. SHOUKATHALI P H</h3>
                   <p className="text-primary font-bold text-xs uppercase tracking-wider">BDS, MDS</p>
                   <p className="text-slate-500 text-xs sm:text-sm mt-1 uppercase font-semibold">Founder cum Director | ORTHODONTIST & ALIGNER SPECIALIST</p>
                 </div>
