@@ -72,7 +72,7 @@ export default function Header() {
               : "bg-white/20 backdrop-blur-sm border border-white/10 py-4 px-6 sm:px-8 shadow-sm"
           }`}
         >
-          <div className="flex items-center justify-between py-2">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center gap-2">
