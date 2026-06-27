@@ -389,7 +389,7 @@ export default function Home() {
                 Discover Our Story
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
-                Welcome to Linealign Dental Lab – Clear, Comfort and Confident
+                Welcome to Linealign Dental Lab
               </h2>
               <p className="text-slate-600 leading-relaxed text-base">
                 Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.
