@@ -97,7 +97,7 @@ export default function Home() {
       <div className="absolute top-[65%] left-[25%] w-12 h-12 bg-primary/15 rounded-full filter blur-lg animate-bounce pointer-events-none" style={{ animationDuration: '8s' }} />
 
       {/* Hero Section */}
-      <section className="relative w-full min-h-[85vh] lg:h-screen flex items-center overflow-hidden bg-white pt-36 pb-12 lg:py-0">
+      <section className="relative w-full min-h-screen flex items-start overflow-hidden bg-white pt-[140px] sm:pt-[160px] lg:pt-[180px] pb-12 lg:pb-24">
         {/* Full-width Background Image */}
         <div className="absolute inset-0 z-0 select-none">
           <Image
@@ -125,7 +125,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="col-span-1 lg:col-span-6 xl:col-span-5 space-y-6 flex flex-col justify-center text-left"
+              className="col-span-1 lg:col-span-6 xl:col-span-5 space-y-6 flex flex-col text-left"
               style={{
                 background: "transparent",
                 backdropFilter: "none",
