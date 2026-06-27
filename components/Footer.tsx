@@ -82,9 +82,7 @@ export default function Footer() {
               <li>
                 <Link href="/our-story" className="hover:text-primary transition-colors text-sm flex items-center gap-1">Our Story</Link>
               </li>
-              <li>
-                <Link href="/careers" className="hover:text-primary transition-colors text-sm flex items-center gap-1">Careers</Link>
-              </li>
+
               <li>
                 <Link href="/faq" className="hover:text-primary transition-colors text-sm flex items-center gap-1">Contact Us</Link>
               </li>

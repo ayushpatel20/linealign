@@ -12,7 +12,6 @@ const navItems = [
   { name: "Solutions", href: "/solutions" },
   { name: "Pricing", href: "/pricing" },
   { name: "Our Story", href: "/our-story" },
-  { name: "Careers", href: "/careers" },
   { name: "Contact Us", href: "/faq" },
 ];
 

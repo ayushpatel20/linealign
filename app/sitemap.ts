@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://linealign.com";
-  const routes = ["", "/solutions", "/pricing", "/our-story", "/careers", "/faq"];
+  const routes = ["", "/solutions", "/pricing", "/our-story", "/faq"];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
