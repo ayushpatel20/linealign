@@ -18,15 +18,55 @@ async function checkAuth(allowedRoles = ["ADMIN", "EDITOR"]) {
 // 1. Site Settings Actions
 // ----------------------------------------
 export async function getSiteSettings() {
-  let settings = await prisma.siteSettings.findUnique({
-    where: { id: "settings" },
-  });
-  if (!settings) {
-    settings = await prisma.siteSettings.create({
-      data: { id: "settings" },
+  try {
+    let settings = await prisma.siteSettings.findUnique({
+      where: { id: "settings" },
     });
+    if (!settings) {
+      try {
+        settings = await prisma.siteSettings.create({
+          data: { id: "settings" },
+        });
+      } catch (writeErr) {
+        return {
+          id: "settings",
+          websiteName: "Linealign Dental Lab",
+          logo: "/logo.jpeg",
+          favicon: "/favicon.ico",
+          themePrimary: "#2A84FF",
+          themeSecondary: "#2EC7D6",
+          whatsappNumber: "918281778202",
+          contactPhone: "8281778202",
+          contactEmail: "linealign23@gmail.com",
+          officeAddress: "83, Pookkayam, Malakallu, Kasaragod, Kerala, India",
+          workingHours: "24/7 Working Laboratory",
+          googleMapsLink: "https://maps.google.com/maps?q=Kasaragod,%20Kerala,%20India&z=13&output=embed",
+          metaTitle: "Linealign Dental Lab - Clear Aligner Laboratory",
+          metaDescription: "Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
+          metaKeywords: "clear aligners, dental laboratory, orthodontics, invisible braces",
+        };
+      }
+    }
+    return settings;
+  } catch (err) {
+    return {
+      id: "settings",
+      websiteName: "Linealign Dental Lab",
+      logo: "/logo.jpeg",
+      favicon: "/favicon.ico",
+      themePrimary: "#2A84FF",
+      themeSecondary: "#2EC7D6",
+      whatsappNumber: "918281778202",
+      contactPhone: "8281778202",
+      contactEmail: "linealign23@gmail.com",
+      officeAddress: "83, Pookkayam, Malakallu, Kasaragod, Kerala, India",
+      workingHours: "24/7 Working Laboratory",
+      googleMapsLink: "https://maps.google.com/maps?q=Kasaragod,%20Kerala,%20India&z=13&output=embed",
+      metaTitle: "Linealign Dental Lab - Clear Aligner Laboratory",
+      metaDescription: "Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
+      metaKeywords: "clear aligners, dental laboratory, orthodontics, invisible braces",
+    };
   }
-  return settings;
 }
 
 export async function updateSiteSettings(data: any) {
@@ -47,15 +87,37 @@ export async function updateSiteSettings(data: any) {
 // 2. Navbar Config Actions
 // ----------------------------------------
 export async function getNavbarConfig() {
-  let navbar = await prisma.navbarConfig.findUnique({
-    where: { id: "navbar" },
-  });
-  if (!navbar) {
-    navbar = await prisma.navbarConfig.create({
-      data: { id: "navbar" },
+  try {
+    let navbar = await prisma.navbarConfig.findUnique({
+      where: { id: "navbar" },
     });
+    if (!navbar) {
+      try {
+        navbar = await prisma.navbarConfig.create({
+          data: { id: "navbar" },
+        });
+      } catch (writeErr) {
+        return {
+          id: "navbar",
+          sticky: true,
+          logoSize: 84,
+          menuItemsJson: "[{\"name\":\"Home\",\"href\":\"/\"},{\"name\":\"Solutions\",\"href\":\"/solutions\"},{\"name\":\"Pricing\",\"href\":\"/pricing\"},{\"name\":\"Our Story\",\"href\":\"/our-story\"},{\"name\":\"Contact Us\",\"href\":\"/faq\"}]",
+          ctaText: "Book Consultation",
+          ctaUrl: "/faq",
+        };
+      }
+    }
+    return navbar;
+  } catch (err) {
+    return {
+      id: "navbar",
+      sticky: true,
+      logoSize: 84,
+      menuItemsJson: "[{\"name\":\"Home\",\"href\":\"/\"},{\"name\":\"Solutions\",\"href\":\"/solutions\"},{\"name\":\"Pricing\",\"href\":\"/pricing\"},{\"name\":\"Our Story\",\"href\":\"/our-story\"},{\"name\":\"Contact Us\",\"href\":\"/faq\"}]",
+      ctaText: "Book Consultation",
+      ctaUrl: "/faq",
+    };
   }
-  return navbar;
 }
 
 export async function updateNavbarConfig(data: any) {
