@@ -17,7 +17,7 @@ if (fs.existsSync(srcDir)) {
 }
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["@prisma/client"],
 };
 
 export default nextConfig;
