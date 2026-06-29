@@ -134,15 +134,45 @@ export async function updateNavbarConfig(data: any) {
 // 3. Hero Config Actions
 // ----------------------------------------
 export async function getHeroConfig() {
-  let hero = await prisma.heroConfig.findUnique({
-    where: { id: "hero" },
-  });
-  if (!hero) {
-    hero = await prisma.heroConfig.create({
-      data: { id: "hero" },
+  try {
+    let hero = await prisma.heroConfig.findUnique({
+      where: { id: "hero" },
     });
+    if (!hero) {
+      try {
+        hero = await prisma.heroConfig.create({
+          data: { id: "hero" },
+        });
+      } catch (writeErr) {
+        return {
+          id: "hero",
+          badgeText: "WELCOME TO LINEALIGN DENTAL LAB",
+          title: "Your Smile, Our Precision.",
+          description: "Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
+          bgImage: "/generated_aligner_hero.png",
+          bgVideo: "/images/aligner.mp4",
+          featuresJson: "[\"24/7 Working Lab\",\"Full-Time Orthodontists\",\"ISO Certified Dental Laboratory\",\"FDA Grade Aligners\",\"Premium Clear Aligners\"]",
+          ctaText: "Book Consultation",
+          ctaUrl: "/faq",
+          whatsappUrl: "https://wa.me/918281778202",
+        };
+      }
+    }
+    return hero;
+  } catch (err) {
+    return {
+      id: "hero",
+      badgeText: "WELCOME TO LINEALIGN DENTAL LAB",
+      title: "Your Smile, Our Precision.",
+      description: "Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
+      bgImage: "/generated_aligner_hero.png",
+      bgVideo: "/images/aligner.mp4",
+      featuresJson: "[\"24/7 Working Lab\",\"Full-Time Orthodontists\",\"ISO Certified Dental Laboratory\",\"FDA Grade Aligners\",\"Premium Clear Aligners\"]",
+      ctaText: "Book Consultation",
+      ctaUrl: "/faq",
+      whatsappUrl: "https://wa.me/918281778202",
+    };
   }
-  return hero;
 }
 
 export async function updateHeroConfig(data: any) {
@@ -159,15 +189,39 @@ export async function updateHeroConfig(data: any) {
 // 4. About Config Actions
 // ----------------------------------------
 export async function getAboutConfig() {
-  let about = await prisma.aboutConfig.findUnique({
-    where: { id: "about" },
-  });
-  if (!about) {
-    about = await prisma.aboutConfig.create({
-      data: { id: "about" },
+  try {
+    let about = await prisma.aboutConfig.findUnique({
+      where: { id: "about" },
     });
+    if (!about) {
+      try {
+        about = await prisma.aboutConfig.create({
+          data: { id: "about" },
+        });
+      } catch (writeErr) {
+        return {
+          id: "about",
+          badgeText: "Discover Our Story",
+          title: "Welcome to Linealign Dental Lab",
+          description: "Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.",
+          linkText: "Learn More About Our Journey",
+          linkUrl: "/our-story",
+          statsJson: "[{\"label\":\"Premium Quality\",\"value\":\"100%\"},{\"label\":\"Digital Workflow\",\"value\":\"100%\"},{\"label\":\"Expert Team\",\"value\":\"250+\"},{\"label\":\"Working Lab\",\"value\":\"24/7\"}]",
+        };
+      }
+    }
+    return about;
+  } catch (err) {
+    return {
+      id: "about",
+      badgeText: "Discover Our Story",
+      title: "Welcome to Linealign Dental Lab",
+      description: "Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.",
+      linkText: "Learn More About Our Journey",
+      linkUrl: "/our-story",
+      statsJson: "[{\"label\":\"Premium Quality\",\"value\":\"100%\"},{\"label\":\"Digital Workflow\",\"value\":\"100%\"},{\"label\":\"Expert Team\",\"value\":\"250+\"},{\"label\":\"Working Lab\",\"value\":\"24/7\"}]",
+    };
   }
-  return about;
 }
 
 export async function updateAboutConfig(data: any) {
@@ -185,9 +239,71 @@ export async function updateAboutConfig(data: any) {
 // 5. Founders CRUD Actions
 // ----------------------------------------
 export async function getFounders() {
-  return await prisma.founder.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.founder.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        {
+          id: "f1",
+          name: "Dr. TILVIN V TOM",
+          photo: "/tilvin.jpg",
+          designation: "Founder",
+          qualification: "BDS, MDS",
+          description: "Orthodontist & Aligner Specialist overseeing simulation reviews and plan approvals.",
+          experience: "10+ Years Experience",
+          badge: "Founder",
+          sortOrder: 0,
+          isVisible: true,
+          socialLinksJson: "[]",
+        },
+        {
+          id: "f2",
+          name: "Dr. SHOUKATHALI P H",
+          photo: "/shoukath.jpg",
+          designation: "Co-Founder",
+          qualification: "BDS, MDS",
+          description: "Orthodontist & Aligner Specialist providing full-time clinical support.",
+          experience: "10+ Years Experience",
+          badge: "Co-Founder",
+          sortOrder: 1,
+          isVisible: true,
+          socialLinksJson: "[]",
+        },
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      {
+        id: "f1",
+        name: "Dr. TILVIN V TOM",
+        photo: "/tilvin.jpg",
+        designation: "Founder",
+        qualification: "BDS, MDS",
+        description: "Orthodontist & Aligner Specialist overseeing simulation reviews and plan approvals.",
+        experience: "10+ Years Experience",
+        badge: "Founder",
+        sortOrder: 0,
+        isVisible: true,
+        socialLinksJson: "[]",
+      },
+      {
+        id: "f2",
+        name: "Dr. SHOUKATHALI P H",
+        photo: "/shoukath.jpg",
+        designation: "Co-Founder",
+        qualification: "BDS, MDS",
+        description: "Orthodontist & Aligner Specialist providing full-time clinical support.",
+        experience: "10+ Years Experience",
+        badge: "Co-Founder",
+        sortOrder: 1,
+        isVisible: true,
+        socialLinksJson: "[]",
+      },
+    ];
+  }
 }
 
 export async function saveFounder(data: any) {
@@ -220,9 +336,31 @@ export async function deleteFounder(id: string) {
 // 6. Services CRUD Actions
 // ----------------------------------------
 export async function getServices() {
-  return await prisma.service.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.service.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        { id: "s1", title: "Clear Aligners", description: "Precision-molded invisible orthodontic trays engineered from high-retention polymer sheets for maximum tooth alignment.", icon: "Layers", seoUrl: "clear-aligners", sortOrder: 0, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+        { id: "s2", title: "Digital Smile Design", description: "Aesthetic simulation software showing post-treatment orthodontic models, assisting doctor approvals and patient consultations.", icon: "Activity", seoUrl: "digital-smile-design", sortOrder: 1, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+        { id: "s3", title: "Orthodontic Planning", description: "Interactive 3D dental biomechanics setups (arch expansion, rotators, attachments) designed by certified specialists.", icon: "Users", seoUrl: "orthodontic-planning", sortOrder: 2, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+        { id: "s4", title: "Treatment Support", description: "Continuous support team available 24/7 to solve mid-treatment adjustments, refinements, or physical silicon impression scans.", icon: "ShieldCheck", seoUrl: "treatment-support", sortOrder: 3, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+        { id: "s5", title: "Aligner Manufacturing", description: "State-of-the-art laboratory lines crafting high-fidelity biocompatible trays with laser trim cuts for maximum patient comfort.", icon: "Layers", seoUrl: "aligner-manufacturing", sortOrder: 4, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+        { id: "s6", title: "Clinical Consultation", description: "Professional digital scan evaluation and treatment planning tips to help physicians provide the best orthodontic options.", icon: "MessageSquare", seoUrl: "clinical-consultation", sortOrder: 5, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" }
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      { id: "s1", title: "Clear Aligners", description: "Precision-molded invisible orthodontic trays engineered from high-retention polymer sheets for maximum tooth alignment.", icon: "Layers", seoUrl: "clear-aligners", sortOrder: 0, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+      { id: "s2", title: "Digital Smile Design", description: "Aesthetic simulation software showing post-treatment orthodontic models, assisting doctor approvals and patient consultations.", icon: "Activity", seoUrl: "digital-smile-design", sortOrder: 1, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+      { id: "s3", title: "Orthodontic Planning", description: "Interactive 3D dental biomechanics setups (arch expansion, rotators, attachments) designed by certified specialists.", icon: "Users", seoUrl: "orthodontic-planning", sortOrder: 2, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+      { id: "s4", title: "Treatment Support", description: "Continuous support team available 24/7 to solve mid-treatment adjustments, refinements, or physical silicon impression scans.", icon: "ShieldCheck", seoUrl: "treatment-support", sortOrder: 3, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+      { id: "s5", title: "Aligner Manufacturing", description: "State-of-the-art laboratory lines crafting high-fidelity biocompatible trays with laser trim cuts for maximum patient comfort.", icon: "Layers", seoUrl: "aligner-manufacturing", sortOrder: 4, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" },
+      { id: "s6", title: "Clinical Consultation", description: "Professional digital scan evaluation and treatment planning tips to help physicians provide the best orthodontic options.", icon: "MessageSquare", seoUrl: "clinical-consultation", sortOrder: 5, isVisible: true, buttonText: "Details", buttonUrl: "/solutions" }
+    ];
+  }
 }
 
 export async function saveService(data: any) {
@@ -257,9 +395,31 @@ export async function deleteService(id: string) {
 // 7. Why Choose Us CRUD Actions
 // ----------------------------------------
 export async function getWhyChooseUs() {
-  return await prisma.whyChooseUs.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.whyChooseUs.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        { id: "w1", title: "24/7 Working Lab", description: "Full round-the-clock operations to guarantee minimal wait times and emergency support.", icon: "Clock", sortOrder: 0, isVisible: true },
+        { id: "w2", title: "Full-Time Orthodontists", description: "Licensed in-house orthodontic specialists review and approve every treatment plan.", icon: "Users", sortOrder: 1, isVisible: true },
+        { id: "w3", title: "Premium Clear Aligners", description: "Manufactured using high-elasticity medical polymer sheets for maximum tooth control.", icon: "ShieldCheck", sortOrder: 2, isVisible: true },
+        { id: "w4", title: "Digital Workflow", description: "Fully digital case uploads, online simulation approvals, and real-time tracking systems.", icon: "Zap", sortOrder: 3, isVisible: true },
+        { id: "w5", title: "Advanced CAD/CAM", description: "Sub-micron 3D scanning and state-of-the-art aligner laser printing machines.", icon: "Layers", sortOrder: 4, isVisible: true },
+        { id: "w6", title: "Certified Materials", description: "Constructed solely using FDA-cleared, biocompatible medical-grade thermoplastic materials.", icon: "Award", sortOrder: 5, isVisible: true }
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      { id: "w1", title: "24/7 Working Lab", description: "Full round-the-clock operations to guarantee minimal wait times and emergency support.", icon: "Clock", sortOrder: 0, isVisible: true },
+      { id: "w2", title: "Full-Time Orthodontists", description: "Licensed in-house orthodontic specialists review and approve every treatment plan.", icon: "Users", sortOrder: 1, isVisible: true },
+      { id: "w3", title: "Premium Clear Aligners", description: "Manufactured using high-elasticity medical polymer sheets for maximum tooth control.", icon: "ShieldCheck", sortOrder: 2, isVisible: true },
+      { id: "w4", title: "Digital Workflow", description: "Fully digital case uploads, online simulation approvals, and real-time tracking systems.", icon: "Zap", sortOrder: 3, isVisible: true },
+      { id: "w5", title: "Advanced CAD/CAM", description: "Sub-micron 3D scanning and state-of-the-art aligner laser printing machines.", icon: "Layers", sortOrder: 4, isVisible: true },
+      { id: "w6", title: "Certified Materials", description: "Constructed solely using FDA-cleared, biocompatible medical-grade thermoplastic materials.", icon: "Award", sortOrder: 5, isVisible: true }
+    ];
+  }
 }
 
 export async function saveWhyChooseUs(data: any) {
@@ -292,9 +452,25 @@ export async function deleteWhyChooseUs(id: string) {
 // 8. Testimonials CRUD Actions
 // ----------------------------------------
 export async function getTestimonials() {
-  return await prisma.testimonial.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.testimonial.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        { id: "t1", name: "Dr. Rajesh Sharma", role: "Orthodontist, Mumbai", quote: "Linealign has transformed how I run my aligner practice. The treatment simulation within 24 hours is incredibly accurate, and patients love seeing the 3D visual step-by-step progress.", avatar: "RS", rating: 5.0, sortOrder: 0, isVisible: true },
+        { id: "t2", name: "Dr. Ananya Goel", role: "Cosmetic Dentist, Bangalore", quote: "The marketing support demo kits and in-office videos have doubled my patient conversions. Linealign clear aligners are highly precise and pricing is very competitive.", avatar: "AG", rating: 5.0, sortOrder: 1, isVisible: true },
+        { id: "t3", name: "Dr. Vikram Seth", role: "Clinic Director, Vadodara", quote: "Emergency support and the tracking app make after-care extremely simple. Highly recommended aligner partner with unmatched support.", avatar: "VS", rating: 5.0, sortOrder: 2, isVisible: true }
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      { id: "t1", name: "Dr. Rajesh Sharma", role: "Orthodontist, Mumbai", quote: "Linealign has transformed how I run my aligner practice. The treatment simulation within 24 hours is incredibly accurate, and patients love seeing the 3D visual step-by-step progress.", avatar: "RS", rating: 5.0, sortOrder: 0, isVisible: true },
+      { id: "t2", name: "Dr. Ananya Goel", role: "Cosmetic Dentist, Bangalore", quote: "The marketing support demo kits and in-office videos have doubled my patient conversions. Linealign clear aligners are highly precise and pricing is very competitive.", avatar: "AG", rating: 5.0, sortOrder: 1, isVisible: true },
+      { id: "t3", name: "Dr. Vikram Seth", role: "Clinic Director, Vadodara", quote: "Emergency support and the tracking app make after-care extremely simple. Highly recommended aligner partner with unmatched support.", avatar: "VS", rating: 5.0, sortOrder: 2, isVisible: true }
+    ];
+  }
 }
 
 export async function saveTestimonial(data: any) {
@@ -327,9 +503,23 @@ export async function deleteTestimonial(id: string) {
 // 9. FAQs CRUD Actions
 // ----------------------------------------
 export async function getFAQs() {
-  return await prisma.fAQ.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.fAQ.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        { id: "q1", question: "How do I submit patient scans to Linealign?", answer: "You can send us your patient's intraoral scans (STL files) or physical silicone impressions via WhatsApp (82817 78202) or email (linealign23@gmail.com). We accept scans from all major scanner brands.", category: "Support", sortOrder: 0, isVisible: true },
+        { id: "q2", question: "How fast will I receive the treatment planning estimation?", answer: "You will receive a basic estimate of treatment cost, duration, and alignment method within 10 minutes. A full, interactive 3D treatment simulation will be sent to you for review within 24 hours.", category: "Timeline", sortOrder: 1, isVisible: true }
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      { id: "q1", question: "How do I submit patient scans to Linealign?", answer: "You can send us your patient's intraoral scans (STL files) or physical silicone impressions via WhatsApp (82817 78202) or email (linealign23@gmail.com). We accept scans from all major scanner brands.", category: "Support", sortOrder: 0, isVisible: true },
+      { id: "q2", question: "How fast will I receive the treatment planning estimation?", answer: "You will receive a basic estimate of treatment cost, duration, and alignment method within 10 minutes. A full, interactive 3D treatment simulation will be sent to you for review within 24 hours.", category: "Timeline", sortOrder: 1, isVisible: true }
+    ];
+  }
 }
 
 export async function saveFAQ(data: any) {
@@ -534,24 +724,47 @@ export async function deleteComment(id: string) {
 // 14. Page Builder / Section Ordering
 // ----------------------------------------
 export async function getPageSections() {
-  const sections = await prisma.pageSection.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
-  if (sections.length === 0) {
-    // Seed default order
-    const defaults = [
-      { sectionName: "Hero", isVisible: true, sortOrder: 0 },
-      { sectionName: "AlignerShowcase", isVisible: true, sortOrder: 1 },
-      { sectionName: "Founder", isVisible: true, sortOrder: 2 },
-      { sectionName: "About", isVisible: true, sortOrder: 3 },
-      { sectionName: "WhyChooseUs", isVisible: true, sortOrder: 4 },
-      { sectionName: "Services", isVisible: true, sortOrder: 5 },
-      { sectionName: "Testimonials", isVisible: true, sortOrder: 6 },
+  try {
+    const sections = await prisma.pageSection.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (sections.length === 0) {
+      try {
+        const defaults = [
+          { sectionName: "Hero", isVisible: true, sortOrder: 0 },
+          { sectionName: "AlignerShowcase", isVisible: true, sortOrder: 1 },
+          { sectionName: "Founder", isVisible: true, sortOrder: 2 },
+          { sectionName: "About", isVisible: true, sortOrder: 3 },
+          { sectionName: "WhyChooseUs", isVisible: true, sortOrder: 4 },
+          { sectionName: "Services", isVisible: true, sortOrder: 5 },
+          { sectionName: "Testimonials", isVisible: true, sortOrder: 6 },
+        ];
+        await prisma.pageSection.createMany({ data: defaults });
+        return await prisma.pageSection.findMany({ orderBy: { sortOrder: "asc" } });
+      } catch (writeErr) {
+        return [
+          { id: "sec1", sectionName: "Hero", isVisible: true, sortOrder: 0 },
+          { id: "sec2", sectionName: "AlignerShowcase", isVisible: true, sortOrder: 1 },
+          { id: "sec3", sectionName: "Founder", isVisible: true, sortOrder: 2 },
+          { id: "sec4", sectionName: "About", isVisible: true, sortOrder: 3 },
+          { id: "sec5", sectionName: "WhyChooseUs", isVisible: true, sortOrder: 4 },
+          { id: "sec6", sectionName: "Services", isVisible: true, sortOrder: 5 },
+          { id: "sec7", sectionName: "Testimonials", isVisible: true, sortOrder: 6 }
+        ];
+      }
+    }
+    return sections;
+  } catch (err) {
+    return [
+      { id: "sec1", sectionName: "Hero", isVisible: true, sortOrder: 0 },
+      { id: "sec2", sectionName: "AlignerShowcase", isVisible: true, sortOrder: 1 },
+      { id: "sec3", sectionName: "Founder", isVisible: true, sortOrder: 2 },
+      { id: "sec4", sectionName: "About", isVisible: true, sortOrder: 3 },
+      { id: "sec5", sectionName: "WhyChooseUs", isVisible: true, sortOrder: 4 },
+      { id: "sec6", sectionName: "Services", isVisible: true, sortOrder: 5 },
+      { id: "sec7", sectionName: "Testimonials", isVisible: true, sortOrder: 6 }
     ];
-    await prisma.pageSection.createMany({ data: defaults });
-    return await prisma.pageSection.findMany({ orderBy: { sortOrder: "asc" } });
   }
-  return sections;
 }
 
 export async function updateSectionVisibility(id: string, isVisible: boolean) {
