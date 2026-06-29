@@ -35,7 +35,10 @@ export default function PricingClient({ plans }: { plans: PlanItem[] }) {
       ];
 
   return (
-    <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
+    <div
+      className="relative min-h-screen bg-slate-50 pb-20 overflow-hidden"
+      style={{ paddingTop: "calc(var(--header-height, 144px) + 2rem)" }}
+    >
       {/* Background glow spots */}
       <div className="absolute top-[10%] left-[-10%] glow-spot-blue" />
       <div className="absolute top-[50%] right-[-10%] glow-spot-teal" />

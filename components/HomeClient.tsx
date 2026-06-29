@@ -165,7 +165,10 @@ export default function HomeClient({
               <div className="absolute bottom-0 left-0 right-0 h-32 z-10" style={{ background: "linear-gradient(to top, rgba(10,20,40,0.5), transparent)" }} />
             </div>
 
-            <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 pt-[160px] sm:pt-[180px] pb-16 lg:pb-28">
+            <div
+              className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 pb-16 lg:pb-28"
+              style={{ paddingTop: "calc(var(--header-height, 160px) + 2rem)" }}
+            >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}

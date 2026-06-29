@@ -79,7 +79,10 @@ export default function FAQContactClient({ settings }: FAQContactClientProps) {
   const googleMapsUrl = settings.googleMapsLink || "https://maps.google.com/maps?q=Kasaragod,%20Kerala,%20India&z=13&output=embed";
 
   return (
-    <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
+    <div
+      className="relative min-h-screen bg-slate-50 pb-20 overflow-hidden"
+      style={{ paddingTop: "calc(var(--header-height, 144px) + 2rem)" }}
+    >
       {/* Background glow blobs */}
       <div className="absolute top-[10%] left-[-15%] glow-spot-blue" />
       <div className="absolute bottom-[20%] right-[-15%] glow-spot-teal" />
