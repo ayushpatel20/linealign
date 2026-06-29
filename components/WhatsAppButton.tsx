@@ -3,8 +3,16 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { usePathname } from "next/navigation";
+
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
   const phoneNumber = "918281778202";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=Hello%20Linealign%20Dental%20Lab%2c%20I%20would%20like%20to%20inquire%20about%20your%20clear%20aligners.`;
 

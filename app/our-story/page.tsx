@@ -1,10 +1,27 @@
-"use client";
-
 import { Sparkles, TrendingUp, Users, Award, ShieldCheck, Heart, ChevronRight, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { getAboutConfig } from "@/app/actions/cms-actions";
 
-export default function OurStory() {
+export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Our Story & Journey | LINEALIGN DENTAL LAB",
+  description: "Learn about the leading clear aligner laboratory in Kasaragod, Kerala. Stand at the intersection of orthodontics and material science.",
+};
+
+export default async function OurStoryPage() {
+  const about = await getAboutConfig();
+  
+  // Parse stats list
+  const statsList = about.statsJson
+    ? JSON.parse(about.statsJson)
+    : [
+        { value: "250", label: "Employees" },
+        { value: "100+", label: "Major Customers" },
+        { value: "50", label: "Platforms Supported" },
+        { value: "1M", label: "Daily Active Users" }
+      ];
+
   return (
     <div className="relative min-h-screen bg-slate-50 pt-36 pb-20 overflow-hidden">
       {/* Background glow spots */}
@@ -45,10 +62,10 @@ export default function OurStory() {
             <h3 className="text-xl font-bold text-dark font-poppins flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-secondary" /> Why We Are Different
             </h3>
-            <p className="text-slate-605 text-sm leading-relaxed">
+            <p className="text-slate-655 text-sm leading-relaxed">
               Unlike generic aligner providers, LINEALIGN partners directly with practices to provide full-cycle marketing kits, immediate 10-minute cost estimations, and 24-hour treatment planning simulation setups. We stand by our doctors with free refinements and re-submissions.
             </p>
-            <p className="text-slate-605 text-sm leading-relaxed">
+            <p className="text-slate-655 text-sm leading-relaxed">
               We believe aligner care should be Clear, Comfort and Confident. That is our promise to clinical practitioners and patient smiles alike.
             </p>
           </div>
@@ -68,27 +85,12 @@ export default function OurStory() {
           </div>
 
           <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            
-            <div className="space-y-2">
-              <div className="text-3xl sm:text-5xl font-black text-white font-poppins">250</div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Employees</p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-3xl sm:text-5xl font-black text-secondary font-poppins">100+</div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Major Customers</p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-3xl sm:text-5xl font-black text-white font-poppins">50</div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Platforms Supported</p>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-3xl sm:text-5xl font-black text-primary font-poppins">1M</div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">Daily Active Users</p>
-            </div>
-
+            {statsList.map((stat: any, index: number) => (
+              <div key={index} className="space-y-2">
+                <div className="text-3xl sm:text-5xl font-black text-white font-poppins">{stat.value}</div>
+                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-wider">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 

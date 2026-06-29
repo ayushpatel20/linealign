@@ -5,9 +5,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Send, ArrowUpRight } from "lucide-react";
 
-export default function Footer() {
+import { usePathname } from "next/navigation";
+
+interface FooterProps {
+  settings?: {
+    websiteName: string;
+    logo: string;
+    officeAddress: string;
+    contactPhone: string;
+    contactEmail: string;
+  };
+}
+
+export default function Footer({ settings }: FooterProps) {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
+  const logoUrl = settings?.logo || "/logo.jpeg";
+  const officeAddress = settings?.officeAddress || "83, Pookkayam, Malakallu, Kasaragod, Kerala, India";
+  const contactPhone = settings?.contactPhone || "8281778202";
+  const contactEmail = settings?.contactEmail || "linealign23@gmail.com";
+  const websiteName = settings?.websiteName || "Linealign Dental Lab";
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +53,7 @@ export default function Footer() {
           <div className="space-y-6">
             <Link href="/" className="inline-flex bg-white p-2.5 rounded-2xl border border-white/50 shadow-md">
               <Image
-                src="/logo.jpeg"
+                src={logoUrl}
                 alt="LINEALIGN DENTAL LAB"
                 width={225}
                 height={115}
@@ -96,19 +119,16 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-slate-400 leading-relaxed">
-                  83, Pookkayam, Malakallu,<br />
-                  Near Indian Oil Petrol Pump,<br />
-                  Malakallu PO, PIN 671532,<br />
-                  Kasaragod District, Kerala, India
+                  {officeAddress}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-secondary flex-shrink-0" />
-                <a href="tel:8281778202" className="hover:text-white transition-colors text-sm">82817 78202</a>
+                <a href={`tel:${contactPhone}`} className="hover:text-white transition-colors text-sm">{contactPhone}</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-secondary flex-shrink-0" />
-                <a href="mailto:linealign23@gmail.com" className="hover:text-white transition-colors text-sm">linealign23@gmail.com</a>
+                <a href={`mailto:${contactEmail}`} className="hover:text-white transition-colors text-sm">{contactEmail}</a>
               </li>
             </ul>
           </div>
@@ -147,12 +167,12 @@ export default function Footer() {
         {/* Map and Legal Bottom */}
         <div className="border-t border-slate-800/80 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-500">
-            &copy; {new Date().getFullYear()} LINEALIGN DENTAL LAB. All rights reserved.
+            &copy; {new Date().getFullYear()} {websiteName}. All rights reserved.
           </p>
           <div className="flex space-x-6 text-xs text-slate-500">
-            <a href="#" className="hover:text-slate-300">Privacy Policy</a>
-            <a href="#" className="hover:text-slate-300">Terms of Use</a>
-            <a href="#" className="hover:text-slate-300">Sitemap</a>
+            <a href="#" className="hover:text-slate-350">Privacy Policy</a>
+            <a href="#" className="hover:text-slate-350">Terms of Use</a>
+            <a href="#" className="hover:text-slate-350">Sitemap</a>
           </div>
         </div>
       </div>

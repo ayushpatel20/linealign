@@ -1,0 +1,219 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// User Model for role-based authentication
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("VIEWER") // ADMIN, EDITOR, VIEWER
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Site Settings Config Table (Singleton)
+model SiteSettings {
+  id              String   @id @default("settings")
+  websiteName     String   @default("Linealign Dental Lab")
+  logo            String   @default("/logo.jpeg")
+  favicon         String   @default("/favicon.ico")
+  themePrimary    String   @default("#2A84FF")
+  themeSecondary  String   @default("#2EC7D6")
+  whatsappNumber  String   @default("918281778202")
+  contactPhone    String   @default("8281778202")
+  contactEmail    String   @default("linealign23@gmail.com")
+  officeAddress   String   @default("83, Pookkayam, Malakallu, Kasaragod, Kerala, India")
+  workingHours    String   @default("24/7 Working Laboratory")
+  googleMapsLink  String   @default("https://maps.google.com/maps?q=Kasaragod,%20Kerala,%20India&z=13&output=embed")
+  metaTitle       String   @default("Linealign Dental Lab - Clear Aligner Laboratory")
+  metaDescription String   @default("Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.")
+  metaKeywords    String   @default("clear aligners, dental laboratory, orthodontics, invisible braces")
+  updatedAt       DateTime @updatedAt
+}
+
+// Navbar Configurations
+model NavbarConfig {
+  id           String  @id @default("navbar")
+  sticky       Boolean @default(true)
+  logoSize     Int     @default(84) // in pixels (height)
+  menuItemsJson String @default("[{\"name\":\"Home\",\"href\":\"/\"},{\"name\":\"Solutions\",\"href\":\"/solutions\"},{\"name\":\"Pricing\",\"href\":\"/pricing\"},{\"name\":\"Our Story\",\"href\":\"/our-story\"},{\"name\":\"Contact Us\",\"href\":\"/faq\"}]")
+  ctaText      String  @default("Book Consultation")
+  ctaUrl       String  @default("/faq")
+}
+
+// Hero Section Config
+model HeroConfig {
+  id           String  @id @default("hero")
+  badgeText    String  @default("WELCOME TO LINEALIGN DENTAL LAB")
+  title        String  @default("Your Smile, Our Precision.")
+  description  String  @default("Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.")
+  bgImage      String  @default("/generated_aligner_hero.png")
+  bgVideo      String  @default("/images/aligner.mp4")
+  featuresJson String  @default("[\"24/7 Working Lab\",\"Full-Time Orthodontists\",\"ISO Certified Dental Laboratory\",\"FDA Grade Aligners\",\"Premium Clear Aligners\"]")
+  ctaText      String  @default("Book Consultation")
+  ctaUrl       String  @default("/faq")
+  whatsappUrl  String  @default("https://wa.me/918281778202")
+}
+
+// About / Stats Section Config
+model AboutConfig {
+  id           String  @id @default("about")
+  badgeText    String  @default("Discover Our Story")
+  title        String  @default("Welcome to Linealign Dental Lab")
+  description  String  @default("Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.")
+  linkText     String  @default("Learn More About Our Journey")
+  linkUrl      String  @default("/our-story")
+  statsJson    String  @default("[{\"label\":\"Premium Quality\",\"value\":\"100%\"},{\"label\":\"Digital Workflow\",\"value\":\"100%\"},{\"label\":\"Expert Team\",\"value\":\"250+\"},{\"label\":\"Working Lab\",\"value\":\"24/7\"}]")
+}
+
+// Founder configurations
+model Founder {
+  id             String   @id @default(uuid())
+  name           String
+  photo          String
+  designation    String
+  qualification  String
+  description    String   @default("")
+  experience     String   @default("")
+  socialLinksJson String  @default("[]")
+  badge          String   @default("Founder")
+  sortOrder      Int      @default(0)
+  isVisible      Boolean  @default(true)
+  createdAt      DateTime @default(now())
+}
+
+// Dynamic services / solutions
+model Service {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  image       String   @default("")
+  video       String   @default("")
+  icon        String   @default("Layers") // Lucide icon name
+  buttonText  String   @default("Details")
+  buttonUrl   String   @default("/solutions")
+  seoUrl      String   @unique
+  sortOrder   Int      @default(0)
+  isVisible   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+// Why Choose Us Advantage Cards
+model WhyChooseUs {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  icon        String   @default("Clock") // Lucide icon name
+  sortOrder   Int      @default(0)
+  isVisible   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+// Dynamic testimonials
+model Testimonial {
+  id        String   @id @default(uuid())
+  name      String
+  role      String
+  quote     String
+  avatar    String   @default("")
+  rating    Float    @default(5.0)
+  sortOrder Int      @default(0)
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// Dynamic FAQs
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String
+  category  String   @default("General")
+  sortOrder Int      @default(0)
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// Unlimited Pricing Plans
+model PricingPlan {
+  id           String   @id @default(uuid())
+  name         String
+  description  String
+  priceUsd     String
+  priceInr     String
+  details      String
+  featuresJson String   @default("[]")
+  popular      Boolean  @default(false)
+  discount     String   @default("")
+  sortOrder    Int      @default(0)
+  isVisible    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+// Dynamic gallery items
+model GalleryItem {
+  id        String   @id @default(uuid())
+  title     String
+  url       String
+  type      String   @default("IMAGE") // IMAGE, VIDEO, PDF
+  category  String   @default("Certificates") // Certificates, Lab, Doctors
+  sortOrder Int      @default(0)
+  isVisible Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+// Blog Posts
+model BlogPost {
+  id             String    @id @default(uuid())
+  title          String
+  slug           String    @unique
+  content        String
+  excerpt        String
+  featuredImage  String
+  category       String    @default("Orthodontics")
+  tagsJson       String    @default("[]")
+  author         String    @default("Admin")
+  isPublished    Boolean   @default(true)
+  seoTitle       String    @default("")
+  seoDescription String    @default("")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  comments       Comment[]
+}
+
+// Comments on Blog Posts
+model Comment {
+  id          String   @id @default(uuid())
+  postSlug    String
+  post        BlogPost @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
+  authorName  String
+  authorEmail String
+  content     String
+  isApproved  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+// Media Registry
+model MediaItem {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  type      String
+  size      Int
+  createdAt DateTime @default(now())
+}
+
+// Page Builder Sections
+model PageSection {
+  id          String   @id @default(uuid())
+  sectionName String   @unique // e.g., Hero, About, Services, WhyChooseUs, Founder, Testimonials, FAQ
+  isVisible   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}

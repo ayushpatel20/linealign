@@ -48,11 +48,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+import AuthProvider from "@/components/AuthProvider";
+import { getSiteSettings, getNavbarConfig } from "@/app/actions/cms-actions";
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Fetch configurations dynamically
+  const [settings, navbar] = await Promise.all([
+    getSiteSettings(),
+    getNavbarConfig(),
+  ]);
+
   return (
     <html
       lang="en"
@@ -63,10 +72,12 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-white text-dark select-text font-sans"
         suppressHydrationWarning={true}
       >
-        <Header />
-        <main className="flex-grow">{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <AuthProvider>
+          <Header config={navbar} settings={settings} />
+          <main className="flex-grow">{children}</main>
+          <Footer settings={settings} />
+          <WhatsAppButton />
+        </AuthProvider>
       </body>
     </html>
   );

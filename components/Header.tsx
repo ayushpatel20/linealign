@@ -7,18 +7,49 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Menu, X, ArrowRight, Clock, MapPin, Mail, Phone, Smile } from "lucide-react";
 
-const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Our Story", href: "/our-story" },
-  { name: "Contact Us", href: "/faq" },
-];
+interface HeaderProps {
+  config?: {
+    sticky: boolean;
+    logoSize: number;
+    menuItemsJson: string;
+    ctaText: string;
+    ctaUrl: string;
+  };
+  settings?: {
+    logo: string;
+    contactPhone: string;
+    contactEmail: string;
+    workingHours: string;
+  };
+}
 
-export default function Header() {
+export default function Header({ config, settings }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  if (pathname?.startsWith("/admin")) {
+    return null;
+  }
+
+  // Parse menu items
+  const menuItems = config?.menuItemsJson
+    ? JSON.parse(config.menuItemsJson)
+    : [
+        { name: "Home", href: "/" },
+        { name: "Solutions", href: "/solutions" },
+        { name: "Pricing", href: "/pricing" },
+        { name: "Our Story", href: "/our-story" },
+        { name: "Contact Us", href: "/faq" },
+      ];
+
+  const logoUrl = settings?.logo || "/logo.jpeg";
+  const logoHeight = config?.logoSize || 84;
+  const ctaText = config?.ctaText || "Book Consultation";
+  const ctaUrl = config?.ctaUrl || "/faq";
+  const contactPhone = settings?.contactPhone || "8281778202";
+  const contactEmail = settings?.contactEmail || "linealign23@gmail.com";
+  const workingHours = settings?.workingHours || "24/7 Working Lab";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +70,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex flex-wrap justify-center items-center gap-4">
             <span className="flex items-center gap-1.5">
-              <span>🦷</span> 24/7 Working Lab
+              <span>🦷</span> {workingHours}
             </span>
             <span className="hidden sm:inline text-white/30">•</span>
             <span className="flex items-center gap-1.5">
@@ -51,8 +82,8 @@ export default function Header() {
               <span>📍</span> Kasaragod, Kerala
             </span>
             <span className="hidden sm:inline text-white/30">•</span>
-            <a href="mailto:linealign23@gmail.com" className="flex items-center gap-1.5 hover:underline">
-              <span>📧</span> linealign23@gmail.com
+            <a href={`mailto:${contactEmail}`} className="flex items-center gap-1.5 hover:underline">
+              <span>📧</span> {contactEmail}
             </a>
           </div>
         </div>
@@ -76,11 +107,12 @@ export default function Header() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src="/logo.jpeg"
+                  src={logoUrl}
                   alt="LINEALIGN DENTAL LAB"
                   width={360}
                   height={180}
-                  className="h-[70px] md:h-[84px] w-auto object-contain rounded-lg hover:scale-[1.02] transition-transform duration-300"
+                  className="w-auto object-contain rounded-lg hover:scale-[1.02] transition-transform duration-300"
+                  style={{ height: `${logoHeight}px` }}
                   priority
                 />
               </Link>
@@ -88,7 +120,7 @@ export default function Header() {
 
             {/* Navigation - Desktop */}
             <nav className="hidden md:flex space-x-8 items-center justify-center flex-1 max-w-2xl mx-auto">
-              {navItems.map((item) => {
+              {menuItems.map((item: any) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
@@ -115,10 +147,10 @@ export default function Header() {
             {/* CTA Button */}
             <div className="hidden md:flex items-center">
               <Link
-                href="/faq"
+                href={ctaUrl}
                 className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all cursor-pointer"
               >
-                Book Consultation
+                {ctaText}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -144,7 +176,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden mt-2 rounded-[2rem] bg-white/95 backdrop-blur-lg border border-white/50 shadow-2xl py-6 px-6 animate-in slide-in-from-top duration-300">
             <div className="flex flex-col space-y-4">
-              {navItems.map((item) => {
+              {menuItems.map((item: any) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
@@ -163,11 +195,11 @@ export default function Header() {
               })}
               <div className="pt-4 border-t border-slate-100">
                 <Link
-                  href="/faq"
+                  href={ctaUrl}
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary shadow-md shadow-primary/10"
                 >
-                  Book Consultation
+                  {ctaText}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
