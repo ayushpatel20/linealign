@@ -554,9 +554,147 @@ export async function deleteFAQ(id: string) {
 // 10. Pricing Plans CRUD Actions
 // ----------------------------------------
 export async function getPricingPlans() {
-  return await prisma.pricingPlan.findMany({
-    orderBy: { sortOrder: "asc" },
-  });
+  try {
+    const list = await prisma.pricingPlan.findMany({
+      orderBy: { sortOrder: "asc" },
+    });
+    if (list.length === 0) {
+      return [
+        {
+          id: "p1",
+          name: "Simple Case",
+          description: "Ideal for minor spacing, crowding, or orthodontic alignment corrections.",
+          priceUsd: "300",
+          priceInr: "300",
+          details: "Less than 15 Tray sets",
+          featuresJson: JSON.stringify([
+            "Less than 15 Tray sets",
+            "Retainers included",
+            "Splints included",
+            "Aligner Carrying Box",
+            "Free Re-Submission (Refinements)",
+            "Treatment Tracking integration",
+          ]),
+          popular: false,
+          discount: "",
+          sortOrder: 0,
+          isVisible: true,
+          createdAt: new Date(),
+        },
+        {
+          id: "p2",
+          name: "Complex Case",
+          description: "Designed for advanced misalignment and full-arch restorative rotation.",
+          priceUsd: "750",
+          priceInr: "600",
+          details: "More than 15 Tray Sets",
+          featuresJson: JSON.stringify([
+            "More than 15 Tray Sets",
+            "Unlimited Trays for Single Case",
+            "Retainers included",
+            "Splints included",
+            "Aligner Carrying Box",
+            "Free Re-Submission (Refinements)",
+            "Treatment Tracking integration",
+          ]),
+          popular: true,
+          discount: "",
+          sortOrder: 1,
+          isVisible: true,
+          createdAt: new Date(),
+        },
+        {
+          id: "p3",
+          name: "3 Complex Cases",
+          description: "Best value bundle for clinical practices handling multiple cases simultaneously.",
+          priceUsd: "1850",
+          priceInr: "1,500",
+          details: "3 Cases with all Benefits",
+          featuresJson: JSON.stringify([
+            "3 Cases with all Benefits",
+            "1 Year valid duration",
+            "Priority clinical support",
+            "Retainers, Splints & Cases",
+            "Free Re-Submissions included",
+            "Treatment Tracking dashboard",
+          ]),
+          popular: false,
+          discount: "",
+          sortOrder: 2,
+          isVisible: true,
+          createdAt: new Date(),
+        },
+      ];
+    }
+    return list;
+  } catch (err) {
+    return [
+      {
+        id: "p1",
+        name: "Simple Case",
+        description: "Ideal for minor spacing, crowding, or orthodontic alignment corrections.",
+        priceUsd: "300",
+        priceInr: "300",
+        details: "Less than 15 Tray sets",
+        featuresJson: JSON.stringify([
+          "Less than 15 Tray sets",
+          "Retainers included",
+          "Splints included",
+          "Aligner Carrying Box",
+          "Free Re-Submission (Refinements)",
+          "Treatment Tracking integration",
+        ]),
+        popular: false,
+        discount: "",
+        sortOrder: 0,
+        isVisible: true,
+        createdAt: new Date(),
+      },
+      {
+        id: "p2",
+        name: "Complex Case",
+        description: "Designed for advanced misalignment and full-arch restorative rotation.",
+        priceUsd: "750",
+        priceInr: "600",
+        details: "More than 15 Tray Sets",
+        featuresJson: JSON.stringify([
+          "More than 15 Tray Sets",
+          "Unlimited Trays for Single Case",
+          "Retainers included",
+          "Splints included",
+          "Aligner Carrying Box",
+          "Free Re-Submission (Refinements)",
+          "Treatment Tracking integration",
+        ]),
+        popular: true,
+        discount: "",
+        sortOrder: 1,
+        isVisible: true,
+        createdAt: new Date(),
+      },
+      {
+        id: "p3",
+        name: "3 Complex Cases",
+        description: "Best value bundle for clinical practices handling multiple cases simultaneously.",
+        priceUsd: "1850",
+        priceInr: "1,500",
+        details: "3 Cases with all Benefits",
+        featuresJson: JSON.stringify([
+          "3 Cases with all Benefits",
+          "1 Year valid duration",
+          "Priority clinical support",
+          "Retainers, Splints & Cases",
+          "Free Re-Submissions included",
+          "Treatment Tracking dashboard",
+        ]),
+        popular: false,
+        discount: "",
+        sortOrder: 2,
+        isVisible: true,
+        createdAt: new Date(),
+      },
+    ];
+  }
 }
 
 export async function savePricingPlan(data: any) {
