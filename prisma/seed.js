@@ -155,7 +155,7 @@ async function main() {
         socialLinksJson: JSON.stringify([]),
       },
       {
-        name: "Dr. SHOUKATHALI P H",
+        name: "Dr. Shoukathali P. H",
         photo: "/shoukath.jpg",
         designation: "Co-Founder",
         qualification: "BDS, MDS",

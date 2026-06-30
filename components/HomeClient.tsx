@@ -272,7 +272,7 @@ export default function HomeClient({
             qualification = "Orthodontist & Aligner Specialist";
             designation = "";
           } else if (f.name.toLowerCase().includes("shoukath")) {
-            name = "Shoukath";
+            name = "Dr. Shoukathali P. H";
             qualification = "Orthodontist & Aligner Specialist";
             designation = "";
           }

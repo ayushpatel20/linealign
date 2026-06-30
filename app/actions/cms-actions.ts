@@ -260,7 +260,7 @@ export async function getFounders() {
         },
         {
           id: "f2",
-          name: "Dr. SHOUKATHALI P H",
+          name: "Dr. Shoukathali P. H",
           photo: "/shoukath.jpg",
           designation: "Co-Founder",
           qualification: "BDS, MDS",
@@ -291,7 +291,7 @@ export async function getFounders() {
       },
       {
         id: "f2",
-        name: "Dr. SHOUKATHALI P H",
+        name: "Dr. Shoukathali P. H",
         photo: "/shoukath.jpg",
         designation: "Co-Founder",
         qualification: "BDS, MDS",
