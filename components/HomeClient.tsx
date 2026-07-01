@@ -638,16 +638,15 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ─── Expansion Section ─── */}
       <section className="py-24 bg-gradient-to-br from-[#EEF8FF] to-white border-b border-blue-50" aria-labelledby="expansion-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="space-y-6"
+              className="space-y-6 lg:col-start-1 lg:row-start-1 lg:self-end"
             >
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
                 Arch Expansion
@@ -658,28 +657,14 @@ export default function HomeClient({
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Linealign aligners incorporate integrated expansion mechanics that generate lateral arch width without requiring extractions. Our clinically engineered expansion components deliver controlled, predictable arch development for both upper and lower dentitions.
               </p>
-              <ul className="space-y-3">
-                {[
-                  "Transverse Arch Development",
-                  "Non-extraction Space Creation",
-                  "Crowding Resolution",
-                  "Upper & Lower Arch Coordination",
-                  "Controlled Lateral Expansion Forces",
-                  "Predictable Clinical Outcomes"
-                ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
-                    <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
             </motion.div>
+            
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2"
             >
               <div
                 className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500"
@@ -704,6 +689,30 @@ export default function HomeClient({
               <p className="text-slate-500 text-xs font-bold uppercase tracking-wider text-center">
                 Clinical Before &amp; After Expansion Results
               </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-start-1 lg:row-start-2 lg:self-start lg:mt-6"
+            >
+              <ul className="space-y-3">
+                {[
+                  "Transverse Arch Development",
+                  "Non-extraction Space Creation",
+                  "Crowding Resolution",
+                  "Upper & Lower Arch Coordination",
+                  "Controlled Lateral Expansion Forces",
+                  "Predictable Clinical Outcomes"
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-slate-700 text-sm font-medium">
+                    <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </div>
@@ -739,16 +748,35 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ─── Inter Maxillary Elastics ─── */}
       <section className="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-b border-blue-50" aria-labelledby="elastics-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+            {/* Header: Badge, Heading, Description */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6 lg:col-start-2 lg:row-start-1 lg:self-end"
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+                Bite Correction
+              </span>
+              <h2 id="elastics-heading" className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+                Inter Maxillary Elastics
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Linealign aligners are engineered with precision elastic slits to support inter-maxillary elastics — delivering powerful bite correction forces while maintaining aligner comfort and aesthetics.
+              </p>
+            </motion.div>
+
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col items-center gap-4 order-1 lg:order-1"
+              className="flex flex-col items-center gap-4 lg:col-start-1 lg:row-start-1 lg:row-span-2"
             >
               <div
                 className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500"
@@ -771,22 +799,15 @@ export default function HomeClient({
                 </div>
               </div>
             </motion.div>
+
+            {/* Features & CTA */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="space-y-6 order-2 lg:order-2"
+              className="space-y-6 lg:col-start-2 lg:row-start-2 lg:self-start lg:mt-6"
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
-                Bite Correction
-              </span>
-              <h2 id="elastics-heading" className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
-                Inter Maxillary Elastics
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Linealign aligners are engineered with precision elastic slits to support inter-maxillary elastics — delivering powerful bite correction forces while maintaining aligner comfort and aesthetics.
-              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   { icon: "Activity", text: "Bite Correction" },
@@ -815,16 +836,16 @@ export default function HomeClient({
         </div>
       </section>
 
-      {/* ─── Attachments Section ─── */}
       <section className="py-24 bg-white border-b border-blue-50/50" aria-labelledby="attachments-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+            {/* Header: Badge, Heading, Description */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="space-y-6"
+              className="space-y-6 lg:col-start-1 lg:row-start-1 lg:self-end"
             >
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
                 Precision Biomechanics
@@ -835,21 +856,15 @@ export default function HomeClient({
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 Our precision-engineered composite attachments are strategically designed to control complex tooth movements that would otherwise be impossible with aligner forces alone. Each attachment is custom-positioned based on the digital treatment plan.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {["Rotation Control", "Torque Management", "Tooth Extrusion", "Intrusion Mechanics", "Aligner Retention", "Precision Root Movement", "Complex Case Solutions", "Predictable Outcomes"].map((item) => (
-                  <div key={item} className="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
-                    <div className="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
-                    {item}
-                  </div>
-                ))}
-              </div>
             </motion.div>
+
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2"
             >
               <div
                 className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500"
@@ -874,20 +889,57 @@ export default function HomeClient({
                 Engineered Attachment Biomechanics
               </p>
             </motion.div>
+
+            {/* Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6 lg:col-start-1 lg:row-start-2 lg:self-start lg:mt-6"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {["Rotation Control", "Torque Management", "Tooth Extrusion", "Intrusion Mechanics", "Aligner Retention", "Precision Root Movement", "Complex Case Solutions", "Predictable Outcomes"].map((item) => (
+                  <div key={item} className="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+                    <div className="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ─── Missing Tooth Management ─── */}
       <section className="py-24 bg-gradient-to-br from-[#EEF8FF] to-white border-b border-blue-50" aria-labelledby="missing-tooth-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+            {/* Header: Badge, Heading, Description */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="space-y-6 lg:col-start-2 lg:row-start-1 lg:self-end"
+            >
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+                Prosthetic Integration
+              </span>
+              <h2 id="missing-tooth-heading" className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+                Missing Tooth Management with Aligners
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Linealign aligners can incorporate an integrated pontic — a natural-looking tooth replica — directly inside the aligner tray to maintain aesthetics and function during orthodontic treatment when a tooth is missing.
+              </p>
+            </motion.div>
+
+            {/* Image */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col items-center gap-4"
+              className="flex flex-col items-center gap-4 lg:col-start-1 lg:row-start-1 lg:row-span-2"
             >
               <div
                 className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500"
@@ -912,22 +964,15 @@ export default function HomeClient({
                 Integrated Pontic – Missing Tooth Solution
               </p>
             </motion.div>
+
+            {/* Features */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
-              className="space-y-6"
+              className="space-y-6 lg:col-start-2 lg:row-start-2 lg:self-start lg:mt-6"
             >
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
-                Prosthetic Integration
-              </span>
-              <h2 id="missing-tooth-heading" className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
-                Missing Tooth Management with Aligners
-              </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Linealign aligners can incorporate an integrated pontic — a natural-looking tooth replica — directly inside the aligner tray to maintain aesthetics and function during orthodontic treatment when a tooth is missing.
-              </p>
               <div className="space-y-3">
                 {[
                   { icon: "Smile", title: "Integrated Pontic", desc: "Natural tooth replica built into the aligner tray" },
@@ -953,19 +998,55 @@ export default function HomeClient({
       </section>
 
       {/* ─── TADs Incorporated Aligners ─── */}
-      <section className="py-24 bg-white border-b border-blue-50/50" aria-labelledby="tads-incorporated-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
-              Advanced Orthodontics
-            </span>
-            <h2 id="tads-incorporated-heading" className="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
-              TADs Incorporated Aligners
-            </h2>
-            <p className="text-xl text-primary font-bold">Aligners for Functional Skeletal Cases</p>
-            <p className="text-slate-500 text-sm sm:text-base">
-              By integrating Temporary Anchorage Devices with clear aligner therapy, Linealign enables treatment of complex skeletal cases that were traditionally limited to conventional orthodontics or orthognathic surgery.
-            </p>
+      <section className="py-24 bg-gradient-to-br from-[#0F1F3D] to-[#1a3460] text-white relative overflow-hidden border-b border-white/5" aria-labelledby="tads-incorporated-heading">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,199,214,0.12)_0%,transparent_60%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(42,132,255,0.10)_0%,transparent_60%)] pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            <div className="lg:col-span-7 space-y-4 text-left">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/20 border border-secondary/30 uppercase tracking-wider">
+                Advanced Orthodontics
+              </span>
+              <h2 id="tads-incorporated-heading" className="text-3xl sm:text-4xl font-extrabold text-white font-poppins tracking-tight">
+                TADs Incorporated Aligners
+              </h2>
+              <p className="text-xl text-secondary font-bold font-poppins">Aligners for Functional Skeletal Cases</p>
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed">
+                By integrating Temporary Anchorage Devices with clear aligner therapy, Linealign enables treatment of complex skeletal cases that were traditionally limited to conventional orthodontics or orthognathic surgery.
+              </p>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-5 flex flex-col gap-3"
+            >
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-pointer group hover:shadow-[0_8px_40px_rgba(46,199,214,0.2)] transition-all duration-500"
+                onClick={() => openLightbox("/images/tad_clinical_1.jpeg", "TAD in Clear Aligner – Frontal view of Temporary Anchorage Device with Elastics for Orthodontic Correction")}
+              >
+                <Image
+                  src="/images/tad_clinical_1.jpeg"
+                  alt="TAD Temporary Anchorage Device with Elastics Inside Clear Aligner for Skeletal Anchorage and Orthodontic Correction – Frontal View"
+                  width={700}
+                  height={460}
+                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+                <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 flex items-end justify-start p-5 transition-all">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow">
+                    🔍 View Full Image
+                  </span>
+                </div>
+              </div>
+              <p className="text-white/50 text-[10px] font-bold uppercase tracking-wider text-center">
+                TAD + Elastics with Aligner – Frontal View
+              </p>
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -983,34 +1064,34 @@ export default function HomeClient({
               <motion.div
                 key={item.title}
                 whileHover={{ y: -4 }}
-                className="p-6 bg-white rounded-2xl border border-slate-150/50 shadow-xs hover:shadow-md hover:border-primary/20 transition-all space-y-3"
+                className="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-xs hover:shadow-md hover:border-secondary/30 hover:bg-white/10 transition-all space-y-3"
               >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary/10 to-secondary/10 flex items-center justify-center text-primary">
+                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-secondary">
                   <DynamicIcon name={item.icon} className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-dark font-poppins">{item.title}</h3>
-                <p className="text-slate-500 text-xs leading-relaxed">{item.desc}</p>
+                <h3 className="text-base font-bold text-white font-poppins">{item.title}</h3>
+                <p className="text-white/60 text-xs leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-[2rem] p-8 border border-primary/10">
-              <h3 className="text-xl font-bold text-dark font-poppins mb-6 flex items-center gap-2">
-                <Target className="w-5 h-5 text-primary" />
+            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] rounded-[2rem] p-8 border border-white/10">
+              <h3 className="text-xl font-bold text-white font-poppins mb-6 flex items-center gap-2">
+                <Target className="w-5 h-5 text-secondary" />
                 Clinical Indications
               </h3>
               <ul className="space-y-3">
                 {["Skeletal Class II & Class III malocclusion", "Anterior open bite (skeletal origin)", "Deep bite with skeletal component", "Molar distalization requirements", "En-masse retraction cases", "Surgical orthodontic alternatives", "Growth modification in adolescents", "Complex adult orthopedic cases"].map((ind) => (
-                  <li key={ind} className="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+                  <li key={ind} className="flex items-center gap-2.5 text-sm text-white/80 font-medium">
                     <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0" />
                     {ind}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-slate-50 to-white rounded-[2rem] p-8 border border-slate-150/50">
-              <h3 className="text-xl font-bold text-dark font-poppins mb-6 flex items-center gap-2">
+            <div className="bg-gradient-to-br from-white/5 to-white/[0.02] rounded-[2rem] p-8 border border-white/10">
+              <h3 className="text-xl font-bold text-white font-poppins mb-6 flex items-center gap-2">
                 <Zap className="w-5 h-5 text-secondary" />
                 Workflow
               </h3>
@@ -1026,157 +1107,18 @@ export default function HomeClient({
                       {wf.step}
                     </span>
                     <div>
-                      <p className="text-sm font-bold text-dark">{wf.title}</p>
-                      <p className="text-xs text-slate-500">{wf.desc}</p>
+                      <p className="text-sm font-bold text-white">{wf.title}</p>
+                      <p className="text-xs text-white/60">{wf.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-6 pt-4 border-t border-slate-100">
+              <div className="mt-6 pt-4 border-t border-white/10">
                 <Link
                   href="/faq"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all"
                 >
                   Book Consultation <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TAD in Aligners – Dark Premium Section ─── */}
-      <section className="py-24 bg-gradient-to-br from-[#0F1F3D] to-[#1a3460] text-white relative overflow-hidden" aria-labelledby="tad-aligners-heading">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,199,214,0.12)_0%,transparent_60%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(42,132,255,0.10)_0%,transparent_60%)] pointer-events-none" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/20 border border-secondary/30 uppercase tracking-wider">
-              Skeletal Anchorage System
-            </span>
-            <h2 id="tad-aligners-heading" className="text-3xl sm:text-4xl font-extrabold text-white font-poppins tracking-tight">
-              TAD in Aligners
-            </h2>
-            <p className="text-white/70 text-sm sm:text-base">
-              Temporary Anchorage Devices combined with Linealign clear aligners — enabling complex orthodontic movements with unprecedented control and predictability.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col gap-3"
-            >
-              <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-pointer group hover:shadow-[0_8px_40px_rgba(46,199,214,0.2)] transition-all duration-500"
-                onClick={() => openLightbox("/images/tad_clinical_1.jpeg", "TAD in Clear Aligner – Frontal view of Temporary Anchorage Device with Elastics for Orthodontic Correction")}
-              >
-                <Image
-                  src="/images/tad_clinical_1.jpeg"
-                  alt="TAD Temporary Anchorage Device with Elastics Inside Clear Aligner for Skeletal Anchorage and Orthodontic Correction – Frontal View"
-                  width={700}
-                  height={460}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 flex items-end justify-start p-5 transition-all">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow">
-                    🔍 View Full Image
-                  </span>
-                </div>
-              </div>
-              <p className="text-white/50 text-xs font-bold uppercase tracking-wider text-center">
-                TAD + Elastics with Aligner – Frontal View
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="flex flex-col gap-3"
-            >
-              <div
-                className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-pointer group hover:shadow-[0_8px_40px_rgba(46,199,214,0.2)] transition-all duration-500"
-                onClick={() => openLightbox("/images/tad_clinical_2.jpeg", "Clear Aligner Close-Up with TAD Integration showing aligner fit and precision of anchorage mechanics")}
-              >
-                <Image
-                  src="/images/tad_clinical_2.jpeg"
-                  alt="Clear Aligner Close-Up with Temporary Anchorage Device Integration showing precision of anchorage mechanics and aligner fit"
-                  width={700}
-                  height={460}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 flex items-end justify-start p-5 transition-all">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow">
-                    🔍 View Full Image
-                  </span>
-                </div>
-              </div>
-              <p className="text-white/50 text-xs font-bold uppercase tracking-wider text-center">
-                Aligner + TAD – Close-Up Clinical View
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white font-poppins">Clinical Applications</h3>
-              <div className="space-y-4">
-                {[
-                  { icon: "Anchor", title: "Temporary Anchorage Devices", desc: "Mini-screws providing absolute skeletal anchorage without patient cooperation" },
-                  { icon: "Zap", title: "Elastic-Supported TADs", desc: "Elastics hooked to TADs for reliable, consistent force delivery" },
-                  { icon: "ArrowUp", title: "Intrusion Mechanics", desc: "Posterior intrusion and anterior segment vertical control" },
-                  { icon: "ChevronsRight", title: "Molar Distalization", desc: "Reliable distal molar movement with zero anchorage loss" },
-                  { icon: "CircleDot", title: "Open Bite Correction", desc: "Skeletal open bite closure with complete vertical control" },
-                  { icon: "Brain", title: "Advanced Orthodontics", desc: "Complex cases that exceed conventional aligner treatment limits" },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-secondary flex-shrink-0">
-                      <DynamicIcon name={item.icon} className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-white">{item.title}</p>
-                      <p className="text-xs text-white/60 mt-0.5">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-white font-poppins">Key Benefits</h3>
-              <div className="space-y-3">
-                {[
-                  { text: "Better Anchorage", desc: "Absolute skeletal anchorage eliminates unwanted tooth movement" },
-                  { text: "Faster Treatment", desc: "Efficient force vectors reduce overall treatment duration" },
-                  { text: "Maximum Control", desc: "Precise 3D tooth movement with minimal side effects" },
-                  { text: "Reduced Side Effects", desc: "No anchorage loss, no proclination, no unwanted tipping" },
-                  { text: "Complex Case Management", desc: "Handle skeletal cases that previously required surgery" },
-                ].map((benefit) => (
-                  <div key={benefit.text} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                    <span className="text-secondary font-black text-base flex-shrink-0 mt-0.5">✔</span>
-                    <div>
-                      <p className="text-sm font-bold text-white">{benefit.text}</p>
-                      <p className="text-xs text-white/55 mt-0.5">{benefit.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="pt-4">
-                <Link
-                  href="/faq"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-dark bg-white hover:bg-slate-50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 duration-300"
-                >
-                  Book Consultation <ArrowRight className="w-4 h-4 text-primary" />
                 </Link>
               </div>
             </div>
