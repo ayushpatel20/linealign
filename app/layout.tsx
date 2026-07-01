@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "Linealign Dental Lab",
     images: [
       {
-        url: "/logo.jpeg",
+        url: "/logo.png",
         width: 800,
         height: 600,
         alt: "LINEALIGN Dental Lab logo",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "LINEALIGN DENTAL LAB | Premium Clear Aligners",
     description: "Premium clear aligner laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.",
-    images: ["/logo.jpeg"],
+    images: ["/logo.png"],
   },
 };
 
