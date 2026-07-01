@@ -354,10 +354,34 @@ export default function HomeClient({
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_bottom_right,rgba(42,132,255,0.04),transparent_70%)] -z-10" />
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 lg:gap-x-12 gap-y-10 items-center">
                 
-                {/* Left Side (~45% width on desktop): Laboratory Image with Glow & Float Animation */}
-                <div className="lg:col-span-5 lg:order-1 order-1 relative group">
+                {/* 1. Header block: Badge, Heading, Description, Highlight Card */}
+                <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:self-end space-y-6">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-black text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-[0.2em] font-poppins">
+                    DISCOVER OUR STORY
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark font-poppins tracking-tight leading-[1.1] sm:leading-[1.15]">
+                    Welcome to Linealign Dental Lab
+                  </h2>
+                  <p className="text-slate-600 leading-relaxed text-base font-normal max-w-2xl">
+                    Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.
+                  </p>
+                  
+                  {/* Laboratory Supporting Content - Styled in a Premium Highlight Card */}
+                  <div className="p-5 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border border-primary/15 backdrop-blur-md rounded-2xl space-y-3 shadow-xs">
+                    <h4 className="text-sm font-bold text-primary uppercase tracking-wider font-poppins flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary animate-pulse" />
+                      Advanced Digital Laboratory
+                    </h4>
+                    <p className="text-slate-655 text-sm leading-relaxed font-medium">
+                      Our advanced digital laboratory is equipped with CAD/CAM technology, precision treatment planning, industrial-grade 3D printing, and rigorous quality assurance to deliver world-class clear aligner solutions.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 2. Image block: Left Column on Desktop, Row 2 on Mobile */}
+                <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2 relative group w-full">
                   {/* Subtle blur glow behind the image */}
                   <div className="absolute -inset-1 rounded-[1.5rem] bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-60 group-hover:opacity-80 transition duration-1000 -z-10" />
                   
@@ -387,31 +411,8 @@ export default function HomeClient({
                   </motion.div>
                 </div>
 
-                {/* Right Side (~55% width on desktop): Welcome content and Statistics */}
-                <div className="lg:col-span-7 lg:order-2 order-2 space-y-6 flex flex-col justify-center">
-                  <div className="space-y-4">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-black text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-[0.2em] font-poppins">
-                      DISCOVER OUR STORY
-                    </span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark font-poppins tracking-tight leading-[1.1] sm:leading-[1.15]">
-                      Welcome to Linealign Dental Lab
-                    </h2>
-                    <p className="text-slate-600 leading-relaxed text-base font-normal max-w-2xl">
-                      Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.
-                    </p>
-                    
-                    {/* Laboratory Supporting Content - Styled in a Premium Highlight Card */}
-                    <div className="p-5 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border border-primary/15 backdrop-blur-md rounded-2xl space-y-3 shadow-xs">
-                      <h4 className="text-sm font-bold text-primary uppercase tracking-wider font-poppins flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-                        Advanced Digital Laboratory
-                      </h4>
-                      <p className="text-slate-655 text-sm leading-relaxed font-medium">
-                        Our advanced digital laboratory is equipped with CAD/CAM technology, precision treatment planning, industrial-grade 3D printing, and rigorous quality assurance to deliver world-class clear aligner solutions.
-                      </p>
-                    </div>
-                  </div>
-
+                {/* 3. Features & Stats block: Right Column Row 2 on Desktop, Row 3 on Mobile */}
+                <div className="lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:self-start space-y-6 w-full">
                   {/* Feature Chips */}
                   <div className="flex flex-wrap gap-2 pt-1">
                     {[
