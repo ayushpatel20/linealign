@@ -17,10 +17,12 @@ jobs:
             name: "LineAlign.in"
             host_secret: "CPANEL_HOST_1"
             ftp_user: "deploy@linealign.in"
+            server_dir: "public_html/"
           - target: "linealigndental_com"
             name: "LineAlignDental.com"
             host_secret: "CPANEL_HOST_2"
             ftp_user: "deploy@linealigndental.com"
+            server_dir: "./"
 
     steps:
       - name: Checkout Code
@@ -48,7 +50,7 @@ jobs:
           username: ${{ matrix.ftp_user }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ${{ env.DEPLOY_DIR }}/
-          server-dir: ./
+          server-dir: ${{ matrix.server_dir }}
           exclude: |
             **/.git*
             **/.git*/**
