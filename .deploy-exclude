@@ -1,0 +1,15 @@
+# Excluded directories (will not be modified or deleted on cPanel)
+.cpanel/
+.well-known/
+logs/
+tmp/
+backups/
+mail/
+ssl/
+.git/
+.github/
+.gitignore
+.deploy-exclude
+README.md
+vercel.json
+AGENTS.md

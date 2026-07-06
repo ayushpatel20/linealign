@@ -1,0 +1,107 @@
+name: Deploy to cPanel (Multi-Domain)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false  # Ensures that if one domain deployment fails, the other still completes
+      matrix:
+        include:
+          - target: "linealign_in"
+            name: "LineAlign.in"
+            host_secret: "CPANEL_HOST_1"
+            user_secret: "CPANEL_USER_1"
+            pass_secret: "CPANEL_PASS_1"
+          - target: "linealigndental_com"
+            name: "LineAlignDental.com"
+            host_secret: "CPANEL_HOST_2"
+            user_secret: "CPANEL_USER_2"
+            pass_secret: "CPANEL_PASS_2"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Generate a unique backup filename based on target and run ID
+      - name: Generate Backup Name
+        run: |
+          echo "BACKUP_NAME=backup-deploy-${{ matrix.target }}-${{ github.run_id }}.zip" >> $GITHUB_ENV
+
+      # Pre-Deployment Backup via cPanel API
+      - name: Pre-Deployment Backup
+        env:
+          CPANEL_HOST: ${{ secrets[matrix.host_secret] }}
+          CPANEL_USER: ${{ secrets[matrix.user_secret] }}
+          CPANEL_PASS: ${{ secrets[matrix.pass_secret] }}
+        run: |
+          node .github/scripts/cpanel-ci.js backup
+
+      # Optional build step (conditional on package.json presence)
+      - name: Build Project
+        run: |
+          if [ -f package.json ]; then
+            echo "package.json found. Installing dependencies and building..."
+            npm ci
+            npm run build
+            echo "DEPLOY_DIR=dist" >> $GITHUB_ENV
+          else
+            echo "No package.json found. Proceeding with static files."
+            echo "DEPLOY_DIR=." >> $GITHUB_ENV
+          fi
+
+      # Deploy step via FTP/FTPS
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets[matrix.host_secret] }}
+          username: ${{ secrets[matrix.user_secret] }}
+          password: ${{ secrets[matrix.pass_secret] }}
+          local-dir: ${{ env.DEPLOY_DIR }}/
+          server-dir: public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.well-known/**
+            **/logs/**
+            **/tmp/**
+            **/backups/**
+            **/mail/**
+            **/ssl/**
+            **/.cpanel/**
+            **/.deploy-exclude
+            **/README.md
+            **/vercel.json
+            **/AGENTS.md
+            **/.github/**
+
+      # Rollback Step - Only runs if the deployment fails
+      - name: Rollback on Failure
+        if: failure()
+        env:
+          CPANEL_HOST: ${{ secrets[matrix.host_secret] }}
+          CPANEL_USER: ${{ secrets[matrix.user_secret] }}
+          CPANEL_PASS: ${{ secrets[matrix.pass_secret] }}
+        run: |
+          node .github/scripts/cpanel-ci.js rollback
+
+      # Cleanup Step - Delete the temporary backup file from the server
+      - name: Cleanup Temporary Backup
+        if: always()
+        env:
+          CPANEL_HOST: ${{ secrets[matrix.host_secret] }}
+          CPANEL_USER: ${{ secrets[matrix.user_secret] }}
+          CPANEL_PASS: ${{ secrets[matrix.pass_secret] }}
+        run: |
+          node .github/scripts/cpanel-ci.js cleanup
