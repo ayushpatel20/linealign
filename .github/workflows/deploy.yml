@@ -17,7 +17,7 @@ jobs:
             name: "LineAlign.in"
             host_secret: "CPANEL_HOST_1"
             ftp_user: "deploy@linealign.in"
-            server_dir: "public_html/"
+            server_dir: "./"
           - target: "linealigndental_com"
             name: "LineAlignDental.com"
             host_secret: "CPANEL_HOST_2"
