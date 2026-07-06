@@ -39,6 +39,51 @@ jobs:
             echo "DEPLOY_DIR=." >> $GITHUB_ENV
           fi
 
+      # Syntax verification to block deployment on errors
+      - name: Verify Code Quality & Syntax
+        run: |
+          echo "=== Checking JS Syntax ==="
+          node -e "
+            const fs = require('fs');
+            const vm = require('vm');
+            const path = require('path');
+            function walk(dir) {
+              let results = [];
+              const list = fs.readdirSync(dir);
+              list.forEach(file => {
+                file = path.join(dir, file);
+                const stat = fs.statSync(file);
+                if (stat && stat.isDirectory()) {
+                  if (!file.includes('node_modules') && !file.includes('.git') && !file.includes('.github')) {
+                    results = results.concat(walk(file));
+                  }
+                } else if (file.endsWith('.js')) {
+                  results.push(file);
+                }
+              });
+              return results;
+            }
+            const files = walk('.');
+            let errors = 0;
+            files.forEach(file => {
+              try {
+                const code = fs.readFileSync(file, 'utf8');
+                new vm.Script(code);
+              } catch (e) {
+                console.error('✗ JS Syntax Error in ' + file + ':', e.message);
+                errors++;
+              }
+            });
+            if (errors > 0) {
+              console.error('Validation failed: JS syntax errors found.');
+              process.exit(1);
+            }
+            console.log('✓ All JS files passed syntax check.');
+          "
+
+          echo "=== Checking HTML Structure ==="
+          npx htmlhint "**/*.html" --ignore "node_modules/**"
+
       # Deploy step via FTP/FTPS
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
