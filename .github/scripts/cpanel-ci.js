@@ -72,6 +72,13 @@ function makeRequest(params) {
   });
 }
 
+function getCpanelResult(result) {
+  if (!result || !result.cpanelresult) {
+    throw new Error(`Unexpected cPanel API response format (missing cpanelresult). Full response: ${JSON.stringify(result)}`);
+  }
+  return result.cpanelresult;
+}
+
 async function run() {
   try {
     if (action === 'backup') {
@@ -83,7 +90,7 @@ async function run() {
         doubledecode: '0'
       });
 
-      const cpanelResult = result.cpanelresult;
+      const cpanelResult = getCpanelResult(result);
       if (cpanelResult.error) {
         throw new Error(cpanelResult.error);
       }
@@ -105,7 +112,7 @@ async function run() {
         doubledecode: '0'
       });
 
-      const cpanelResult = result.cpanelresult;
+      const cpanelResult = getCpanelResult(result);
       if (cpanelResult.error) {
         throw new Error(cpanelResult.error);
       }
@@ -126,7 +133,7 @@ async function run() {
         doubledecode: '0'
       });
 
-      const cpanelResult = result.cpanelresult;
+      const cpanelResult = getCpanelResult(result);
       if (cpanelResult.error) {
         console.warn(`[Cleanup Warning] Failed to delete backup file: ${cpanelResult.error}`);
       } else {
