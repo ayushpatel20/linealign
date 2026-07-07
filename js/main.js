@@ -1,391 +1,239 @@
-// main.js - Vanilla JavaScript for LINEALIGN Static Website
-
-document.addEventListener("DOMContentLoaded", () => {
-  initHeader();
-  initAnimatedCounters();
-  initBeforeAfterSlider();
-  initSolutionsTabs();
-  initPricingSwitcher();
-  initFaqAccordion();
-  initLightboxes();
-  initContactForms();
-  initTestimonials();
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initParticles();
+  initCardTilt();
+  initTypewriter();
+  initCtaToast();
 });
 
-// 1. Header scroll effect and mobile menu toggler
-function initHeader() {
-  const header = document.querySelector("header");
-  const glassNav = document.querySelector(".glass-nav-container");
-  const mobileToggle = document.querySelector(".mobile-toggle");
-  const mobileMenu = document.querySelector(".mobile-menu");
-  const headerLogo = document.querySelector(".header-logo");
-
-  if (!header) return;
-
-  // Scroll effect
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) {
-      glassNav?.classList.add("bg-white/90", "py-2", "px-6", "sm:px-8", "shadow-lg", "shadow-primary/5");
-      glassNav?.classList.remove("bg-white/70", "py-3.5", "px-6", "sm:px-8", "shadow-sm");
-      if (headerLogo) headerLogo.style.height = "54px";
-    } else {
-      glassNav?.classList.add("bg-white/70", "py-3.5", "px-6", "sm:px-8", "shadow-sm");
-      glassNav?.classList.remove("bg-white/90", "py-2", "px-6", "sm:px-8", "shadow-lg", "shadow-primary/5");
-      if (headerLogo) headerLogo.style.height = "64px";
-    }
-  });
-
-  // Mobile menu toggle
-  if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.contains("hidden");
-      if (isOpen) {
-        mobileMenu.classList.remove("hidden");
-        mobileToggle.innerHTML = `
-          <svg class="w-5 h-5 animate-in fade-in zoom-in duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        `;
-      } else {
-        mobileMenu.classList.add("hidden");
-        mobileToggle.innerHTML = `
-          <svg class="w-5 h-5 animate-in fade-in zoom-in duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        `;
-      }
-    });
+/* --- Theme Handler --- */
+function initTheme() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('svg');
+  
+  // Check for saved theme preference or system preference
+  const savedTheme = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else if (!systemPrefersDark) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
   }
+  
+  updateThemeIcon();
 
-  // Update header height custom property
-  const updateHeaderHeight = () => {
-    const height = header.offsetHeight;
-    document.documentElement.style.setProperty("--header-height", `${height}px`);
-  };
-  updateHeaderHeight();
-  window.addEventListener("resize", updateHeaderHeight);
-  setTimeout(updateHeaderHeight, 150);
-}
-
-// 2. Animated Numerical Counters (IntersectionObserver + requestAnimationFrame)
-function initAnimatedCounters() {
-  const counters = document.querySelectorAll(".animated-counter");
-
-  const animate = (counter) => {
-    const val = counter.getAttribute("data-value");
-    const duration = 1500;
-    const isSlash = val.includes("/");
-    let target = 0;
-    let target2 = 0;
-    let suffix = "";
-
-    if (isSlash) {
-      const parts = val.split("/");
-      target = parseInt(parts[0].replace(/[^0-9]/g, "")) || 0;
-      target2 = parseInt(parts[1].replace(/[^0-9]/g, "")) || 0;
-    } else {
-      const numericString = val.replace(/[^0-9]/g, "");
-      target = parseInt(numericString) || 0;
-      suffix = val.replace(/[0-9]/g, "");
-    }
-
-    let startTime = null;
-
-    const step = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      const easeProgress = progress * (2 - progress); // outQuad easing
-
-      const currentCount = Math.floor(easeProgress * target);
-      if (isSlash) {
-        const currentCount2 = Math.floor(easeProgress * target2);
-        counter.textContent = `${currentCount}/${currentCount2}`;
-      } else {
-        counter.textContent = `${currentCount.toLocaleString()}${suffix}`;
-      }
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
-  };
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animate(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  counters.forEach((counter) => observer.observe(counter));
-}
-
-// 3. Before/After Visual Image Split Slider
-function initBeforeAfterSlider() {
-  const sliders = document.querySelectorAll(".before-after-slider");
-  sliders.forEach((slider) => {
-    const rangeInput = slider.querySelector(".range-slider");
-    const afterImg = slider.querySelector(".after-img-container");
-    const bar = slider.querySelector(".slider-bar");
-
-    if (!rangeInput || !afterImg || !bar) return;
-
-    rangeInput.addEventListener("input", (e) => {
-      const value = e.target.value;
-      afterImg.style.width = `${value}%`;
-      bar.style.left = `${value}%`;
-    });
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon();
   });
 }
 
-// 4. Solutions Tab Selector (Solutions Page)
-function initSolutionsTabs() {
-  const container = document.querySelector(".solutions-container");
-  if (!container) return;
+function updateThemeIcon() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  
+  if (currentTheme === 'light') {
+    // Sun icon
+    themeToggle.innerHTML = `
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path fill="currentColor" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+      </svg>
+    `;
+  } else {
+    // Moon icon
+    themeToggle.innerHTML = `
+      <svg viewBox="0 0 24 24" width="20" height="20">
+        <path fill="currentColor" d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.4 1.1 1-.1.4-.4.8-.7 1.1-3.4 3.4-3.4 9 0 12.4.3.3.6.7.7 1.1.1.6-.4 1.2-1.1 1.2zm-1.8-2.1c2-.7 3.5-2.2 4.4-4.1-3.8-1.5-6.6-4.9-7-9-2.1 1.6-3.4 4.1-3.4 7 0 4.4 3.6 8 8 8.1z"/>
+      </svg>
+    `;
+  }
+}
 
-  const buttons = container.querySelectorAll(".solution-tab-btn");
-  const details = container.querySelectorAll(".solution-detail-card");
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-
-      // Reset all buttons to inactive state
-      buttons.forEach((b) => {
-        b.classList.remove("bg-white", "border-primary", "shadow-md", "ring-1", "ring-primary/20");
-        b.classList.add("bg-white/60", "border-slate-150/50");
-        const iconDiv = b.querySelector(".tab-icon-div");
-        iconDiv?.classList.remove("bg-gradient-to-tr", "from-primary", "to-secondary", "text-white", "shadow-sm");
-        iconDiv?.classList.add("bg-slate-100", "text-slate-500");
-      });
-
-      // Set clicked button to active state
-      btn.classList.add("bg-white", "border-primary", "shadow-md", "ring-1", "ring-primary/20");
-      btn.classList.remove("bg-white/60", "border-slate-150/50");
-      const activeIconDiv = btn.querySelector(".tab-icon-div");
-      activeIconDiv?.classList.add("bg-gradient-to-tr", "from-primary", "to-secondary", "text-white", "shadow-sm");
-      activeIconDiv?.classList.remove("bg-slate-100", "text-slate-500");
-
-      // Toggle details visibility
-      details.forEach((card) => {
-        if (card.id === targetId) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-    });
+/* --- Particle Canvas System --- */
+function initParticles() {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+  
+  let particles = [];
+  let mouse = { x: null, y: null, radius: 120 };
+  
+  // Handle resize
+  window.addEventListener('resize', () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    createParticles();
   });
-}
-
-// 5. Currency pricing switch (Pricing Page)
-function initPricingSwitcher() {
-  const switcher = document.querySelector(".currency-switcher");
-  if (!switcher) return;
-
-  const usdBtn = switcher.querySelector(".btn-usd");
-  const inrBtn = switcher.querySelector(".btn-inr");
-  const usdPrices = document.querySelectorAll(".price-usd");
-  const inrPrices = document.querySelectorAll(".price-inr");
-  const curSymbols = document.querySelectorAll(".currency-symbol");
-
-  if (!usdBtn || !inrBtn) return;
-
-  const setCurrency = (cur) => {
-    if (cur === "usd") {
-      usdBtn.classList.add("bg-primary", "text-white", "shadow-sm");
-      usdBtn.classList.remove("text-slate-600");
-      inrBtn.classList.remove("bg-secondary", "text-white", "shadow-sm");
-      inrBtn.classList.add("text-slate-600");
-
-      usdPrices.forEach((el) => el.classList.remove("hidden"));
-      inrPrices.forEach((el) => el.classList.add("hidden"));
-      curSymbols.forEach((el) => (el.textContent = "$"));
-    } else {
-      inrBtn.classList.add("bg-secondary", "text-white", "shadow-sm");
-      inrBtn.classList.remove("text-slate-600");
-      usdBtn.classList.remove("bg-primary", "text-white", "shadow-sm");
-      usdBtn.classList.add("text-slate-600");
-
-      inrPrices.forEach((el) => el.classList.remove("hidden"));
-      usdPrices.forEach((el) => el.classList.add("hidden"));
-      curSymbols.forEach((el) => (el.textContent = "₹"));
+  
+  // Mouse position
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+  
+  window.addEventListener('mouseout', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+  
+  class Particle {
+    constructor() {
+      this.reset();
+      this.y = Math.random() * height;
     }
-  };
-
-  usdBtn.addEventListener("click", () => setCurrency("usd"));
-  inrBtn.addEventListener("click", () => setCurrency("inr"));
-}
-
-// 6. FAQ Accordion list toggler
-function initFaqAccordion() {
-  const accordions = document.querySelectorAll(".faq-accordion-item");
-  accordions.forEach((item) => {
-    const button = item.querySelector(".faq-btn");
-    const answer = item.querySelector(".faq-answer");
-    const icon = item.querySelector(".faq-icon");
-
-    if (!button || !answer) return;
-
-    button.addEventListener("click", () => {
-      const isOpen = !answer.classList.contains("hidden");
+    
+    reset() {
+      this.x = Math.random() * width;
+      this.y = 0;
+      this.size = Math.random() * 2 + 0.5;
+      this.speedY = Math.random() * 0.4 + 0.1;
+      this.speedX = (Math.random() - 0.5) * 0.2;
+      this.alpha = Math.random() * 0.6 + 0.1;
+    }
+    
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
       
-      // Close all FAQs first (optional, but clean accordion look)
-      accordions.forEach((other) => {
-        other.querySelector(".faq-answer")?.classList.add("hidden");
-        other.querySelector(".faq-icon")?.classList.remove("rotate-180");
-        other.querySelector(".faq-btn")?.setAttribute("aria-expanded", "false");
-      });
-
-      if (!isOpen) {
-        answer.classList.remove("hidden");
-        icon?.classList.add("rotate-180");
-        button.setAttribute("aria-expanded", "true");
+      // Wrap boundaries
+      if (this.y > height) {
+        this.reset();
       }
-    });
-  });
-}
-
-// 7. Lightbox fullscreen overlays
-function initLightboxes() {
-  // ISO modal triggers
-  const isoTrigger = document.querySelector(".iso-cert-trigger");
-  const isoModal = document.getElementById("iso-modal");
-  const isoClose = document.getElementById("iso-close");
-
-  if (isoTrigger && isoModal) {
-    isoTrigger.addEventListener("click", () => {
-      isoModal.classList.remove("hidden");
-    });
-    isoModal.addEventListener("click", (e) => {
-      if (e.target === isoModal || e.target === isoClose) {
-        isoModal.classList.add("hidden");
+      if (this.x > width || this.x < 0) {
+        this.speedX = -this.speedX;
       }
-    });
-  }
-
-  // General image lightboxes
-  const zoomImages = document.querySelectorAll(".zoom-image");
-  const lightbox = document.getElementById("image-lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const lightboxClose = document.getElementById("lightbox-close");
-
-  if (zoomImages.length > 0 && lightbox && lightboxImg) {
-    zoomImages.forEach((img) => {
-      img.addEventListener("click", () => {
-        const src = img.getAttribute("data-src") || img.src || "";
-        const alt = img.alt || "";
-        lightboxImg.src = src;
-        lightboxImg.alt = alt;
-        lightbox.classList.remove("hidden");
-      });
-    });
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox || e.target === lightboxClose) {
-        lightbox.classList.add("hidden");
-        lightboxImg.src = "";
-      }
-    });
-  }
-}
-
-// 8. Contact forms mock submit transitions
-function initContactForms() {
-  const form = document.querySelector(".contact-form");
-  const formSuccess = document.querySelector(".form-success-banner");
-  const submitBtn = form?.querySelector("button[type='submit']");
-
-  if (form && submitBtn) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      // Clear previous errors
-      const errorSpans = form.querySelectorAll(".error-msg");
-      errorSpans.forEach((span) => span.remove());
-      const errorInputs = form.querySelectorAll(".border-red-400");
-      errorInputs.forEach((input) => input.classList.remove("border-red-400"));
-
-      // Simple validation
-      let hasErrors = false;
-      const firstName = form.querySelector("input[name='firstName']");
-      const email = form.querySelector("input[name='email']");
-      const phone = form.querySelector("input[name='phone']");
-
-      if (firstName && !firstName.value.trim()) {
-        showError(firstName, "First Name is required");
-        hasErrors = true;
-      }
-      if (email && !email.value.trim()) {
-        showError(email, "Email address is required");
-        hasErrors = true;
-      }
-      if (phone && !phone.value.trim()) {
-        showError(phone, "Phone number is required");
-        hasErrors = true;
-      }
-
-      if (hasErrors) return;
-
-      // Loading state
-      const originalContent = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<div class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>`;
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalContent;
-
-        if (formSuccess) {
-          formSuccess.classList.remove("hidden");
-          form.reset();
-          setTimeout(() => {
-            formSuccess.classList.add("hidden");
-          }, 5000);
-        } else {
-          alert("Thanks for subscribing! We will contact you shortly.");
-          form.reset();
+      
+      // Mouse interaction (repel slightly or attract based on theme)
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = this.x - mouse.x;
+        const dy = this.y - mouse.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < mouse.radius) {
+          const force = (mouse.radius - distance) / mouse.radius;
+          const angle = Math.atan2(dy, dx);
+          this.x += Math.cos(angle) * force * 1.5;
+          this.y += Math.sin(angle) * force * 1.5;
         }
-      }, 1200);
-    });
+      }
+    }
+    
+    draw() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = isLight ? '#4f46e5' : '#06b6d4';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
   }
-
-  function showError(input, msg) {
-    input.classList.add("border-red-400");
-    const span = document.createElement("span");
-    span.className = "text-red-500 text-xs mt-1 block error-msg";
-    span.textContent = msg;
-    input.parentNode.appendChild(span);
+  
+  function createParticles() {
+    particles = [];
+    const density = Math.floor((width * height) / 14000);
+    for (let i = 0; i < Math.min(density, 120); i++) {
+      particles.push(new Particle());
+    }
   }
+  
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+    requestAnimationFrame(animate);
+  }
+  
+  createParticles();
+  animate();
 }
 
-// 9. Testimonials Carousel Slider
-function initTestimonials() {
-  const testimonials = document.querySelectorAll(".testimonial-item");
-  const dots = document.querySelectorAll(".testimonial-dot");
-
-  if (testimonials.length === 0 || dots.length === 0) return;
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      // Deactivate all testimonials & dots
-      testimonials.forEach((t) => t.classList.add("hidden"));
-      dots.forEach((d) => {
-        d.classList.remove("bg-primary", "scale-125", "shadow-sm", "shadow-primary/30");
-        d.classList.add("bg-slate-200");
-      });
-
-      // Activate selected testimonial & dot
-      testimonials[index]?.classList.remove("hidden");
-      dot.classList.add("bg-primary", "scale-125", "shadow-sm", "shadow-primary/30");
-      dot.classList.remove("bg-slate-200");
-    });
+/* --- Card 3D Tilt Effect --- */
+function initCardTilt() {
+  const card = document.querySelector('.glass-card');
+  if (!card) return;
+  
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    // Limits
+    const limit = 10; // Max degree tilt
+    const rotateX = -(y / (rect.height / 2)) * limit;
+    const rotateY = (x / (rect.width / 2)) * limit;
+    
+    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
   });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
+  });
+}
+
+/* --- Typewriter Effect --- */
+function initTypewriter() {
+  const tagline = document.getElementById('typewriter-tagline');
+  if (!tagline) return;
+  
+  const text = "A new digital beginning. Explore the beauty of absolute simplicity.";
+  let index = 0;
+  
+  function type() {
+    if (index < text.length) {
+      tagline.innerHTML = text.substring(0, index + 1) + '<span class="typed-cursor">|</span>';
+      index++;
+      setTimeout(type, 45);
+    } else {
+      tagline.innerHTML = text + '<span class="typed-cursor">|</span>';
+    }
+  }
+  
+  // Start after a slight delay
+  setTimeout(type, 800);
+}
+
+/* --- Interactive CTA Toast Modal --- */
+function initCtaToast() {
+  const ctaBtn = document.getElementById('cta-btn');
+  const toast = document.getElementById('toast');
+  if (!ctaBtn || !toast) return;
+  
+  ctaBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Show toast
+    toast.classList.add('show');
+    
+    // Play particle burst if canvas exists
+    triggerBurst(e.clientX, e.clientY);
+    
+    // Hide toast after 4 seconds
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 4000);
+  });
+}
+
+/* Optional burst on button click */
+function triggerBurst(clickX, clickY) {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  // Add some fast moving sparks at the click coordinates
+  // We can inject temporary sparks into the global canvas particle system, 
+  // but for simplicity and decoupling we will just do a simple log event or particle shift
+  console.log(`Interaction registered at: X=${clickX}, Y=${clickY}`);
 }
