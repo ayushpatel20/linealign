@@ -1,91 +1,1143 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World - Modern Landing Page</title>
-  <meta name="description" content="A premium, visually stunning, client-side serverless Hello World landing page built with pure HTML, CSS, and vanilla JS.">
+  <title>Linealign Dental Lab - Clear Aligner Laboratory</title>
+  <meta name="description" content="Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.">
+  <meta name="keywords" content="clear aligners, dental laboratory, orthodontics, invisible braces, Kasaragod, Kerala">
   
-  <!-- CSS Stylesheet -->
+  <!-- Preconnect and Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Font variables mapping for Tailwind compatibility -->
+  <style>
+    :root {
+      --font-inter: 'Inter', sans-serif;
+      --font-poppins: 'Poppins', sans-serif;
+    }
+  </style>
+
+  <!-- Vanilla JavaScript -->
+  <script src="js/main.js" defer></script>
 </head>
-<body>
+<body class="bg-white text-dark font-sans overflow-x-hidden scroll-smooth">
 
-  <!-- Background Canvas for Particles -->
-  <canvas id="bg-canvas"></canvas>
-
-  <!-- Visual Blur Blobs -->
-  <div class="blur-blob blob-1"></div>
-  <div class="blur-blob blob-2"></div>
-
-  <!-- Main Container -->
-  <div class="container">
-    
-    <!-- Top Header -->
-    <header>
-      <div class="logo">
-        LineAlign<span class="logo-dot"></span>
-      </div>
-      
-      <!-- Theme Switcher -->
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
-        <!-- Icon is dynamically injected by main.js -->
-        <svg viewBox="0 0 24 24" width="20" height="20">
-          <path fill="currentColor" d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.8 3.5-8.9 8.2-9.8.6-.1 1.2.4 1.1 1-.1.4-.4.8-.7 1.1-3.4 3.4-3.4 9 0 12.4.3.3.6.7.7 1.1.1.6-.4 1.2-1.1 1.2zm-1.8-2.1c2-.7 3.5-2.2 4.4-4.1-3.8-1.5-6.6-4.9-7-9-2.1 1.6-3.4 4.1-3.4 7 0 4.4 3.6 8 8 8.1z"/>
-        </svg>
-      </button>
-    </header>
-
-    <!-- Main Card Body -->
-    <main>
-      <div class="card-wrapper">
-        <div class="glass-card">
-          <!-- Pulse Badge -->
-          <div class="badge">
-            <span class="badge-dot"></span>
-            Hello Universe
-          </div>
-
-          <!-- Dynamic Text Heading -->
-          <h1>Hello World</h1>
-
-          <!-- Typewritten Tagline -->
-          <p class="tagline" id="typewriter-tagline">
-            <!-- Dynamically typed by main.js -->
-          </p>
-
-          <!-- Interactive Button -->
-          <a href="#" class="cta-button" id="cta-btn">
-            Get Started
-            <svg viewBox="0 0 24 24" width="18" height="18">
-              <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+  <!-- ─── HEADER & NAVIGATION ─── -->
+  <header class="fixed top-0 left-0 right-0 z-50 w-full pointer-events-none flex flex-col transition-all duration-300">
+    <!-- Announcement Bar -->
+    <div class="w-full bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 text-[10px] sm:text-xs font-semibold shadow-xs pointer-events-auto select-none">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-1.5 md:gap-2">
+        <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4">
+          <span class="flex items-center gap-1">
+            <span>🦷</span> 24/7 Working Lab
+          </span>
+          <span class="hidden sm:inline text-white/30">•</span>
+          <span class="flex items-center gap-1">
+            <span>👨‍⚕️</span> Full-Time Orthodontists Available
+          </span>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-3 sm:gap-4">
+          <span class="flex items-center gap-1">
+            <span>📍</span> Kasaragod, Kerala
+          </span>
+          <span class="hidden sm:inline text-white/30">•</span>
+          <a href="mailto:linealign23@gmail.com" class="flex items-center gap-1 hover:underline">
+            <span>📧</span> linealign23@gmail.com
           </a>
         </div>
       </div>
-    </main>
-
-    <!-- Popup Toast Feedback -->
-    <div class="toast" id="toast">
-      <div class="toast-icon">✓</div>
-      <div class="toast-content">
-        <h4>Interaction Successful</h4>
-        <p>You have triggered the dynamic landing page toast! 🎉</p>
-      </div>
     </div>
 
-    <!-- Bottom Footer -->
-    <footer>
-      <p>&copy; 2026 LineAlign Dental Lab. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linealign.in" target="_blank" rel="noopener">LineAlign</a>
-      </div>
-    </footer>
+    <!-- Navigation Header -->
+    <div class="w-full px-4 sm:px-6 lg:px-8 mt-2.5 sm:mt-3 pointer-events-auto">
+      <div class="max-w-7xl mx-auto rounded-[2rem] transition-all duration-300 bg-white/70 backdrop-blur-md border border-white/10 py-3.5 px-6 sm:px-8 shadow-sm glass-nav-container">
+        <div class="flex items-center justify-between h-14 sm:h-16">
+          <!-- Logo -->
+          <div class="flex-shrink-0 flex items-center">
+            <a href="index.html" class="flex items-center gap-2">
+              <img src="public/logo.jpeg" alt="LINEALIGN DENTAL LAB" class="w-auto object-contain rounded-lg hover:scale-[1.02] transition-transform duration-300 header-logo" style="height: 64px;">
+            </a>
+          </div>
 
+          <!-- Navigation Links (Desktop) -->
+          <nav class="hidden md:flex space-x-8 items-center justify-center flex-1 max-w-2xl mx-auto">
+            <a href="index.html" class="relative text-sm font-extrabold tracking-wide transition-all py-1.5 px-1 font-sans text-primary">
+              Home
+              <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
+            </a>
+            <a href="solutions.html" class="relative text-sm font-bold tracking-wide transition-all py-1.5 px-1 font-sans text-slate-700 hover:text-primary">Solutions</a>
+            <a href="pricing.html" class="relative text-sm font-bold tracking-wide transition-all py-1.5 px-1 font-sans text-slate-700 hover:text-primary">Pricing</a>
+            <a href="our-story.html" class="relative text-sm font-bold tracking-wide transition-all py-1.5 px-1 font-sans text-slate-700 hover:text-primary">Our Story</a>
+            <a href="faq.html" class="relative text-sm font-bold tracking-wide transition-all py-1.5 px-1 font-sans text-slate-700 hover:text-primary">Contact Us</a>
+          </nav>
+
+          <!-- CTA Button (Desktop) -->
+          <div class="hidden md:flex items-center">
+            <a href="faq.html" class="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all">
+              Book Consultation
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+          <!-- Hamburger Button (Mobile) -->
+          <div class="flex md:hidden">
+            <button class="p-2 rounded-xl bg-slate-50 text-slate-600 hover:text-primary hover:bg-primary/5 focus:outline-none transition-colors cursor-pointer mobile-toggle" aria-label="Toggle menu">
+              <svg class="w-5 h-5 animate-in fade-in zoom-in duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Drawer Menu -->
+      <div class="md:hidden mt-2.5 rounded-[2rem] bg-white/95 backdrop-blur-lg border border-white/50 shadow-2xl py-6 px-6 animate-in slide-in-from-top duration-300 hidden mobile-menu">
+        <div class="flex flex-col space-y-4">
+          <a href="index.html" class="text-sm font-bold px-4 py-3 rounded-2xl bg-primary/10 text-primary border-l-4 border-primary pl-5">Home</a>
+          <a href="solutions.html" class="text-sm font-bold px-4 py-3 rounded-2xl text-slate-700 hover:bg-slate-50 hover:text-primary">Solutions</a>
+          <a href="pricing.html" class="text-sm font-bold px-4 py-3 rounded-2xl text-slate-700 hover:bg-slate-50 hover:text-primary">Pricing</a>
+          <a href="our-story.html" class="text-sm font-bold px-4 py-3 rounded-2xl text-slate-700 hover:bg-slate-50 hover:text-primary">Our Story</a>
+          <a href="faq.html" class="text-sm font-bold px-4 py-3 rounded-2xl text-slate-700 hover:bg-slate-50 hover:text-primary">Contact Us</a>
+          <div class="pt-4 border-t border-slate-100">
+            <a href="faq.html" class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary shadow-md shadow-primary/10">
+              Book Consultation
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── HERO SECTION ─── -->
+  <section class="relative w-full min-h-screen flex items-center overflow-hidden bg-slate-900" aria-label="Hero section">
+    <!-- Background image and overlay -->
+    <div class="absolute inset-0 z-0 select-none">
+      <img src="public/linealign_hero.png" alt="Linealign Dental Lab" class="w-full h-full object-cover object-center">
+      <div class="absolute inset-0 z-10" style="background: linear-gradient(135deg, rgba(10,20,40,0.72) 0%, rgba(10,20,40,0.58) 50%, rgba(10,20,40,0.40) 100%)"></div>
+      <div class="absolute bottom-0 left-0 right-0 h-32 z-10" style="background: linear-gradient(to top, rgba(10,20,40,0.5), transparent)"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 xl:px-24 pb-16 lg:pb-28" style="padding-top: calc(var(--header-height, 160px) + 2rem)">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="col-span-1 lg:col-span-7 xl:col-span-6 space-y-7 flex flex-col text-left">
+          <div class="space-y-3">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.06] font-poppins">
+              Welcome to <span class="text-secondary">Linealign</span> Dental Lab
+            </h1>
+            <div class="text-[11px] sm:text-xs font-black text-secondary uppercase tracking-[0.28em] font-poppins select-none">
+              YOUR SMILE, OUR PRECISION.
+            </div>
+          </div>
+
+          <p class="text-base sm:text-lg text-white/85 leading-relaxed max-w-xl font-medium">
+            Advanced Clear Aligner Laboratory delivering world-class orthodontic solutions. Clear, Comfort and Confident.
+          </p>
+
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="text-[11px] font-bold text-white/90 bg-white/10 border border-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">CAD/CAM Technology</span>
+            <span class="text-[11px] font-bold text-white/90 bg-white/10 border border-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">3D Printing</span>
+            <span class="text-[11px] font-bold text-white/90 bg-white/10 border border-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">Clear Aligners</span>
+            <span class="text-[11px] font-bold text-white/90 bg-white/10 border border-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full">In-house Manufacturing</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 pt-2">
+            <a href="faq.html" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-110 shadow-lg hover:shadow-[0_6px_30px_rgba(46,199,214,0.45)] transition-all duration-300 hover:-translate-y-0.5">
+              Book Consultation
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+
+          <!-- Feature Bullets Grid -->
+          <div class="pt-4 border-t border-white/15 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 shadow-xs text-white text-sm font-semibold select-none">
+              <div class="w-5 h-5 rounded-full bg-secondary/30 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
+              <span>24/7 Working Lab</span>
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 shadow-xs text-white text-sm font-semibold select-none">
+              <div class="w-5 h-5 rounded-full bg-secondary/30 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
+              <span>Full-Time Orthodontists</span>
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 shadow-xs text-white text-sm font-semibold select-none">
+              <div class="w-5 h-5 rounded-full bg-secondary/30 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
+              <span>ISO Certified Laboratory</span>
+            </div>
+            <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/15 shadow-xs text-white text-sm font-semibold select-none">
+              <div class="w-5 h-5 rounded-full bg-secondary/30 text-secondary flex items-center justify-center flex-shrink-0 text-xs font-black">✔</div>
+              <span>FDA Grade Aligners</span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ALIGNER SHOWCASE VIDEO SECTION ─── -->
+  <section class="py-24 bg-white relative overflow-hidden flex items-center justify-center border-b border-blue-50/50">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(46,199,214,0.04)_0%,transparent_70%)]"></div>
+    <div class="relative max-w-xl mx-auto flex flex-col items-center justify-center text-center px-4">
+      <div class="absolute w-[260px] h-[260px] bg-gradient-to-r from-primary/15 to-secondary/15 rounded-full blur-3xl -z-10 animate-pulse"></div>
+      <div class="relative w-[280px] sm:w-[380px] md:w-[480px] aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-50/50 border border-slate-100 shadow-sm flex items-center justify-center animate-float-aligner hover:scale-[1.02] transition-transform duration-500 cursor-default select-none">
+        <video src="public/images/aligner.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+      </div>
+      <p class="text-slate-400 text-xs font-bold tracking-[0.2em] uppercase mt-8 select-none font-poppins">
+        Linealign™ Premium Invisible Biomechanics
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── LEADERSHIP / FOUNDERS SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-y border-blue-50" aria-labelledby="leadership-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+          Leadership Team
+        </span>
+        <h2 id="leadership-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
+          Meet Our Leadership
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base">
+          Our full-time orthodontic and aligner specialists providing simulation reviews and expert planning approvals.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto justify-center items-stretch">
+        <!-- Dr. Tilvin V Tom -->
+        <div class="border border-blue-100/60 rounded-[2.5rem] overflow-hidden p-6 shadow-sm hover:shadow-[0_8px_30px_rgba(42,132,255,0.12)] transition-all duration-300 flex flex-col justify-between items-center h-full hover:-translate-y-2" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(238,248,255,0.85) 100%); backdrop-filter: blur(16px);">
+          <div class="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-200 border border-white shadow-sm flex-shrink-0">
+            <img src="public/tilvin.jpg" alt="Dr. Tilvin V Tom" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="pt-6 text-center space-y-2 flex-grow flex flex-col justify-between items-center w-full">
+            <div class="flex flex-col items-center">
+              <span class="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-black text-white bg-gradient-to-r from-primary to-secondary mb-3 shadow-xs uppercase tracking-wider">Founder</span>
+              <h3 class="text-xl font-bold text-dark font-poppins">Dr. TILVIN V TOM</h3>
+              <p class="text-slate-500 text-xs sm:text-sm mt-1.5 font-medium leading-relaxed max-w-xs">Orthodontist & Aligner Specialist</p>
+            </div>
+            <div class="pt-6 w-full mt-auto">
+              <a href="faq.html" class="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all">
+                Book Appointment
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dr. Shoukathali P H -->
+        <div class="border border-blue-100/60 rounded-[2.5rem] overflow-hidden p-6 shadow-sm hover:shadow-[0_8px_30px_rgba(42,132,255,0.12)] transition-all duration-300 flex flex-col justify-between items-center h-full hover:-translate-y-2" style="background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(238,248,255,0.85) 100%); backdrop-filter: blur(16px);">
+          <div class="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-slate-200 border border-white shadow-sm flex-shrink-0">
+            <img src="public/shoukath.jpg" alt="Dr. Shoukathali P. H" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="pt-6 text-center space-y-2 flex-grow flex flex-col justify-between items-center w-full">
+            <div class="flex flex-col items-center">
+              <span class="inline-flex items-center px-3.5 py-1 rounded-full text-[10px] font-black text-white bg-gradient-to-r from-primary to-secondary mb-3 shadow-xs uppercase tracking-wider">Founder</span>
+              <h3 class="text-xl font-bold text-dark font-poppins">Dr. Shoukathali P. H</h3>
+              <p class="text-slate-500 text-xs sm:text-sm mt-1.5 font-medium leading-relaxed max-w-xs">Orthodontist & Aligner Specialist</p>
+            </div>
+            <div class="pt-6 w-full mt-auto">
+              <a href="faq.html" class="w-full inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-full text-xs font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all">
+                Book Appointment
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT / DIGITAL WORKFLOW SECTION ─── -->
+  <section class="relative py-16 sm:py-20 bg-white border-b border-blue-50/50 overflow-hidden">
+    <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_top_left,rgba(46,199,214,0.06),transparent_70%)] -z-10"></div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[radial-gradient(circle_at_bottom_right,rgba(42,132,255,0.04),transparent_70%)] -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-10 lg:gap-x-12 gap-y-10 items-center">
+        <!-- Text details -->
+        <div class="lg:col-span-7 lg:col-start-6 lg:row-start-1 lg:self-end space-y-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-black text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-[0.2em] font-poppins">
+            DISCOVER OUR STORY
+          </span>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark font-poppins tracking-tight leading-[1.1] sm:leading-[1.15]">
+            Welcome to Linealign Dental Lab
+          </h2>
+          <p class="text-slate-600 leading-relaxed text-base font-normal max-w-2xl">
+            Linealign Dental Lab provides advanced orthodontic and clear aligner solutions using modern digital technology and expert orthodontic support. Our mission is to deliver clear, comfort and confident smiles through innovation and quality craftsmanship.
+          </p>
+          
+          <div class="p-5 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 border border-primary/15 backdrop-blur-md rounded-2xl space-y-3 shadow-xs">
+            <h4 class="text-sm font-bold text-primary uppercase tracking-wider font-poppins flex items-center gap-2">
+              <svg class="w-4 h-4 text-primary animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              Advanced Digital Laboratory
+            </h4>
+            <p class="text-slate-655 text-sm leading-relaxed font-medium">
+              Our advanced digital laboratory is equipped with CAD/CAM technology, precision treatment planning, industrial-grade 3D printing, and rigorous quality assurance to deliver world-class clear aligner solutions.
+            </p>
+          </div>
+        </div>
+
+        <!-- Zoomable Digital Lab Image -->
+        <div class="lg:col-span-5 lg:col-start-1 lg:row-start-1 lg:row-span-2 relative group w-full">
+          <div class="absolute -inset-1 rounded-[1.5rem] bg-gradient-to-r from-primary/20 to-secondary/20 blur-xl opacity-60 group-hover:opacity-80 transition duration-1000 -z-10"></div>
+          <div class="relative overflow-hidden cursor-pointer rounded-[1.5rem] border border-slate-100/80 shadow-2xl shadow-blue-900/10 min-h-[300px] sm:min-h-[380px] lg:min-h-[460px] aspect-[4/3] sm:aspect-square lg:aspect-auto transform hover:scale-[1.01] transition-all duration-500 zoom-image" data-src="public/images/digital_lab.jpeg">
+            <img src="public/images/digital_lab.jpeg" alt="State-of-the-Art Digital Dental Laboratory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 flex items-end justify-start p-6 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3.5 py-2 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow-lg border border-primary/20">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature chips & Numerical Counters -->
+        <div class="lg:col-span-7 lg:col-start-6 lg:row-start-2 lg:self-start space-y-6 w-full">
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-100 hover:border-primary/20 hover:text-primary transition-all duration-300">
+              <span class="text-primary font-black">✓</span> CAD/CAM Workflow
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-100 hover:border-primary/20 hover:text-primary transition-all duration-300">
+              <span class="text-primary font-black">✓</span> 3D Printing
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-100 hover:border-primary/20 hover:text-primary transition-all duration-300">
+              <span class="text-primary font-black">✓</span> Quality Assurance
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-700 bg-slate-50 border border-slate-100 hover:border-primary/20 hover:text-primary transition-all duration-300">
+              <span class="text-primary font-black">✓</span> Precision Engineering
+            </span>
+          </div>
+
+          <div class="pt-2">
+            <a href="our-story.html" class="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-primary-hover group transition-colors duration-300">
+              Learn More About Our Journey
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <!-- Redesigned Statistics Grid with animations -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+            <!-- Stat 1 -->
+            <div class="p-5 bg-gradient-to-br from-white/70 to-[#EEF8FF]/70 backdrop-blur-md border border-blue-100/50 hover:bg-white hover:border-primary/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 rounded-2xl flex items-center gap-4 min-h-[110px]">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-primary flex items-center justify-center flex-shrink-0 shadow-xs">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </div>
+              <div class="space-y-0.5">
+                <h4 class="text-xl sm:text-2xl font-black text-dark font-poppins leading-none">
+                  <span class="animated-counter" data-value="100%">0%</span>
+                </h4>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Premium Quality</p>
+              </div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="p-5 bg-gradient-to-br from-white/70 to-[#EEF8FF]/70 backdrop-blur-md border border-blue-100/50 hover:bg-white hover:border-primary/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 rounded-2xl flex items-center gap-4 min-h-[110px]">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-primary flex items-center justify-center flex-shrink-0 shadow-xs">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div class="space-y-0.5">
+                <h4 class="text-xl sm:text-2xl font-black text-dark font-poppins leading-none">
+                  <span class="animated-counter" data-value="100%">0%</span>
+                </h4>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Digital Workflow</p>
+              </div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="p-5 bg-gradient-to-br from-white/70 to-[#EEF8FF]/70 backdrop-blur-md border border-blue-100/50 hover:bg-white hover:border-primary/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 rounded-2xl flex items-center gap-4 min-h-[110px]">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-primary flex items-center justify-center flex-shrink-0 shadow-xs">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 025.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+              </div>
+              <div class="space-y-0.5">
+                <h4 class="text-xl sm:text-2xl font-black text-dark font-poppins leading-none">
+                  <span class="animated-counter" data-value="100+">0</span>
+                </h4>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Expert Team</p>
+              </div>
+            </div>
+            <!-- Stat 4 -->
+            <div class="p-5 bg-gradient-to-br from-white/70 to-[#EEF8FF]/70 backdrop-blur-md border border-blue-100/50 hover:bg-white hover:border-primary/30 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 rounded-2xl flex items-center gap-4 min-h-[110px]">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 text-primary flex items-center justify-center flex-shrink-0 shadow-xs">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div class="space-y-0.5">
+                <h4 class="text-xl sm:text-2xl font-black text-dark font-poppins leading-none">
+                  <span class="animated-counter" data-value="24/7">0</span>
+                </h4>
+                <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Working Lab</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── OUR FACILITY SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-b border-blue-50" aria-labelledby="facility-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+            Our Facility
+          </span>
+          <h2 id="facility-heading" class="text-3xl font-extrabold text-dark font-poppins tracking-tight">
+            Our Dental Lab & Headquarters
+          </h2>
+          <p class="text-slate-500 text-sm sm:text-base">
+            Visit our state-of-the-art facility in Kasaragod, Kerala, housing our digital design studios, orthodontic labs, and customer support offices.
+          </p>
+        </div>
+
+        <div class="relative rounded-[2.5rem] overflow-hidden border border-slate-100 shadow-2xl group max-w-4xl mx-auto">
+          <img src="public/images/dental_lab_building.jpg" alt="LINEALIGN Dental Lab Facility Building" class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6 sm:p-10">
+            <div class="text-white space-y-1">
+              <p class="text-[10px] font-black uppercase tracking-[0.2em] text-secondary">Location</p>
+              <h3 class="text-lg sm:text-xl font-bold font-poppins">Kasaragod, Kerala, India</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY CHOOSE US SECTION ─── -->
+  <section class="py-24 bg-white" aria-labelledby="why-choose-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+          Our Advantages
+        </span>
+        <h2 id="why-choose-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
+          Why Choose Us
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base">
+          A premium laboratory workflow engineered for speed, accuracy, and excellent clinical results.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Adv 1 -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark font-poppins">24/7 Working Lab</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Full round-the-clock operations to guarantee minimal wait times and emergency support.</p>
+        </div>
+        <!-- Adv 2 -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark font-poppins">Full-Time Orthodontists</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Licensed in-house orthodontic specialists review and approve every treatment plan.</p>
+        </div>
+        <!-- Adv 3 -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark font-poppins">Premium Clear Aligners</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Manufactured using high-elasticity medical polymer sheets for maximum tooth control.</p>
+        </div>
+        <!-- Adv 4 -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark font-poppins">Digital Workflow</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Fully digital case uploads, online simulation approvals, and real-time tracking systems.</p>
+        </div>
+        <!-- Adv 5 -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="text-lg font-bold text-dark font-poppins">Advanced CAD/CAM</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Sub-micron 3D scanning and state-of-the-art aligner laser printing machines.</p>
+        </div>
+
+        <!-- ISO Certificate Trigger Card -->
+        <div class="p-8 bg-white rounded-3xl border border-slate-150/50 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all space-y-4 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-dark font-poppins">Quality Certificate</h3>
+            <!-- Trigger modal -->
+            <div class="relative w-full h-44 bg-slate-50 border border-slate-200/80 rounded-2xl overflow-hidden flex items-center justify-center shadow-xs cursor-pointer group hover:border-primary/40 transition-colors iso-cert-trigger">
+              <img src="public/images/certificate.jpeg" alt="ISO Certificate" class="object-contain p-2 hover:scale-[1.02] transition-transform duration-300 w-full h-full">
+              <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity backdrop-blur-[1px]">
+                <span class="px-3 py-1.5 rounded-full bg-white/95 text-[10px] font-bold text-primary shadow-xs border border-primary/25">
+                  🔍 Zoom
+                </span>
+              </div>
+            </div>
+          </div>
+          <p class="text-slate-500 text-sm leading-relaxed">ISO Certified Dental Laboratory</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#E8FCFF] border-y border-cyan-50/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+          Comprehensive Support
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
+          Our Professional Services
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base">
+          Providing digital planning, orthodontic simulation support, and high-fidelity aligner production.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div class="p-8 bg-white rounded-3xl border border-cyan-100/50 shadow-sm hover:shadow-[0_4px_20px_rgba(46,199,214,0.15)] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-dark font-poppins">Clear Aligners</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Precision-molded invisible orthodontic trays engineered from high-retention polymer sheets for maximum tooth alignment.</p>
+          </div>
+          <a href="solutions.html" class="mt-6 text-primary text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            Details <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <!-- Service 2 -->
+        <div class="p-8 bg-white rounded-3xl border border-cyan-100/50 shadow-sm hover:shadow-[0_4px_20px_rgba(46,199,214,0.15)] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-dark font-poppins">Digital Smile Design</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Aesthetic simulation software showing post-treatment orthodontic models, assisting doctor approvals and patient consultations.</p>
+          </div>
+          <a href="solutions.html" class="mt-6 text-primary text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            Details <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <!-- Service 3 -->
+        <div class="p-8 bg-white rounded-3xl border border-cyan-100/50 shadow-sm hover:shadow-[0_4px_20px_rgba(46,199,214,0.15)] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1">
+          <div class="space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 025.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-dark font-poppins">Orthodontic Planning</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">Interactive 3D dental biomechanics setups (arch expansion, rotators, attachments) designed by certified specialists.</p>
+          </div>
+          <a href="solutions.html" class="mt-6 text-primary text-xs font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+            Details <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMPARISON SLIDER SECTION ─── -->
+  <section class="py-24 bg-white border-y border-blue-50/50" aria-labelledby="comparison-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+          Visual Comparison
+        </span>
+        <h2 id="comparison-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-dark font-poppins leading-tight tracking-tight">
+          See the Alignment Transformation
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          Drag the slider to compare original crooked layouts with perfectly straight aligned outcomes. Linealign aligners employ precise biomechanical attachments to slide teeth comfortably into optimal position.
+        </p>
+        <div class="flex flex-col gap-4 text-slate-700 text-sm font-semibold pt-2">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">1</span>
+            <span>Send orthodontic digital scans (STL)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">2</span>
+            <span>Approve interactive 3D simulation in 24 hours</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">3</span>
+            <span>Receive custom fit aligner set at your practice</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Interactive Before/After Image Slider -->
+      <div class="flex items-center justify-center w-full">
+        <div class="relative w-full max-w-3xl mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-100 select-none before-after-slider">
+          <!-- Before Image -->
+          <div class="absolute inset-0 w-full h-full">
+            <img src="public/teeth_before.png" alt="Crooked Teeth Before" class="w-full h-full object-cover">
+            <div class="absolute top-4 left-4 bg-slate-900/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">Before</div>
+          </div>
+          <!-- After Image -->
+          <div class="absolute inset-y-0 left-0 h-full overflow-hidden after-img-container" style="width: 50%;">
+            <div class="absolute inset-0 min-w-[768px] aspect-[4/3] h-full" style="width: 768px;">
+              <img src="public/teeth_after.png" alt="Aligned Teeth After" class="absolute inset-0 h-full w-full object-cover">
+            </div>
+            <div class="absolute top-4 right-4 bg-primary/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap z-10">After</div>
+          </div>
+          <!-- Split Bar -->
+          <div class="absolute inset-y-0 w-1 bg-white cursor-ew-resize z-20 slider-bar" style="left: 50%;">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg border-2 border-primary flex items-center justify-center select-none pointer-events-none">
+              <div class="flex items-center gap-1 text-primary">
+                <span class="text-sm font-bold">&larr;</span>
+                <span class="text-sm font-bold">&rarr;</span>
+              </div>
+            </div>
+          </div>
+          <!-- Range Input Overlay -->
+          <input type="range" min="0" max="100" value="50" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30 range-slider">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ARCH EXPANSION SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-[#EEF8FF] to-white border-b border-blue-50" aria-labelledby="expansion-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+        <div class="space-y-6 lg:col-start-1 lg:row-start-1 lg:self-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+            Arch Expansion
+          </span>
+          <h2 id="expansion-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+            Dental Arch Expansion with Aligners
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Linealign aligners incorporate integrated expansion mechanics that generate lateral arch width without requiring extractions. Our clinically engineered expansion components deliver controlled, predictable arch development for both upper and lower dentitions.
+          </p>
+        </div>
+        
+        <div class="flex flex-col items-center gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500 zoom-image" style="max-width: 520px" data-src="public/images/expansion_before_after.jpeg">
+            <img src="public/images/expansion_before_after.jpeg" alt="Before and After Expansion Results" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 flex items-end justify-start p-5 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow border border-primary/20">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+          <p class="text-slate-500 text-xs font-bold uppercase tracking-wider text-center">
+            Clinical Before &amp; After Expansion Results
+          </p>
+        </div>
+
+        <div class="lg:col-start-1 lg:row-start-2 lg:self-start lg:mt-6">
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-slate-700 text-sm font-medium">
+              <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              Transverse Arch Development
+            </li>
+            <li class="flex items-center gap-3 text-slate-700 text-sm font-medium">
+              <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              Non-extraction Space Creation
+            </li>
+            <li class="flex items-center gap-3 text-slate-700 text-sm font-medium">
+              <svg class="w-4 h-4 text-secondary flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+              Predictable Clinical Outcomes
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BIOMECHANICS / MATERIALS FEATURES ─── -->
+  <section class="py-24 bg-white border-b border-blue-50/50" aria-labelledby="features-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+          Material Engineering
+        </span>
+        <h2 id="features-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight">
+          Much More Than Just Invisible
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base">
+          Our aligner models incorporate advanced clinical mechanics to address complex teeth rotation.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="p-6 rounded-[2rem] border border-slate-150/50 bg-white shadow-xs hover:border-primary/30 hover:shadow-md transition-all space-y-3">
+          <h3 class="text-lg font-bold text-dark font-poppins">Arch Expansion</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Lateral expansion mechanics possible via integrated expansion components, generating space without extractions.</p>
+        </div>
+        <div class="p-6 rounded-[2rem] border border-slate-150/50 bg-white shadow-xs hover:border-primary/30 hover:shadow-md transition-all space-y-3">
+          <h3 class="text-lg font-bold text-dark font-poppins">Intermaxillary Elastics</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Precision aligner slits to anchor orthodontic elastics, helping adjust jaw bites (Class II/III configurations).</p>
+        </div>
+        <div class="p-6 rounded-[2rem] border border-slate-150/50 bg-white shadow-xs hover:border-primary/30 hover:shadow-md transition-all space-y-3">
+          <h3 class="text-lg font-bold text-dark font-poppins">Attachments</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Engineered composite attachment pads to control complex canine root rotations or molar tilting movements.</p>
+        </div>
+        <div class="p-6 rounded-[2rem] border border-slate-150/50 bg-white shadow-xs hover:border-primary/30 hover:shadow-md transition-all space-y-3">
+          <h3 class="text-lg font-bold text-dark font-poppins">Missing Teeth</h3>
+          <p class="text-slate-500 text-sm leading-relaxed">Includes pontic slots inside aligners to cover missing teeth gap spacings, keeping patient aesthetics high.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ELASTICS BITE CORRECTION SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-b border-blue-50" aria-labelledby="elastics-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+        <div class="space-y-6 lg:col-start-2 lg:row-start-1 lg:self-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+            Bite Correction
+          </span>
+          <h2 id="elastics-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+            Inter Maxillary Elastics
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Linealign aligners are engineered with precision elastic slits to support inter-maxillary elastics — delivering powerful bite correction forces while maintaining aligner comfort and aesthetics.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center gap-4 lg:col-start-1 lg:row-start-1 lg:row-span-2">
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500 zoom-image" style="max-width: 560px" data-src="public/images/elastics_clinical.jpeg">
+            <img src="public/images/elastics_clinical.jpeg" alt="Inter Maxillary Elastics with TAD Anchorage" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 flex items-end justify-start p-5 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow border border-primary/20">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6 lg:col-start-2 lg:row-start-2 lg:self-start lg:mt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">🦷</div>
+              Bite Correction
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">📈</div>
+              Class II Correction
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">📉</div>
+              Class III Correction
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-6 h-6 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">⚙️</div>
+              Midline Correction
+            </div>
+          </div>
+          <a href="faq.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white bg-gradient-to-r from-primary to-secondary hover:brightness-105 shadow-md hover:shadow-[0_4px_20px_rgba(46,199,214,0.35)] transition-all">
+            Book Consultation <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMPOSITE ATTACHMENTS ─── -->
+  <section class="py-24 bg-white border-b border-blue-50/50" aria-labelledby="attachments-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+        <div class="space-y-6 lg:col-start-1 lg:row-start-1 lg:self-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+            Precision Biomechanics
+          </span>
+          <h2 id="attachments-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+            Composite Attachments
+          </h2>
+          <p class="text-slate-655 text-sm sm:text-base leading-relaxed">
+            Our precision-engineered composite attachments are strategically designed to control complex tooth movements that would otherwise be impossible with aligner forces alone. Each attachment is custom-positioned based on the digital treatment plan.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500 zoom-image" data-src="public/images/attachments_diagram.jpeg">
+            <img src="public/images/attachments_diagram.jpeg" alt="Composite Attachment Diagram" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 flex items-end justify-start p-5 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow border border-primary/20">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+          <p class="text-slate-500 text-xs font-bold uppercase tracking-wider text-center">
+            Engineered Attachment Biomechanics
+          </p>
+        </div>
+
+        <div class="space-y-6 lg:col-start-1 lg:row-start-2 lg:self-start lg:mt-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
+              Rotation Control
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
+              Torque Management
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
+              Tooth Extrusion
+            </div>
+            <div class="flex items-center gap-2.5 text-sm text-slate-700 font-medium">
+              <div class="w-5 h-5 rounded-full bg-secondary/15 flex items-center justify-center text-secondary flex-shrink-0 text-[10px] font-black">✔</div>
+              Intrusion Mechanics
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MISSING TOOTH MANAGEMENT ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#EEF8FF] border-b border-blue-50" aria-labelledby="missing-tooth-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 items-center">
+        <div class="space-y-6 lg:col-start-2 lg:row-start-1 lg:self-end">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+            Prosthetic Integration
+          </span>
+          <h2 id="missing-tooth-heading" class="text-3xl sm:text-4xl font-extrabold text-dark font-poppins tracking-tight leading-tight">
+            Missing Tooth Management with Aligners
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+            Linealign aligners can incorporate an integrated pontic — a natural-looking tooth replica — directly inside the aligner tray to maintain aesthetics and function during orthodontic treatment when a tooth is missing.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center gap-4 lg:col-start-1 lg:row-start-1 lg:row-span-2">
+          <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200/60 cursor-pointer group hover:shadow-2xl transition-all duration-500 zoom-image" style="max-width: 700px" data-src="public/images/integrated_pontic.jpeg">
+            <img src="public/images/integrated_pontic.jpeg" alt="Integrated Pontic inside Aligner" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 flex items-end justify-start p-5 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow border border-primary/20">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+          <p class="text-slate-500 text-xs font-bold uppercase tracking-wider text-center">
+            Integrated Pontic – Missing Tooth Solution
+          </p>
+        </div>
+
+        <div class="space-y-6 lg:col-start-2 lg:row-start-2 lg:self-start lg:mt-6">
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">👤</div>
+              <div>
+                <p class="text-sm font-bold text-dark">Integrated Pontic</p>
+                <p class="text-xs text-slate-500">Natural tooth replica built into the aligner tray</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">🎯</div>
+              <div>
+                <p class="text-sm font-bold text-dark">Implant Space Planning</p>
+                <p class="text-xs text-slate-500">Ideal spacing maintained for future implant placement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TADS INCORPORATED ALIGNERS ─── -->
+  <section class="py-24 bg-gradient-to-br from-[#0F1F3D] to-[#1a3460] text-white relative overflow-hidden border-b border-white/5" aria-labelledby="tads-incorporated-heading">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(46,199,214,0.12)_0%,transparent_60%)] pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(42,132,255,0.10)_0%,transparent_60%)] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div class="lg:col-span-7 space-y-4 text-left">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/20 border border-secondary/30 uppercase tracking-wider">
+            Advanced Orthodontics
+          </span>
+          <h2 id="tads-incorporated-heading" class="text-3xl sm:text-4xl font-extrabold text-white font-poppins tracking-tight">
+            TADs Incorporated Aligners
+          </h2>
+          <p class="text-xl text-secondary font-bold font-poppins">Aligners for Functional Skeletal Cases</p>
+          <p class="text-white/70 text-sm sm:text-base leading-relaxed">
+            By integrating Temporary Anchorage Devices with clear aligner therapy, Linealign enables treatment of complex skeletal cases that were traditionally limited to conventional orthodontics or orthognathic surgery.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col gap-3">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-pointer group hover:shadow-[0_8px_40px_rgba(46,199,214,0.2)] transition-all duration-500 zoom-image" data-src="public/images/tad_clinical_1.jpeg">
+            <img src="public/images/tad_clinical_1.jpeg" alt="TAD System" class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-secondary/0 group-hover:bg-secondary/5 flex items-end justify-start p-5 transition-all">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 rounded-full bg-white/95 text-[11px] font-bold text-primary shadow">
+                🔍 View Full Image
+              </span>
+            </div>
+          </div>
+          <p class="text-white/50 text-[10px] font-bold uppercase tracking-wider text-center">
+            TAD + Elastics with Aligner – Frontal View
+          </p>
+        </div>
+      </div>
+
+      <!-- TAD Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-xs hover:border-secondary/30 hover:bg-white/10 transition-all space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-secondary">📍</div>
+          <h3 class="text-base font-bold text-white font-poppins">Temporary Anchorage Devices</h3>
+          <p class="text-white/60 text-xs leading-relaxed">Titanium mini-screws providing absolute skeletal anchorage for controlled force delivery.</p>
+        </div>
+        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-xs hover:border-secondary/30 hover:bg-white/10 transition-all space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-secondary">📈</div>
+          <h3 class="text-base font-bold text-white font-poppins">Class II Correction</h3>
+          <p class="text-white/60 text-xs leading-relaxed">Mandibular advancement and molar distalization for skeletal Class II malocclusion.</p>
+        </div>
+        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 shadow-xs hover:border-secondary/30 hover:bg-white/10 transition-all space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-secondary">📉</div>
+          <h3 class="text-base font-bold text-white font-poppins">Class III Correction</h3>
+          <p class="text-white/60 text-xs leading-relaxed">Maxillary advancement support and growth modification for Class III cases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQs ACCORDIONS SECTION ─── -->
+  <section class="py-24 bg-white border-y border-blue-50/50" aria-labelledby="faq-heading">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-primary bg-primary/10 border border-primary/20 uppercase tracking-wider">
+          FAQ Help Desk
+        </span>
+        <h2 id="faq-heading" class="text-3xl font-extrabold text-dark font-poppins tracking-tight">Frequently Asked Questions</h2>
+        <p class="text-slate-500 text-sm">Everything you need to know about the Linealign Laboratory Ecosystem.</p>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="border border-slate-200/50 rounded-2xl bg-white shadow-xs overflow-hidden transition-all duration-300 faq-accordion-item">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-dark font-poppins text-sm sm:text-base hover:bg-slate-50 transition-colors faq-btn" aria-expanded="false">
+            <span>How do I submit patient scans to Linealign?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="px-6 pb-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4 hidden faq-answer">
+            You can send us your patient's intraoral scans (STL files) or physical silicone impressions via WhatsApp (82817 78202) or email (linealign23@gmail.com). We accept scans from all major scanner brands.
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="border border-slate-200/50 rounded-2xl bg-white shadow-xs overflow-hidden transition-all duration-300 faq-accordion-item">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-dark font-poppins text-sm sm:text-base hover:bg-slate-50 transition-colors faq-btn" aria-expanded="false">
+            <span>How fast will I receive the treatment planning estimation?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="px-6 pb-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4 hidden faq-answer">
+            You will receive a basic estimate of treatment cost, duration, and alignment method within 10 minutes. A full, interactive 3D treatment simulation will be sent to you for review within 24 hours.
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="border border-slate-200/50 rounded-2xl bg-white shadow-xs overflow-hidden transition-all duration-300 faq-accordion-item">
+          <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-dark font-poppins text-sm sm:text-base hover:bg-slate-50 transition-colors faq-btn" aria-expanded="false">
+            <span>Are there aligner carrying cases and demo kits provided?</span>
+            <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 faq-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="px-6 pb-6 text-sm text-slate-500 leading-relaxed border-t border-slate-100 pt-4 hidden faq-answer">
+            Yes, every treatment plan includes a premium Linealign Aligner carrying box, retainers, splints, and demo kits to show the patient. We also provide clinic marketing kits.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS CAROUSEL SECTION ─── -->
+  <section class="py-24 bg-gradient-to-br from-white to-[#E8FCFF] border-y border-cyan-50/50" aria-labelledby="testimonials-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-secondary bg-secondary/10 border border-secondary/20 uppercase tracking-wider">
+          Dentists &amp; Patients Feedback
+        </span>
+        <h2 id="testimonials-heading" class="text-3xl font-extrabold text-dark font-poppins tracking-tight">What Our Partner Dentists Say</h2>
+        <p class="text-slate-500 text-sm">Hear directly from dentists who trust Linealign for accurate treatment planning and predictable outcomes.</p>
+      </div>
+
+      <div class="relative max-w-4xl mx-auto bg-white border border-cyan-100/60 rounded-[2.5rem] p-8 sm:p-12 shadow-md flex flex-col md:flex-row gap-8 items-center min-h-[250px] testimonial-carousel">
+        
+        <!-- Slides -->
+        <div class="flex-grow space-y-4 testimonial-item">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center font-extrabold text-xl shadow-md">RS</div>
+            <div>
+              <h4 class="text-base font-bold text-dark font-poppins">Dr. Rajesh Sharma</h4>
+              <p class="text-slate-450 text-xs font-semibold uppercase tracking-wider mt-0.5">Orthodontist, Mumbai</p>
+            </div>
+          </div>
+          <p class="text-slate-655 text-base sm:text-lg italic leading-relaxed pt-2">
+            &ldquo;Linealign has transformed how I run my aligner practice. The treatment simulation within 24 hours is incredibly accurate, and patients love seeing the 3D visual step-by-step progress.&rdquo;
+          </p>
+        </div>
+
+        <div class="flex-grow space-y-4 testimonial-item hidden">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center font-extrabold text-xl shadow-md">AG</div>
+            <div>
+              <h4 class="text-base font-bold text-dark font-poppins">Dr. Ananya Goel</h4>
+              <p class="text-slate-450 text-xs font-semibold uppercase tracking-wider mt-0.5">Cosmetic Dentist, Bangalore</p>
+            </div>
+          </div>
+          <p class="text-slate-655 text-base sm:text-lg italic leading-relaxed pt-2">
+            &ldquo;The marketing support demo kits and in-office videos have doubled my patient conversions. Linealign clear aligners are highly precise and pricing is very competitive.&rdquo;
+          </p>
+        </div>
+
+        <div class="flex-grow space-y-4 testimonial-item hidden">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white flex items-center justify-center font-extrabold text-xl shadow-md">VS</div>
+            <div>
+              <h4 class="text-base font-bold text-dark font-poppins">Dr. Vikram Seth</h4>
+              <p class="text-slate-450 text-xs font-semibold uppercase tracking-wider mt-0.5">Clinic Director, Vadodara</p>
+            </div>
+          </div>
+          <p class="text-slate-655 text-base sm:text-lg italic leading-relaxed pt-2">
+            &ldquo;Emergency support and the tracking app make after-care extremely simple. Highly recommended aligner partner with unmatched support.&rdquo;
+          </p>
+        </div>
+
+        <!-- Dot Navigation Indicators -->
+        <div class="flex md:flex-col gap-2.5 mt-4 md:mt-0 flex-shrink-0">
+          <button class="w-3.5 h-3.5 rounded-full transition-all cursor-pointer bg-primary scale-125 shadow-sm shadow-primary/30 testimonial-dot" aria-label="Go to slide 1"></button>
+          <button class="w-3.5 h-3.5 rounded-full transition-all cursor-pointer bg-slate-200 testimonial-dot" aria-label="Go to slide 2"></button>
+          <button class="w-3.5 h-3.5 rounded-full transition-all cursor-pointer bg-slate-200 testimonial-dot" aria-label="Go to slide 3"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BOTTOM BANNER ─── -->
+  <section class="bg-gradient-to-r from-primary to-secondary text-white py-20 text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(255,255,255,0.12)_0%,transparent_70%)] pointer-events-none"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      <h2 class="text-3xl sm:text-5xl font-black font-poppins tracking-tight">Ready to Partner with LINEALIGN?</h2>
+      <p class="text-white/80 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-semibold">
+        Join thousands of dental practices providing top-tier orthodontic clear aligner outcomes. Get estimates in 10 minutes.
+      </p>
+      <div class="pt-4">
+        <a href="faq.html" class="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold bg-white text-primary hover:bg-slate-50 shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 duration-300">
+          Get In Touch Today
+          <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER SECTION ─── -->
+  <footer class="bg-[#111827] text-slate-300 pt-20 pb-10 border-t border-slate-800 overflow-hidden font-sans">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        
+        <!-- Brand / Address Column -->
+        <div class="space-y-6">
+          <a href="index.html" class="inline-flex bg-white p-2.5 rounded-2xl border border-white/50 shadow-md">
+            <img src="public/logo.jpeg" alt="Logo" class="h-10 w-auto object-contain rounded">
+          </a>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            <strong>Your Smile, Our Precision.</strong> Reimagining orthodontic care with premium, invisible, and state-of-the-art clear aligners. Clear, Comfort and Confident from Kerala.
+          </p>
+          <div class="space-y-3 pt-2 text-slate-400 text-xs">
+            <div class="flex items-start gap-2">
+              <span class="text-secondary mt-0.5">📍</span>
+              <span>83, Pookkayam, Malakallu, Kasaragod District, Kerala, India - 671532</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-secondary">📞</span>
+              <a href="tel:8281778202" class="hover:underline">8281778202</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-secondary">📧</span>
+              <a href="mailto:linealign23@gmail.com" class="hover:underline">linealign23@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div>
+          <h3 class="text-white text-base font-semibold mb-6">Quick Links</h3>
+          <ul class="space-y-4 text-sm text-slate-400">
+            <li><a href="index.html" class="hover:text-primary transition-colors">Home</a></li>
+            <li><a href="solutions.html" class="hover:text-primary transition-colors">Solutions</a></li>
+            <li><a href="pricing.html" class="hover:text-primary transition-colors">Pricing Plans</a></li>
+            <li><a href="our-story.html" class="hover:text-primary transition-colors">Our Story</a></li>
+            <li><a href="faq.html" class="hover:text-primary transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Info Column -->
+        <div>
+          <h3 class="text-white text-base font-semibold mb-6">Support &amp; Hours</h3>
+          <ul class="space-y-4 text-sm text-slate-400">
+            <li class="flex items-start gap-2">
+              <span class="text-secondary mt-0.5">⏰</span>
+              <span>24/7 Working Laboratory</span>
+            </li>
+            <li><a href="faq.html#faq-heading" class="hover:text-primary transition-colors">Help &amp; FAQs</a></li>
+            <li><a href="faq.html" class="hover:text-primary transition-colors">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Badges & Compliance Column -->
+        <div class="space-y-4 flex flex-col justify-start items-start">
+          <h3 class="text-white text-base font-semibold mb-2">Compliance</h3>
+          <span class="inline-block px-3.5 py-1.5 bg-white/5 rounded-full text-[10px] font-bold text-secondary uppercase tracking-wider border border-white/10">ISO 13485 CERTIFIED</span>
+          <span class="inline-block px-3.5 py-1.5 bg-white/5 rounded-full text-[10px] font-bold text-secondary uppercase tracking-wider border border-white/10">FDA COMPLIANT MATERIALS</span>
+        </div>
+
+      </div>
+
+      <!-- Legal Bottom -->
+      <div class="border-t border-slate-800/80 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+        <p>&copy; 2026 LINEALIGN DENTAL LAB. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="hover:text-slate-350">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-350">Terms of Use</a>
+          <a href="#" class="hover:text-slate-350">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── WHATSAPP FLOATING BUTTON ─── -->
+  <div class="fixed bottom-6 right-6 z-[9999] flex items-center justify-end">
+    <!-- Tooltip -->
+    <div class="mr-3 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-md transition-all duration-300 pointer-events-none select-none relative opacity-0 translate-x-4 scale-95 hover-tooltip">
+      Chat with us on WhatsApp
+      <div class="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-slate-900 rotate-45"></div>
+    </div>
+    <!-- Button -->
+    <a href="https://wa.me/918281778202?text=Hello%20Linealign%20Dental%20Lab%2c%20I%20would%20like%20to%20inquire%20about%20your%20clear%20aligners." target="_blank" rel="noopener noreferrer" class="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:shadow-[#25D366]/40 hover:brightness-105 transition-all duration-300 relative whatsapp-btn-pulse cursor-pointer" aria-label="Chat with us on WhatsApp" onmouseenter="this.previousElementSibling.classList.remove('opacity-0', 'translate-x-4', 'scale-95'); this.previousElementSibling.classList.add('opacity-100', 'translate-x-0', 'scale-100');" onmouseleave="this.previousElementSibling.classList.add('opacity-0', 'translate-x-4', 'scale-95'); this.previousElementSibling.classList.remove('opacity-100', 'translate-x-0', 'scale-100');">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-7 h-7 fill-current"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+    </a>
   </div>
 
-  <!-- Controller Script -->
-  <script src="js/main.js"></script>
+  <!-- ─── QUALITY MODAL (ISO CERTIFICATE) ─── -->
+  <div id="iso-modal" class="fixed inset-0 z-50 bg-[#1F2937]/80 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out hidden">
+    <div class="relative max-w-4xl max-h-[85vh] w-full bg-white rounded-[2.5rem] overflow-hidden p-6 shadow-2xl flex flex-col items-center justify-between" onclick="event.stopPropagation();">
+      <button id="iso-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-lg cursor-pointer">✕</button>
+      <div class="flex-grow flex items-center justify-center p-4 min-h-[300px]">
+        <img src="public/images/certificate.jpeg" alt="ISO Certificate" class="max-w-full max-h-[60vh] object-contain rounded-lg shadow-sm">
+      </div>
+      <div class="mt-4 text-center">
+        <p class="text-slate-700 text-sm font-extrabold font-poppins">ISO Certified Dental Laboratory</p>
+        <p class="text-slate-450 text-[10px] font-bold uppercase tracking-wider mt-1">Medical Devices Standard</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── GENERAL IMAGE LIGHTBOX ─── -->
+  <div id="image-lightbox" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out hidden">
+    <div class="relative max-w-5xl max-h-[90vh] w-full" onclick="event.stopPropagation();">
+      <button id="lightbox-close" class="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center font-bold text-lg cursor-pointer z-10">✕</button>
+      <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl mx-auto block">
+    </div>
+  </div>
+
 </body>
 </html>
